@@ -1,19 +1,17 @@
 import java.util.Scanner;
 
 public class Utilisateur {
-    //Scanners : Séquences, mismatch, match, pénalité
+    //Scanners : Sequences, mismatch, match, penalite
     Scanner sc=new Scanner(System.in);
-    
+
 
     public Utilisateur(){
 
     }
 
     /**
-     * Cette fonction va demander à l'utilisateur de saisir une séquence , si les
-     * conditions de la séquences ont étés respectés , l'utilisateur devra saisir
-     * sa seconde séquence
-     * @return "finis" si toute les séquences ont étés saisit
+     * Cette fonction demande a l'utilisateur de saisir une sequence
+     * @return Sequence
      */
     public Sequence demanderSequence(){
         Sequence se =new Sequence();
@@ -27,7 +25,6 @@ public class Utilisateur {
         if(!se.sequenceValide()){
             System.out.println("la sequence n'est pas valide");
             return demanderSequence();
-
         }
 
         return se;
