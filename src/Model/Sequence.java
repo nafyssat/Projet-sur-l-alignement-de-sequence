@@ -27,20 +27,6 @@ public class Sequence {
         return this.sequence.size()<=20;
     }
 
-    public String toString (){
-        String s = "";
-        for(int i=0; i<this.sequence.size();i++){
-            s = s+ this.sequence.get(i);
-        }return s;
-    }
-
-
-
-
-
-
-
-
 
 }
 }
