@@ -9,19 +9,19 @@ public enum Nucleotide{
      */
     public static Nucleotide convertirEnNucleotide(char c){
         //?? mieux vaut un switch ou des if ????
-        if (c=='C') return C;
+       /* if (c=='C') return C;
         if (c=='A') return A;
         if (c=='G') return G;
         if (c=='T') return T;
-        return null;
+        return null;*/
 
-        // switch(c) {
-        //     case 'C' : return C;
-        //     case 'A' : return A;
-        //     case 'T' : return T;
-        //     case 'G' : return G;
-        //     default : return null;
-        // }
+        switch(c) {
+           case 'C' : return C;
+           case 'A' : return A;
+           case 'T' : return T;
+           case 'G' : return G;
+           default : return null;
+        }
 
     }
 
