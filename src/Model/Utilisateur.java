@@ -1,7 +1,9 @@
+import java.util.Scanner;
+
 public class Utilisateur {
     //Scanners : Séquences, mismatch, match, pénalité
     Scanner sc=new Scanner(System.in);
-
+    
 
     public Utilisateur(){
 
