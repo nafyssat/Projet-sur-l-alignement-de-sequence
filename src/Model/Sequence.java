@@ -1,3 +1,46 @@
 public class Sequence {
+    private ArrayList<Nucleotide> sequence;
 
+
+
+
+    public Sequence (){
+        this.sequence = new ArrayList <>();
+    }
+    //ajouter une fonction qui retourne la taille d'une séquence
+
+    /**
+     * Ajoute une Nucléotide à la séquence.
+     * @param n Nucléotide.
+     */
+    public void ajouterNucleotide(char n){
+        //TODO
+        Nucleotide n = convertirEnNucleotide(c);
+        this.sequence.add(n);
+    }
+
+    /**
+     * Vérifie si la longueur de la séquence est inferieure ou égale à 20.
+     * @return true si la séquence est valide sinon false.
+     */
+    public boolean sequenceValide(){
+        return this.sequence.size()<=20;
+    }
+
+    public String toString (){
+        String s = "";
+        for(int i=0; i<this.sequence.size();i++){
+            s = s+ this.sequence.get(i);
+        }return s;
+    }
+
+
+
+
+
+
+
+
+
+}
 }
