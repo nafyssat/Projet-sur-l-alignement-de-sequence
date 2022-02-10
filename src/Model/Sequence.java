@@ -16,8 +16,7 @@ public class Sequence {
      */
     public void ajouterNucleotide(char n){
         //TODO
-        Nucleotide c = Nucleotide.convertirEnNucleotide(n);
-        this.sequence.add(c);
+        this.sequence.add(Nucleotide.convertirEnNucleotide(n));
     }
 
     /**
