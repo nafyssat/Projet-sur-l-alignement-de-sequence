@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 public class Sequence {
     private ArrayList<Nucleotide> sequence;
 
@@ -15,8 +16,8 @@ public class Sequence {
      */
     public void ajouterNucleotide(char n){
         //TODO
-        Nucleotide n = convertirEnNucleotide(c);
-        this.sequence.add(n);
+        Nucleotide c = Nucleotide.convertirEnNucleotide(n);
+        this.sequence.add(c);
     }
 
     /**
@@ -28,5 +29,4 @@ public class Sequence {
     }
 
 
-}
 }

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Utilisateur {
     //Scanners : Séquences, mismatch, match, pénalité
     Scanner sc=new Scanner(System.in);
@@ -13,7 +15,7 @@ public class Utilisateur {
      * sa seconde séquence
      * @return "finis" si toute les séquences ont étés saisit
      */
-    public Sequence demanderSequence(){
+     public Sequence demanderSequence(){
         Sequence se =new Sequence();
         System.out.println("saisissez une sequence : ");
 
@@ -31,12 +33,62 @@ public class Utilisateur {
         return se;
     }
 
+    
+
+    //math , mismatch , gap
+
+    public int demanderMatch(){
+        System.out.print("saisissez un match : ");
+        int n=sc.nextInt();
+        if(n<=10 && n>=-10){
+            return n;
+        }
+        else 
+        { 
+        return demanderMatch();
+        }
+    }
+    public int demanderMismatch(){
+        System.out.print("saisissez un mismatch : ");
+        int n=sc.nextInt();
+        if(n<=10 && n>=-10){
+            return n;
+        }
+        else 
+        { 
+        return demanderMismatch();
+        }
+    }
+    public int demanderGap(){
+        System.out.print("saisissez un gap : ");
+        int n=sc.nextInt();
+        if(n<=10 && n>=-10){
+            return n;
+        }
+        else 
+        { 
+        return demanderGap();
+        }
+    }
+
+    public int[] demanderMismatch_Match_Gap(){
+        int [] res=new int [3];
+        res[0]=demanderMatch();
+        res[1]=demanderMismatch();
+        res[2]=demanderGap();
+        return res;
+    }
+    
 
     public static void main(String [] args){
         Utilisateur u=new Utilisateur ();
 
-        Sequence s = u.demanderSequence();
-        System.out.println(s);
+       // Sequence s = u.demanderSequence();
+        //System.out.println(s);
+       int i=u.demanderMatch();
+       System.out.println(i);
+      System.out.println(u.demanderMismatch_Match_Gap()[0]);
+
 
     }
 }
