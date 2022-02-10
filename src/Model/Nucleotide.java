@@ -1,3 +1,5 @@
+package Model;
+
 public enum Nucleotide{
     //Nucleotides
     A,T,G,C;
