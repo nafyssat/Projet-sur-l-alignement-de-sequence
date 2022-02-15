@@ -45,14 +45,14 @@ public class Matrice {
         }
 
         public int ValeurCase(int i,int j){
-            int a=((CaseEntier) this.grille[i-1][j-1]).getValeur();
-            if(((CaseNucleotide) this.grille[0][j]).getNuc().equals(((CaseNucleotide) this.grille[i][0]).getNuc())){
+            int a=( this.grille[i-1][j-1]).getValeur();
+            if(( this.grille[0][j]).getNuc().equals((this.grille[i][0]).getNuc())){
                 a+=this.scores[0];
             }else{
                 a+=this.scores[1];
             }
-            int b=((CaseEntier)this.grille[i-1][j]).getValeur()+this.scores[2];
-            int c=((CaseEntier)this.grille[i][j-1]).getValeur()+this.scores[2];
+            int b=(this.grille[i-1][j]).getValeur()+this.scores[2];
+            int c=(this.grille[i][j-1]).getValeur()+this.scores[2];
 
             return Math.max(Math.max(a,b),c);
         }
@@ -65,12 +65,12 @@ public class Matrice {
                         System.out.print("  |");
                     } else {
                         if (this.grille[j][i] instanceof CaseNucleotide) {
-                            System.out.print(" "+((CaseNucleotide) this.grille[j][i]).getNuc() + " | ");
+                            System.out.print(" "+( this.grille[j][i]).getNuc() + " | ");
                         } else {
-                            if (((CaseEntier) this.grille[j][i]).getValeur() >= 0) {
-                                System.out.print(" "+((CaseEntier) this.grille[j][i]).getValeur() + " |");
+                            if (( this.grille[j][i]).getValeur() >= 0) {
+                                System.out.print(" "+( this.grille[j][i]).getValeur() + " |");
                             } else {
-                                System.out.print(((CaseEntier) this.grille[j][i]).getValeur() + " |");
+                                System.out.print(( this.grille[j][i]).getValeur() + " |");
                             }
                         }
                     }
@@ -97,10 +97,10 @@ public class Matrice {
             int i=this.a.getSequence().size()+1;
             int j=this.b.getSequence().size()+1;
             while(i>=2 && j>=2){
-                int x=((CaseEntier)this.grille[i][j]).getValeur();
-                int y=((CaseEntier)this.grille[i-1][j-1]).getValeur();
-                int z=((CaseEntier)this.grille[i][j-1]).getValeur();
-                int w=((CaseEntier)this.grille[i-1][j]).getValeur();
+                int x=(this.grille[i][j]).getValeur();
+                int y=(this.grille[i-1][j-1]).getValeur();
+                int z=(this.grille[i][j-1]).getValeur();
+                int w=(this.grille[i-1][j]).getValeur();
                 if(x==y+ matchOrMistach(this.a.getSequence().get(i-2),this.b.getSequence().get(j-2))){
                     m+=NuctoString(this.a.getSequence().get(i-2));
                     n+=NuctoString(this.b.getSequence().get(j-2));
