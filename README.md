@@ -8,5 +8,9 @@ Projet pour le module de Projet de Programmation en Deuxième année de licence 
  *  Mkouboi Mounia  
  *  Nur Akbas Aleysa
 
+# Structure du Dossier
+
+*   src : dossier contenant le code source
+
 
 
