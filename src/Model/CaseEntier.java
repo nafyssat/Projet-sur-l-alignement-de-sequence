@@ -7,7 +7,7 @@ public class CaseEntier extends Case{
         this.valeur= val;
     }
 
-    public int getValeur(){
+    public int getVal(){
         return this.valeur;
     }
 
