@@ -27,6 +27,10 @@ public enum Nucleotide{
 
     }
 
+    public boolean nestpasNucleotide (char c){
+        return (c=='B') || (c>'C' && c<'G' && c<'T') || c>'T';
+    }
+
 
 
 }
