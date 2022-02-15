@@ -1,9 +1,15 @@
 package Model;
 
-public abstract class  Case {
+public  class  Case {
 
 
 
-    public abstract Object getVal();
+    public  int getValeur (){
+        return 0;
+    }
+
+    public Nucleotide getNuc(){
+        return null;
+    }
 
 }
