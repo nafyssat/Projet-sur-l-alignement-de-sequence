@@ -8,7 +8,7 @@ public class CaseNucleotide extends Case{
         this.nuc= nuc;
     }
 
-    public Nucleotide getNuc(){
+    public Nucleotide getVal(){
         return this.nuc;
     }
 }
