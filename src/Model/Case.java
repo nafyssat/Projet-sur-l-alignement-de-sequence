@@ -1,5 +1,9 @@
 package Model;
 
-public class Case {
+public abstract class  Case {
+
+
+
+    public abstract int getVal();
 
 }
