@@ -4,7 +4,7 @@ public  class  Case {
 
 
 
-    public  int getValeur (){
+    public  int getVal (){
         return 0;
     }
 
