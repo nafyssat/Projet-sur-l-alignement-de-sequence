@@ -1,4 +1,12 @@
 # Projet AR1
 
-## par Ben Abdallah Montassar, Bouzid Lyna, Mohamed Halim Nafyssata, Mkouboi Mounia et Nur Akbas Aleysa
+Projet pour le module de Projet de Programmation en Deuxième année de licence en Informatique à l'Université de Paris par :
+
+ *  Ben Abdallah Montassar
+ *  Bouzid Lyna 
+ *  Mohamed Halim Nafyssata
+ *  Mkouboi Mounia  
+ *  Nur Akbas Aleysa
+
+
 
