@@ -4,6 +4,6 @@ public abstract class  Case {
 
 
 
-    public abstract int getVal();
+    public abstract Object getVal();
 
 }
