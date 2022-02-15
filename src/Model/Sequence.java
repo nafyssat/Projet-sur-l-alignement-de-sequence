@@ -1,5 +1,6 @@
 package Model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Sequence {
@@ -8,6 +9,10 @@ public class Sequence {
 
     public Sequence (){
         this.sequence = new ArrayList <>();
+    }
+
+    public ArrayList<Nucleotide> getSequence (){
+        return this.sequence;
     }
 
     /**
