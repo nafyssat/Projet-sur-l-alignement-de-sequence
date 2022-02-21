@@ -1,6 +1,8 @@
 //package Model;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 
 public class Sequence {
     private ArrayList<Nucleotide> sequence;
@@ -8,6 +10,11 @@ public class Sequence {
 
     public Sequence (){
         this.sequence = new ArrayList <>();
+    }
+
+    
+    public ArrayList<Nucleotide> getSequence (){
+        return this.sequence;
     }
 
     /**
