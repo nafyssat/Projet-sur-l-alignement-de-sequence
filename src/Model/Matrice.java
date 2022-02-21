@@ -17,6 +17,8 @@ public class Matrice {
             afficherMatrice();
         }
 
+
+
         public void initialiser_Grille(){
             this.a=user.demanderSequence();
             this.b=user.demanderSequence();
@@ -56,6 +58,8 @@ public class Matrice {
 
             return Math.max(Math.max(a,b),c);
         }
+
+    
 
         public void afficherMatrice(){
             int i=0;
@@ -102,8 +106,8 @@ public class Matrice {
                 int z=(this.grille[i][j-1]).getValeur();
                 int w=(this.grille[i-1][j]).getValeur();
                 if(x==y+ matchOrMistach(this.a.getSequence().get(i-2),this.b.getSequence().get(j-2))){
-                    m+=NuctoString(this.a.getSequence().get(i-2));
-                    n+=NuctoString(this.b.getSequence().get(j-2));
+                    m+=Nucleotide.NuctoString(this.a.getSequence().get(i-2));
+                    n+=Nucleotide.NuctoString(this.b.getSequence().get(j-2));
                     i--;
                     j--;
                 }else if(x==w+this.scores[2]){
