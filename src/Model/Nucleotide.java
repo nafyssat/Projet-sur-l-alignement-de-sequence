@@ -1,4 +1,4 @@
-package Model;
+//package Model;
 
 public enum Nucleotide{
     //Nucleotides
@@ -28,7 +28,7 @@ public enum Nucleotide{
     }
 
     public boolean nestpasNucleotide (char c){
-        return (c=='B') || (c>'C' && c<'G' && c<'T') || c>'T';
+        return  (c=='B') || (c>'C' && c<'G') || (c>'G' && c<'T') || c>'T';
     }
 
 

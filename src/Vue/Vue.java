@@ -1,6 +1,6 @@
-package Vue;
+//package Vue;
 
-import Model.Utilisateur;
+//import Model.Utilisateur;
 
 
 import javax.swing.JButton;

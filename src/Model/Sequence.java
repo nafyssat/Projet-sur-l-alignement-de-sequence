@@ -1,4 +1,4 @@
-package Model;
+//package Model;
 
 import java.util.ArrayList;
 
@@ -28,6 +28,23 @@ public class Sequence {
     public boolean sequenceValide(){
         return this.sequence.size()<=20;
     }
+    public boolean NucleotideValide(String s){
+        String res=s.toUpperCase();
+        Nucleotide n=Nucleotide.A;
+        boolean b=true;
+          for(int i=0;i<s.length();i++){
+        if(n.nestpasNucleotide(res.charAt(i))){
+          
+             b=false;
+        }
+        else 
+        {
+            b=true;
+        }
+        }
+          return b;
+     
+}
 
 
 }
