@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Scanner;
 import static Model.Nucleotide.NuctoString;
 
 public class Matrice {
@@ -12,15 +13,12 @@ public class Matrice {
 
         public Matrice(){
             this.user=new Utilisateur();
-            initialiser_Grille();
-            afficher_Info();
-            afficherMatrice();
-        }
-
-        public void initialiser_Grille(){
             this.a=user.demanderSequence();
             this.b=user.demanderSequence();
             this.scores=user.demanderMismatch_Match_Gap();
+        }
+
+        public void initialiser_Grille(){
             this.grille=new Case[a.getSequence().size()+2][b.getSequence().size()+2];
 
             for(int a=2;a<this.a.getSequence().size()+2;a++){
@@ -139,9 +137,82 @@ public class Matrice {
             return a.equals(b)? this.scores[0]: this.scores[1];
         }
 
-        public static void main(String[]args){
-            Model.Matrice m=new Model.Matrice();
-
+    public void DemanderAction(){
+        Scanner sc=new Scanner(System.in);
+        System.out.println("Veuillez choisir la modification à faire");
+        System.out.println("Taper 1,2,3,4 ou 5");
+        System.out.println("1-modifier la première séquence");
+        System.out.println("2- modifier la deuxième séquence");
+        System.out.println("3- modifier le Gap score");
+        System.out.println("4- modifier le Match score");
+        System.out.println("5- modifier le Mistach score");
+        int r=0;
+        try{
+            r=sc.nextInt();
+        }catch (NumberFormatException e){
+            e.printStackTrace();
         }
+        switch (r){
+            case 1: ModifierSeq(1); break;
+            case 2: ModifierSeq(2); break;
+            case 3: ModifGap(); break;
+            case 4: ModifMatch(); break;
+            case 5: ModifMismatch(); break;
+            default: throw new Error("Invalid number");
+        }
+    }
+
+    public void launcher(){
+        initialiser_Grille();
+        afficher_Info();
+        afficherMatrice();
+        DemanderAction();
+    }
+
+    public void ModifierSeq(int n){
+        Scanner sc=new Scanner(System.in);
+        Sequence se=new Sequence();
+        System.out.println("Saisissez la nouvelle séquence:");
+        String s=sc.nextLine().toUpperCase();
+        for(int i=0;i<s.length();i++){
+            se.ajouterNucleotide(s.charAt(i));
+        }
+        if(!se.sequenceValide()){
+            System.out.println("La séquence n'est pas valide");
+            System.out.println("Voulez-vous réessayer [O/N]?");
+            String r=sc.next();
+            if(r.equals("O")){
+                ModifierSeq(n);
+            }
+        }else {
+            if (n == 1) {
+                this.a = se;
+            } else {
+                this.b = se;
+            }
+        }
+        launcher();
+    }
+    public void ModifGap() {
+        this.scores[2] = this.user.demanderGap();
+        launcher();
+    }
+    public void ModifMatch(){
+        this.scores[0]=this.user.demanderMatch();
+        launcher();
+    }
+
+    public void ModifMismatch() {
+        this.scores[1] = this.user.demanderMismatch();
+        launcher();
+    }
+
+
+
+    public static void main(String[]args){
+        Matrice m=new Matrice();
+        m.launcher();
+
+    }
 
     }
