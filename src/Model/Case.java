@@ -1,10 +1,15 @@
-package Model;
+//package Model;
 
 public class Case {
 
-    public  int getVal (){
-        public  int getValeur (){
-            return 0;
-        }
+    public  int getValeur (){
+        return 0;
+    }
+
+    public Nucleotide getNuc(){
+        return null;
+    }
+
+
     
 }
