@@ -27,6 +27,11 @@ public enum Nucleotide{
 
     }
 
+    /**
+     * 
+     * @param c
+     * @return true si ce n'est pas une nucleotide 
+     */
     public boolean nestpasNucleotide (char c){
         return  (c=='B') || (c>'C' && c<'G') || (c>'G' && c<'T') || c>'T';
     }

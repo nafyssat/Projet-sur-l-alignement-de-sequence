@@ -35,6 +35,13 @@ public class Sequence {
     public boolean sequenceValide(){
         return this.sequence.size()<=20;
     }
+
+    /**
+     * 
+     * @param s
+     * @return true si s est une sequence false sinon, nécessaire pour l'interface graphique 
+     * car en mode textuelle nous ne faisons pas ces vérifications.
+     */
     public boolean NucleotideValide(String s){
         String res=s.toUpperCase();
         Nucleotide n=Nucleotide.A;

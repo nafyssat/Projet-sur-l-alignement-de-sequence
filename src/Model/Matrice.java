@@ -2,6 +2,9 @@
 
 //import static Model.Nucleotide.NuctoString;
 
+/* Comme mon ordinateur n'acceptais pas c'est import j'ai du faire Nucleotide.nom de la méthode, pour 
+les méthodes statiques  */
+
 public class Matrice {
 
         private Utilisateur user;
@@ -17,8 +20,8 @@ public class Matrice {
             afficherMatrice();
         }
 
-
-
+        //Interface //
+       
         public void initialiser_Grille(){
             this.a=user.demanderSequence();
             this.b=user.demanderSequence();
