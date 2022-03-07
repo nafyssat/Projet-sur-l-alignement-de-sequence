@@ -4,11 +4,14 @@ public enum Nucleotide{
     //Nucleotides
     A,T,G,C;
 
+
+
     /**
      * convertie un caractere en Nucleotide
      * @param c est un caratere
      * @return une Nucleotide
      */
+
     public static Nucleotide convertirEnNucleotide(char c){
         //?? mieux vaut un switch ou des if ????
        /* if (c=='C') return C;
@@ -26,6 +29,7 @@ public enum Nucleotide{
         }
 
     }
+
 
     /**
      * 
