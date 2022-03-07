@@ -20,7 +20,7 @@ import java.awt.*;
 
 public class Vue extends JFrame {
 
-    private Utilisateur user=new Utilisateur();
+    private Model.Utilisateur user=new Utilisateur();
 
 
     public Vue(String s){
