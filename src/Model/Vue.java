@@ -41,8 +41,8 @@ public class Vue extends JFrame {
 
     public Vue(String s){
         super(s);
-        this.setSize(1200, 1200);
-        this.setLocation(100,100);
+        this.setSize(1400, 1800);
+        this.setLocation(5,5);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Creer des espaces et ajout des couleurs de fonds , d'espace
@@ -99,9 +99,11 @@ public class Vue extends JFrame {
             Integer.parseInt(mi.getText());
             System.out.println("oui");
             JPanel ajout=v.init(s1.getText(),s2.getText(),ma.getText(),mi.getText(),g.getText());
-            
-            getContentPane().add(ajout,BorderLayout.EAST);
-            setSize(800,1000);
+            ajout.setSize(1200,1200);
+            ajout.setBackground(Color.CYAN);
+            getContentPane().add(ajout,BorderLayout.CENTER);
+            setSize(1400,1800);
+
             setVisible(true);
           /* mainContainer.add(ajout,BorderLayout.EAST);
            mainContainer.setSize(800, 400);

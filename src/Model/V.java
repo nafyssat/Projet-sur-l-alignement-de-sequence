@@ -10,7 +10,7 @@ import java.awt.event.*;
 
 /* A remettre les packages V.java , Vue.java dans le dossier Vue.   */
 
-//Cette classe permet de modeliser l'affichage de la fenêtre sous forme de JTable//
+//Cette classe permet de modeliser l'affichage de la fenêtre sous forme de JButton[][]//
 
 public class V {
     private Utilisateur user = new Utilisateur();
@@ -42,19 +42,13 @@ public class V {
         for (int i = 2; i < a.length() + 2; i++) {
             this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
             res[i][0].setText(" "+a.charAt(i-2));
-            //res[i][0].setLayout(null);
-            //res[i][0].setBounds(1,1,1,1);
-            res[i][0].setBackground(Color.BLUE);
-
+            
         }
 
         for (int i = 2; i < b.length() + 2; i++) {
             this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
             res[0][i].setText(" "+b.charAt(i-2));
-           // res[0][i].setLayout(null);
-            //res[0][i].setBounds(1,1,1,1);
-            res[0][i].setBackground(Color.CYAN);
-
+           
         }
 
         for(int i=1;i<a.length()+2;i++){
@@ -63,9 +57,8 @@ public class V {
                 this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
 
                 res[i][j].setText(" "+this.matrice.getGrille()[i][j].getValeur());
-                res[i][j].setBackground(Color.MAGENTA);
-                //res[i][j].setLayout(null);
-                //res[i][j].setBounds(1,1,1,1);
+                res[i][j].setForeground(Color.MAGENTA);
+              
             }
         }
         
@@ -75,8 +68,6 @@ public class V {
         for(int i=0;i<a.length()+2;i++){
             for(int j=0;j<b.length()+2;j++){
 
-                //res[i][j].setLayout(null);
-                //res[i][j].setBounds(1,1,1,1);
                 droite.add(res[i][j],BorderLayout.EAST);
 
 
@@ -92,7 +83,8 @@ public class V {
         //droite.setVisible(true);
 
         //droite.setLayout(null);
-        //droite.setBounds(1200, 1100, 600, 1200);
+        
+        droite.setBounds(70,80,100,30);
         return droite;
 
     }
