@@ -47,6 +47,8 @@ public class Matrice {
         return this.grille;
     }
 
+
+
     public int ValeurCase_Interface(int i, int j, int match, int mismatch, int gap) {
         int a = (this.grille[i - 1][j - 1]).getValeur();
         if ((this.grille[0][j]).getNuc() == (this.grille[i][0]).getNuc()) {
@@ -97,6 +99,10 @@ public class Matrice {
         }
         return res;
 
+    }
+
+    public Case[][] getGrille(){
+        return this.grille;
     }
 
     public void afficherMatriceI(String a, String b) {

@@ -2,7 +2,7 @@
 
 //import Model.Utilisateur;
 //package Model;
-
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -28,6 +28,7 @@ public class Vue extends JFrame {
      private JTextField s1=new JTextField(10);
      private JTextField s2=new JTextField(10);
      private JButton enter=new JButton("entrer");
+     private JLabel message=new JLabel("Saisissez toute les valeurs !");
 
      //Score 
      private JLabel match=new JLabel("Match");
@@ -40,7 +41,7 @@ public class Vue extends JFrame {
 
     public Vue(String s){
         super(s);
-        this.setSize(1000, 700);
+        this.setSize(1200, 1200);
         this.setLocation(100,100);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -49,7 +50,7 @@ public class Vue extends JFrame {
         mainContainer.setBackground(Color.YELLOW);
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
         
-        
+
 
         //Initialisation du JPanel de gauche 
         JPanel middlePanel=new JPanel();
@@ -97,7 +98,16 @@ public class Vue extends JFrame {
             Integer.parseInt(ma.getText());
             Integer.parseInt(mi.getText());
             System.out.println("oui");
-            v.init(s1.getText(),s2.getText(),ma.getText(),mi.getText(),g.getText()); 
+            JPanel ajout=v.init(s1.getText(),s2.getText(),ma.getText(),mi.getText(),g.getText());
+            
+            getContentPane().add(ajout,BorderLayout.EAST);
+            setSize(800,1000);
+            setVisible(true);
+          /* mainContainer.add(ajout,BorderLayout.EAST);
+           mainContainer.setSize(800, 400);
+           mainContainer.setVisible(true);
+           */
+
             //Si les conditions sont bonnes on affichera une nouvelle fenêtre.
 
          
@@ -108,69 +118,15 @@ public class Vue extends JFrame {
       });
 
      
-      //Quand on appuyera sur entrer on verifiera que la chaîne de caractère est bien une séquence
-        s2.addActionListener((ActionEvent e) -> { 
-            if(s2.getText()!=null ){
-                if(user.sequence(s2.getText())==true){
-                    System.out.print("oui"); //On aura un message dans le terminal en fonction de la validité 
-                }
-                else
-                {
-                    System.out.print("noon");
-                }
-
-            }
-        });
-
-        //Idem
-        s1.addActionListener((ActionEvent e) -> { 
-            if(s1.getText()!=null ){
-                if(user.sequence(s1.getText())==true){
-                    System.out.print("oui");
-                }
-                else
-                {
-                    System.out.print("noon");
-                }
-
-            }
-        });
-
-
+   
         //On verifiera si le gap le mismatch et le match sont bien des nombres 
-        g.addActionListener((ActionEvent e) ->  {
-            try {
-                Integer.parseInt(g.getText());
-                System.out.println("An integer");
-            }
-            catch (NumberFormatException o) {
-                System.out.println(" Not An integer");
-            }
-        });
-        mi.addActionListener((ActionEvent e) ->  {
-            try {
-                Integer.parseInt(mi.getText());
-                System.out.println("An integer");
-            }
-            catch (NumberFormatException o) {
-                System.out.println(" Not An integer");
-            }
-        });
-        ma.addActionListener((ActionEvent e) ->  {
-            try {
-                int p=Integer.parseInt(ma.getText());
-                System.out.println(p);
-            }
-            catch (NumberFormatException o) {
-                System.out.println(" Not An integer");
-            }
-        });
-
+       
         //Ajout des scores dans la fenêtre 
         middlePanel.add(gridPanel);
         middlePanel.add(new JSeparator(SwingConstants.VERTICAL),BorderLayout.LINE_START);
         middlePanel.add(a,BorderLayout.AFTER_LINE_ENDS);
         mainContainer.add(middlePanel,BorderLayout.WEST);
+     
       
     }
 

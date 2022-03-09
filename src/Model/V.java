@@ -16,56 +16,92 @@ public class V {
     private Utilisateur user = new Utilisateur();
     private Matrice matrice = new Matrice();
     final JFrame frame = new JFrame("Exemple de JTable"); // Titre de la fenêtre
+    JButton b=new JButton("zlsls");
+
+    public V(){
+        //frame.getContentPane().add(b,BorderLayout.WEST);
+    }
+    
+    
 
     // Interface //
 
-    /**
-     * 
-     * @param a sequence 1
-     * @param b sequence 2
-     * @param c match
-     * @param d mismatch
-     * @param e gap
-     *          Nous affiche une matrice dans une nouvelle fenêtre
-     */
+    public JPanel init(String a, String b, String c, String d, String e) {
+        JPanel droite =new JPanel();
+    
+        JButton [][] res=new JButton[a.length()+2][b.length()+2];
+        droite.setLayout(new GridLayout(a.length()+2,b.length()+2));
 
-    public void init(String a, String b, String c, String d, String e) {
+        for(int i=0;i<a.length()+2;i++){
+            for(int j=0;j<b.length()+2;j++){
+                res[i][j]=new JButton("  ");
+                
+            }
+        }
 
-        JTable table = new JTable(
-                matrice.getMatrice(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e)),
-                matrice.tabString(a));
-        // Ici du coup j'ai inverser l'ordre de sequences 1 et 2
-        // On initialise le tableau de tableau d'objet avec la fonction
-        // init_G_Interface(...),
-        // et le tableau d' objet avec tabString().
-        // On aura un resultat si on saisit au terminal pour sq1=a , sq2=agc ,
-        // match=mismatch=gap=1
-        // Si j'aurai saisit directement a,b,c,d,e en paramètre ça m'aurait mis des
-        // erreur d'index,
+        for (int i = 2; i < a.length() + 2; i++) {
+            this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
+            res[i][0].setText(" "+a.charAt(i-2));
+            //res[i][0].setLayout(null);
+            //res[i][0].setBounds(1,1,1,1);
+            res[i][0].setBackground(Color.BLUE);
 
-        JScrollPane scroll = new JScrollPane(table);// Permet l'affichage de la matrice
-        table.setFillsViewportHeight(true);
+        }
 
-        JLabel labelHead = new JLabel("Matrice");
-        labelHead.setFont(new Font("Arial", Font.TRUETYPE_FONT, 20));
+        for (int i = 2; i < b.length() + 2; i++) {
+            this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
+            res[0][i].setText(" "+b.charAt(i-2));
+           // res[0][i].setLayout(null);
+            //res[0][i].setBounds(1,1,1,1);
+            res[0][i].setBackground(Color.CYAN);
 
-        frame.getContentPane().add(labelHead, BorderLayout.EAST);
+        }
+
+        for(int i=1;i<a.length()+2;i++){
+            for(int j=1;j<b.length()+2;j++){
+
+                this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
+
+                res[i][j].setText(" "+this.matrice.getGrille()[i][j].getValeur());
+                res[i][j].setBackground(Color.MAGENTA);
+                //res[i][j].setLayout(null);
+                //res[i][j].setBounds(1,1,1,1);
+            }
+        }
+        
+       
         // ajouter la table au frame
-        frame.getContentPane().add(scroll, BorderLayout.EAST);
 
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 400);
-        frame.setVisible(true);
+        for(int i=0;i<a.length()+2;i++){
+            for(int j=0;j<b.length()+2;j++){
+
+                //res[i][j].setLayout(null);
+                //res[i][j].setBounds(1,1,1,1);
+                droite.add(res[i][j],BorderLayout.EAST);
+
+
+            }
+        }
+
+       // frame.getContentPane().add(droite,BorderLayout.EAST);
+
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+       // frame.setSize(800, 400);
+        //frame.setVisible(true);
+        //droite.setSize(1400,1400);
+        //droite.setVisible(true);
+
+        //droite.setLayout(null);
+        //droite.setBounds(1200, 1100, 600, 1200);
+        return droite;
+
     }
+
+    
 
     public static void main(String[] args) {
         V v = new V();
-        v.init("aa", "ca", "1", "1", "2");
-
-        // A mettre au terminal pour V.java les valeurs sq1=a, sq2=agc,
-        // match=mismatch=gap=1,
-        // Vue.java la même chose 3 fois de suite , 2 fois au terminal
-        // 1 fois dans la fenêtre
+        //v.ajout("ataa", "cccgt", "1", "-1", "-3");
     }
 
 }
