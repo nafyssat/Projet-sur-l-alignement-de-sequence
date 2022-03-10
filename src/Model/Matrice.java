@@ -21,6 +21,16 @@ public class Matrice {
     }
 
     // Interface //
+    /**
+     * Ici nous sommes obligé de redéfinir les méthodes car dans la méthodes initialiserGrille()
+     * on faisait appel à chaque fois à un scanner. 
+     * @param s1 sequence 1
+     * @param s2 sequence 2
+     * @param match match 
+     * @param mismatch mismatch 
+     * @param gap gap 
+     * @return case [][] nécessaire pour compléter les valeurs en mode interface graphique 
+     */
 
     public Case[][] initialiser_Grille_Interface(String s1, String s2, int match, int mismatch, int gap) {
         this.grille = new Case[s1.length() + 2][s2.length() + 2];
@@ -48,6 +58,17 @@ public class Matrice {
     }
 
 
+    /**
+     * Ici aussi on est obligé de redéfinir cette méthode pour calculer les valeurs de 
+     * chaque case, car dans la méthode textuelle on faisiat appel à chaque fois à un 
+     * scanner. Nous calculerons donc chaque case en fonction des valeurs que l'utilisateur aura saisit.
+     * @param i
+     * @param j
+     * @param match match 
+     * @param mismatch mismatch 
+     * @param gap gap
+     * @return la valeur de chaque case en mode interface 
+     */
 
     public int ValeurCase_Interface(int i, int j, int match, int mismatch, int gap) {
         int a = (this.grille[i - 1][j - 1]).getValeur();
@@ -62,71 +83,17 @@ public class Matrice {
         return Math.max(Math.max(a, b), c);
     }
 
-    public Object[][] getMatrice(String s1, String s2, int ma, int mi, int g) {
-        this.initialiser_Grille_Interface(s1, s2, ma, mi, g);
-        Object[][] res = new Object[s1.length() + 2][s2.length() + 2];
-
-        for (int a = 2; a < s2.length() + 2; a++) {
-            res[a][0] = s2.charAt(a - 2);
-        }
-
-        /*
-         * for (int b = 2; b < s2.length() + 2; b++) {
-         * res[0][b] = s2.charAt(b - 2);
-         * }
-         */
-        res[1][1] = new CaseEntier(0).getValeur();
-        for (int c = 1; c < s1.length() + 2; c++) {
-            res[c][1] = new CaseEntier((c - 1) * g).getValeur();
-        }
-        for (int d = 1; d < s2.length() + 2; d++) {
-            res[1][d] = new CaseEntier((d - 1) * g).getValeur();
-        }
-        for (int n = 2; n < s2.length() + 2; n++) {
-            for (int m = 2; m < s1.length() + 2; m++) {
-                res[m][n] = new CaseEntier(ValeurCase_Interface(m, n, ma, mi, g)).getValeur();
-            }
-        }
-        return res;
-    }
-
-    public Object[] tabString(String s) {
-        Object[] res = new Object[s.length() + 2];
-        res[0] = " ";
-        res[1] = " ";
-        for (int i = 2; i < s.length() + 2; i++) {
-            res[i] = s.charAt(i - 2);
-        }
-        return res;
-
-    }
-
+  /**
+   * 
+   * @return un tableau de tableau de case nécessaire pour accéder à la valeur de case [i][j].
+   */
+  
     public Case[][] getGrille(){
         return this.grille;
     }
 
-    public void afficherMatriceI(String a, String b) {
-        int i = 0;
-        while (i < b.length() + 2) {
-            for (int j = 0; j < a.length() + 2; j++) {
-                if (grille[j][i] == null) {
-                    System.out.print("  |");
-                } else {
-                    if (grille[j][i] instanceof CaseNucleotide) {
-                        System.out.print(" " + (grille[j][i]) + " | ");
-                    } else {
-                        if ((grille[j][i]).getValeur() >= 0) {
-                            System.out.print(" " + (grille[j][i]) + " |");
-                        } else {
-                            System.out.print((grille[j][i]) + " |");
-                        }
-                    }
-                }
-            }
-            i++;
-            System.out.println();
-        }
-    }
+    
+    
 
     // Textuelle
 
@@ -254,8 +221,7 @@ public class Matrice {
 
     public static void main(String[] args) {
         Matrice m = new Matrice();
-        m.getMatrice("aa", "aac", 1, 1, 1);
-        m.afficherMatriceI("aa", "aac");
+       
 
     }
 }

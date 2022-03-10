@@ -91,26 +91,24 @@ public class Vue extends JFrame {
       enter.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e){
 
-        if(user.sequence(s2.getText())==true && user.sequence(s1.getText())==true
+        if(user.sequence(s2.getText())==true && s1.getText().length()<=20  //Ici je n'ai pas trouvé une méthode
+          && user.sequence(s1.getText())==true && s2.getText().length()<=20 //Pour appeler la méthode seqeunceValide()
           ){
 
-            Integer.parseInt(g.getText());
-            Integer.parseInt(ma.getText());
-            Integer.parseInt(mi.getText());
+            Integer.parseInt(g.getText()); //On vérifie s'ils sont bien des Integer
+            Integer.parseInt(ma.getText()); //Idem
+            Integer.parseInt(mi.getText()); //Idem
             System.out.println("oui");
-            JPanel ajout=v.init(s1.getText(),s2.getText(),ma.getText(),mi.getText(),g.getText());
+            JPanel ajout=v.init(s1.getText(),s2.getText(),ma.getText(),mi.getText(),g.getText()); //Dans ce cas on affiche la matrice
             ajout.setSize(1200,1200);
-            ajout.setBackground(Color.CYAN);
+            ajout.setBackground(Color.CYAN); 
             getContentPane().add(ajout,BorderLayout.CENTER);
             setSize(1400,1800);
 
             setVisible(true);
-          /* mainContainer.add(ajout,BorderLayout.EAST);
-           mainContainer.setSize(800, 400);
-           mainContainer.setVisible(true);
-           */
+          
 
-            //Si les conditions sont bonnes on affichera une nouvelle fenêtre.
+            //Si les conditions sont bonnes on affichera la matrice à droite de notre fenêtre 
 
          
         } else {
