@@ -1,4 +1,4 @@
-//package Model;
+package Model;
 
 public class CaseEntier extends Case{
     private int valeur;

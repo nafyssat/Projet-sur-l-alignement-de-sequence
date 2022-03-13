@@ -1,14 +1,8 @@
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+package Vue;
 
-import java.awt.*;
 import javax.swing.*;
-import java.awt.event.*;
-
-/* A remettre les packages V.java , Vue.java dans le dossier Vue.   */
+import java.awt.*;
+import Model.*;
 
 //Cette classe permet de modeliser l'affichage de la fenêtre sous forme de JButton[][]//
 
