@@ -1,15 +1,14 @@
 package Vue;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import Model.*;
 
 
 public class Vue extends JFrame {
-     private Utilisateur user=new Utilisateur();
+    JPanel mainPanel=new JPanel();
+    private Utilisateur user=new Utilisateur();
      private Matrice m=new Matrice();
      private Container mainContainer=this.getContentPane();
    
@@ -28,23 +27,91 @@ public class Vue extends JFrame {
     private JLabel gap=new JLabel("Gap");
      private V v=new V();
 
+    /*private JButton enter=new JButton("entrer");
+    private JLabel match=new JLabel("Match");
+    private JLabel mismatch=new JLabel("Mismatch");
+    private JLabel gap=new JLabel("Gap");
+    */
+    JTextField seq1=new JTextField(20);
+    JTextField seq2=new JTextField(20);
+    JTextField MatchSc=new JTextField(9);
+    JTextField MismatchSc=new JTextField(9);
+    JTextField GapSc=new JTextField(9);
+    JLabel seq1Label=new JLabel("Séquence 1: ");
+    JLabel seq2Label=new JLabel("Séquence 2: ");
+    JButton CustomPath=new JButton("Custom Path");
+    JButton ClearPath=new JButton("Clear Path");
+    JButton OptimisePath=new JButton("Compute Optimal Alignment");
+    SpinnerModel modelA = new SpinnerNumberModel(
+            1, //valeur initiale
+            -100, //valeur minimum
+            100, //valeur maximum
+            1 //pas
+    );
+    SpinnerModel modelB = new SpinnerNumberModel(
+            -1, //valeur initiale
+            -100, //valeur minimum
+            100, //valeur maximum
+            1 //pas
+    );
+    SpinnerModel modelC = new SpinnerNumberModel(
+            -2, //valeur initiale
+            -100, //valeur minimum
+            100, //valeur maximum
+            1 //pas
+    );
+
      public Vue(){
         this.setTitle("Global Sequence Alignement");
         this.pack();
         this.setDefaultLookAndFeelDecorated(true);
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setResizable(false);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         JSpinner a = new JSpinner(modelA);
+         JSpinner b= new JSpinner(modelB);
+         JSpinner c = new JSpinner(modelC);
+         a.setPreferredSize(new Dimension(103,20));
+         b.setPreferredSize(new Dimension(103,20));
+         c.setPreferredSize(new Dimension(103,20));
+         match.setPreferredSize(new Dimension(103,30));
+         mismatch.setPreferredSize(new Dimension(103,30));
+         gap.setPreferredSize(new Dimension(103,30));
+         CustomPath.setPreferredSize(new Dimension(157,20));
+         ClearPath.setPreferredSize(new Dimension(157,20));
+         OptimisePath.setPreferredSize(new Dimension(320,20));
+         this.mainPanel.add(seq1Label);
+         this.mainPanel.add(seq1);
+         this.mainPanel.add(seq2Label);
+         this.mainPanel.add(seq2);
+         this.mainPanel.add(match);
+         this.mainPanel.add(mismatch);
+         this.mainPanel.add(gap);
+         this.mainPanel.add(a);
+         this.mainPanel.add(b);
+         this.mainPanel.add(c);
+         this.mainPanel.add(CustomPath);
+         this.mainPanel.add(ClearPath);
+         this.mainPanel.add(OptimisePath);
+         this.mainPanel.setPreferredSize(new Dimension(400,200));
+         this.add(mainPanel,BorderLayout.WEST);
+
+
+         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Creer des espaces et ajout des couleurs de fonds , d'espace
-        mainContainer.setLayout((new BorderLayout(8,6))); 
+        mainContainer.setLayout((new BorderLayout(8,6)));
         mainContainer.setBackground(Color.YELLOW);
         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
-        
+         mainContainer.add(enter,BorderLayout.PAGE_END);
+        // mainPanel.add(new JSeparator(SwingConstants.VERTICAL),BorderLayout.LINE_START);
+       //  mainPanel.add(a,BorderLayout.AFTER_LINE_ENDS);
+         mainContainer.add(mainPanel,BorderLayout.WEST);
+         mainContainer.add(enter,BorderLayout.PAGE_END);
 
 
-        //Initialisation du JPanel de gauche 
-        JPanel middlePanel=new JPanel();
+
+         //Initialisation du JPanel de gauche
+       /* JPanel middlePanel=new JPanel();
         middlePanel.setLayout(new FlowLayout(4,4,4));
 
         JPanel gridPanel=new JPanel(); 
@@ -70,16 +137,15 @@ public class Vue extends JFrame {
         a.add(gap);
         a.add(ma);
         a.add(mi);
-        a.add(g);
+        a.add(g);*/
 
         //Ajout dans la fenêtre 
-      mainContainer.add(enter,BorderLayout.PAGE_END);
 
       //Lambda expression 
       //Une fois qu'on aura appuyer sur le boutons entrer on vérifiera que les sequences sont bonnes
       //On verifiera si le gap, match et mismatch sont bien des nombres
 
-      enter.addActionListener(new ActionListener() {
+      /*enter.addActionListener(new ActionListener() {
         public void actionPerformed(ActionEvent e){
 
         if(user.sequence(s2.getText())==true && s1.getText().length()<=20  //Ici je n'ai pas trouvé une méthode
@@ -116,7 +182,7 @@ public class Vue extends JFrame {
         middlePanel.add(gridPanel);
         middlePanel.add(new JSeparator(SwingConstants.VERTICAL),BorderLayout.LINE_START);
         middlePanel.add(a,BorderLayout.AFTER_LINE_ENDS);
-        mainContainer.add(middlePanel,BorderLayout.WEST);
+        mainContainer.add(middlePanel,BorderLayout.WEST);*/
     }
 
 
