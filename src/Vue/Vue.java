@@ -9,32 +9,31 @@ import Model.*;
 
 
 public class Vue extends JFrame {
-
      private Utilisateur user=new Utilisateur();
      private Matrice m=new Matrice();
      private Container mainContainer=this.getContentPane();
    
      //Sequence
-     private JLabel sq1=new JLabel("Sequence1 :");
-     private JLabel sq2=new JLabel("Sequence2 :");
+     private JLabel sq1=new JLabel("Sequence1: ");
+     private JLabel sq2=new JLabel("Sequence2: ");
      private JTextField s1=new JTextField(10);
      private JTextField s2=new JTextField(10);
      private JButton enter=new JButton("entrer");
      private JLabel message=new JLabel("Saisissez toute les valeurs !");
-
-     //Score 
-     private JLabel match=new JLabel("Match");
-     private JLabel mismatch=new JLabel("Mismatch");
-     private JLabel gap=new JLabel(" Gap");
      private JTextField ma=new JTextField(2);
      private JTextField mi=new JTextField(2);
      private JTextField g=new JTextField(2);
+     private JLabel match=new JLabel("Match");
+     private JLabel mismatch=new JLabel("Mismatch");
+    private JLabel gap=new JLabel("Gap");
      private V v=new V();
 
-    public Vue(String s){
-        super(s);
-        this.setSize(1400, 1800);
-        this.setLocation(5,5);
+     public Vue(){
+        this.setTitle("Global Sequence Alignement");
+        this.pack();
+        this.setDefaultLookAndFeelDecorated(true);
+        this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Creer des espaces et ajout des couleurs de fonds , d'espace
@@ -53,7 +52,7 @@ public class Vue extends JFrame {
 
 
         //Ajout des JLabel et JTextFiel des sequences
-        gridPanel.add(sq1); 
+        gridPanel.add(sq1);
         gridPanel.add(s1);
         gridPanel.add(sq2);
         gridPanel.add(s2);
@@ -118,13 +117,11 @@ public class Vue extends JFrame {
         middlePanel.add(new JSeparator(SwingConstants.VERTICAL),BorderLayout.LINE_START);
         middlePanel.add(a,BorderLayout.AFTER_LINE_ENDS);
         mainContainer.add(middlePanel,BorderLayout.WEST);
-     
-      
     }
 
 
     public static void main(String [] args){
-        Vue p=new Vue("ar1");
+        Vue p=new Vue();
         p.setVisible(true);
     }
 }
