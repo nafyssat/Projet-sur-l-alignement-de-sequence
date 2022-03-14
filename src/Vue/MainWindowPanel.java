@@ -89,9 +89,10 @@ public class MainWindowPanel extends JFrame {
                 if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                         && user.sequence(seq1.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
                 ) {
-                    JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue()); //Dans ce cas on affiche la matrice
+                    JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                     ajout.setBackground(Color.CYAN);
                     getContentPane().add(ajout, BorderLayout.CENTER);
+                    ajout.setPreferredSize(new Dimension(35 * (seq1.getText().length() + 2), 25 * (seq2.getText().length() + 2)));
                     setVisible(true);
                 }
             }
