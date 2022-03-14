@@ -3,12 +3,13 @@ package Vue;
 import javax.swing.*;
 import java.awt.*;
 import Model.*;
+import Controler.*;
 
 //Cette classe permet de modeliser l'affichage de la fenêtre sous forme de JButton[][]//
 
 public class V {
     private Utilisateur user = new Utilisateur();
-    private Matrice matrice = new Matrice();
+    private MainWindowControler Controlleur=new MainWindowControler();
   
 
     // Interface //
@@ -52,10 +53,10 @@ public class V {
                 //Ici nous devons appeler cette méthode pour calculer les valeur de chaque cases de 
                 //la matrice. 
 
-                this.matrice.initialiser_Grille_Interface(a, b, c, d, e);
+                Case[][] g=this.Controlleur.getGrillePanel().initialiser_Grille_Interface(a, b, c, d, e);
 
                 //C'est pourquoi nous pouvons utiliser la méthode getGrille() par la suite.
-                res[i][j].setText(" "+this.matrice.getGrille()[i][j].getValeur()); 
+                res[i][j].setText(" "+g[i][j].getValeur());
 
                 res[i][j].setForeground(Color.MAGENTA); 
               

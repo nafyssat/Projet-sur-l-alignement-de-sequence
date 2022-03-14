@@ -9,7 +9,6 @@ import Model.*;
 public class Vue extends JFrame {
     JPanel mainPanel=new JPanel();
     private Utilisateur user=new Utilisateur();
-    private Matrice m=new Matrice();
     private Container mainContainer=this.getContentPane();
     private V v=new V();
     private JButton enter=new JButton("entrer");

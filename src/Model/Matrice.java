@@ -14,10 +14,7 @@ public class Matrice {
     private int[] scores;
 
     public Matrice() {
-        // this.user=new Utilisateur();
-        // initialiser_Grille();
-        // afficher_Info();
-        // afficherMatrice();
+         this.user=new Utilisateur();
     }
 
     // Interface //
@@ -96,6 +93,12 @@ public class Matrice {
     
 
     // Textuelle
+
+    public void Launcher(){
+        initialiser_Grille();
+        afficher_Info();
+        afficherMatrice();
+    }
 
     public void initialiser_Grille() {
         this.a = user.demanderSequence();
