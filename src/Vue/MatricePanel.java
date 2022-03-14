@@ -32,7 +32,10 @@ public class MatricePanel {
 
         for(int i=0;i<a.length()+2;i++){
             for(int j=0;j<b.length()+2;j++){
-                res[i][j]=new JButton("  ");  //On initialise chaque JButton à " " pour éviter par la suite 
+                res[i][j]=new JButton("  ");
+                res[i][j].setForeground(Color.BLACK);
+                res[i][j].setBackground(Color.WHITE);
+                		//On initialise chaque JButton à " " pour éviter par la suite 
                                               //d'avoir des problème de NullPointerException
                 
             }
@@ -40,11 +43,16 @@ public class MatricePanel {
 
         for (int i = 2; i < a.length() + 2; i++) {
             res[i][0].setText(" "+a.charAt(i-2)); //ON complète la première colonne 
+            res[i][0].setForeground(Color.white);
+            res[i][0].setBackground(Color.BLUE);
+          
             
         }
 
         for (int i = 2; i < b.length() + 2; i++) {
             res[0][i].setText(" "+b.charAt(i-2)); //On complète la première ligne 
+            res[0][i].setForeground(Color.white);
+            res[0][i].setBackground(Color.BLUE);
            
         }
 
@@ -59,7 +67,7 @@ public class MatricePanel {
                 //C'est pourquoi nous pouvons utiliser la méthode getGrille() par la suite.
                 res[i][j].setText(" "+g[i][j].getValeur());
 
-                res[i][j].setForeground(Color.MAGENTA); 
+                //res[i][j].setForeground(Color.MAGENTA); 
               
             }
         }
