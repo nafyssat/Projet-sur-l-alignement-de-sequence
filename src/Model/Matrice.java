@@ -224,7 +224,5 @@ public class Matrice {
 
     public static void main(String[] args) {
         Matrice m = new Matrice();
-       
-
     }
 }

@@ -7,7 +7,7 @@ import Controler.*;
 
 //Cette classe permet de modeliser l'affichage de la fenêtre sous forme de JButton[][]//
 
-public class V {
+public class MatricePanel {
     private Utilisateur user = new Utilisateur();
     private MainWindowControler Controlleur=new MainWindowControler();
   
@@ -27,6 +27,7 @@ public class V {
         JPanel droite =new JPanel();
     
         JButton [][] res=new JButton[a.length()+2][b.length()+2];
+        droite.setPreferredSize(new Dimension(20*(a.length()+2),20*(b.length()+2)));
         droite.setLayout(new GridLayout(a.length()+2,b.length()+2));
 
         for(int i=0;i<a.length()+2;i++){
@@ -81,11 +82,5 @@ public class V {
 
     }
 
-    
-
-    public static void main(String[] args) {
-        V v = new V();
-        //v.ajout("ataa", "cccgt", "1", "-1", "-3");
-    }
 
 }

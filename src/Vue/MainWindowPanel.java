@@ -6,20 +6,17 @@ import java.awt.event.ActionListener;
 import Model.*;
 
 
-public class Vue extends JFrame {
+public class MainWindowPanel extends JFrame {
     JPanel mainPanel=new JPanel();
     private Utilisateur user=new Utilisateur();
     private Container mainContainer=this.getContentPane();
-    private V v=new V();
+    private MatricePanel v=new MatricePanel();
     private JButton enter=new JButton("entrer");
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
     JTextField seq1=new JTextField(20);
     JTextField seq2=new JTextField(20);
-   /* JTextField MatchSc=new JTextField(9);
-    JTextField MismatchSc=new JTextField(9);
-    JTextField GapSc=new JTextField(9);*/
     JLabel seq1Label=new JLabel("Séquence 1: ");
     JLabel seq2Label=new JLabel("Séquence 2: ");
     JButton CustomPath=new JButton("Custom Path");
@@ -44,7 +41,7 @@ public class Vue extends JFrame {
             1 //pas
     );
 
-     public Vue(){
+     public MainWindowPanel(){
         this.setTitle("Global Sequence Alignement");
         this.pack();
         this.setDefaultLookAndFeelDecorated(true);
@@ -92,7 +89,7 @@ public class Vue extends JFrame {
                 if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                         && user.sequence(seq1.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
                 ) {
-                    JPanel ajout = v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue()); //Dans ce cas on affiche la matrice
+                    JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue()); //Dans ce cas on affiche la matrice
                     ajout.setBackground(Color.CYAN);
                     getContentPane().add(ajout, BorderLayout.CENTER);
                     setVisible(true);
@@ -103,7 +100,7 @@ public class Vue extends JFrame {
     }
 
     public static void main(String [] args){
-        Vue p=new Vue();
+        MainWindowPanel p=new MainWindowPanel();
         p.setVisible(true);
     }
 }
