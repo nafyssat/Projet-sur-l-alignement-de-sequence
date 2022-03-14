@@ -22,7 +22,7 @@ public class V {
      * @return un Jpanel qu'on va ajouter à notre fenêtre principal dans la classe Vue
      */
 
-    public JPanel init(String a, String b, String c, String d, String e) {
+    public JPanel init(String a, String b, int c, int d, int e) {
         JPanel droite =new JPanel();
     
         JButton [][] res=new JButton[a.length()+2][b.length()+2];
@@ -52,7 +52,7 @@ public class V {
                 //Ici nous devons appeler cette méthode pour calculer les valeur de chaque cases de 
                 //la matrice. 
 
-                this.matrice.initialiser_Grille_Interface(a, b, Integer.parseInt(c), Integer.parseInt(d), Integer.parseInt(e));
+                this.matrice.initialiser_Grille_Interface(a, b, c, d, e);
 
                 //C'est pourquoi nous pouvons utiliser la méthode getGrille() par la suite.
                 res[i][j].setText(" "+this.matrice.getGrille()[i][j].getValeur()); 
