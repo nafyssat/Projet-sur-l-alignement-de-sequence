@@ -30,6 +30,16 @@ public enum Nucleotide{
 
     }
 
+    public static String NuctoString (Nucleotide n){
+        switch(n) {
+            case C : return "C";
+            case A : return "A";
+            case T : return "T";
+            case G : return "G";
+            default : return null;
+        }
+    }
+
 
     /**
      * 
