@@ -13,12 +13,51 @@ public class Matrice {
 
         public Matrice(){
             this.user=new Utilisateur();
+        }
+
+
+    public Case[][] initialiser_Grille_Interface(String s1, String s2, int match, int mismatch, int gap) {
+        this.grille = new Case[s1.length() + 2][s2.length() + 2];
+
+        for (int a = 2; a < s1.length() + 2; a++) {
+            this.grille[a][0] = new CaseNucleotide(Nucleotide.convertirEnNucleotide(s1.charAt(a - 2)));
+        }
+
+        for (int b = 2; b < s2.length() + 2; b++) {
+            this.grille[0][b] = new CaseNucleotide(Nucleotide.convertirEnNucleotide(s2.charAt(b - 2)));
+        }
+        this.grille[1][1] = new CaseEntier(0);
+        for (int c = 1; c < s1.length() + 2; c++) {
+            this.grille[c][1] = new CaseEntier((c - 1) * gap);
+        }
+        for (int d = 1; d < s2.length() + 2; d++) {
+            this.grille[1][d] = new CaseEntier((d - 1) * gap);
+        }
+        for (int n = 2; n < s2.length() + 2; n++) {
+            for (int m = 2; m < s1.length() + 2; m++) {
+                this.grille[m][n] = new CaseEntier(ValeurCase_Interface(m, n, match, mismatch, gap));
+            }
+        }
+        return this.grille;
+    }
+
+    public int ValeurCase_Interface(int i, int j, int match, int mismatch, int gap) {
+        int a = (this.grille[i - 1][j - 1]).getValeur();
+        if ((this.grille[0][j]).getNuc() == (this.grille[i][0]).getNuc()) {
+            a += match;
+        } else {
+            a += mismatch;
+        }
+        int b = (this.grille[i - 1][j]).getValeur() + gap;
+        int c = (this.grille[i][j - 1]).getValeur() + gap;
+
+        return Math.max(Math.max(a, b), c);
+    }
+
+        public void initialiser_Grille(){
             this.a=user.demanderSequence();
             this.b=user.demanderSequence();
             this.scores=user.demanderMismatch_Match_Gap();
-        }
-
-        public void initialiser_Grille(){
             this.grille=new Case[a.getSequence().size()+2][b.getSequence().size()+2];
 
             for(int a=2;a<this.a.getSequence().size()+2;a++){

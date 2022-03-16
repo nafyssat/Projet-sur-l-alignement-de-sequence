@@ -12,14 +12,6 @@ public  class  Case {
         return null;
     }
 
-    public  int getValeur (){
-        return 0;
-    }
-
-    public Nucleotide getNuc(){
-        return null;
-    }
-
 
     
 }
