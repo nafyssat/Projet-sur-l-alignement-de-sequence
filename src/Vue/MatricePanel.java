@@ -185,41 +185,16 @@ public class MatricePanel {
                          }
                      });
                 	 
-                	 /*res[i][j].addActionListener(new ActionListener() {
-                         public void actionPerformed(ActionEvent e) {
-                        	 JFrame fr = new JFrame();
-                      	 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                      	 	fr.setBackground(Color.blue);
-                      	 	fr.setSize(400, 400);
-                      	 	JPanel panel_1 = new JPanel();
-                    		panel_1.setBackground(new Color(0, 191, 255));
-                    		//panel_1.setBounds(76, 242, 185, 156);
-                    		fr.add(panel_1);
-                    		panel_1.setLayout(new GridLayout(2, 2, 0, 0));
-                    		JLabel lgauche = new JLabel(s[0]);
-                    		lgauche.setForeground(Color.white);
-                    		lgauche.setFont(new Font("Calibri", Font.ITALIC, 14));
-                    		panel_1.add(lgauche);
-                    		
-                    		JLabel ldroite = new JLabel(s[1]);
-                    		ldroite.setForeground(Color.white);
-                    		ldroite.setBackground(new Color(32, 178, 170));
-                    		ldroite.setFont(new Font("Calibri", Font.ITALIC, 14));
-                    		panel_1.add(ldroite);
-                    		
-                    		JLabel lcolone= new JLabel(s[2]);
-                    		lcolone.setForeground(Color.white);
-                    		lcolone.setFont(new Font("Calibri", Font.ITALIC, 14));
-                    		panel_1.add(lcolone);
-                    		
-                    		JLabel max = new JLabel(s[3]);
-                    		max.setForeground(Color.white);
-                    		max.setFont(new Font("Calibri", Font.ITALIC, 14));
-                    		panel_1.add(max);
-                      	 	fr.setVisible(true);
-                         }
-                	 });*/
+                	
                 }
+        	for(int k=1;k<a.length()+2;k++) {
+        		res[k][1].setBackground(Color.GRAY);
+        		
+        	}
+        	for(int k=1;k<b.length()+2;k++) {
+        		res[1][k].setBackground(Color.GRAY);
+        		
+        	}
               
               
 
