@@ -1,6 +1,8 @@
 package Model;
 
-public class Case {
+public  class  Case {
+
+
 
     public  int getValeur (){
         return 0;

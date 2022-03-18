@@ -96,6 +96,7 @@ public class MainWindowPanel extends JFrame {
                 if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                         && user.sequence(seq2.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
                 ) {
+
                 	
                 	String s1=seq1.getText().toUpperCase();
                 	String s2= seq2.getText().toUpperCase();
@@ -105,6 +106,13 @@ public class MainWindowPanel extends JFrame {
                 	ajout.setLayout(new BorderLayout());
                     ajout.add(v.init(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue()), BorderLayout.CENTER); //Dans ce cas on affiche la matrice
                     ajout.setVisible(true);
+
+                    JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                    ajout.setBackground(Color.CYAN);
+                    getContentPane().add(ajout, BorderLayout.CENTER);
+                    ajout.setPreferredSize(new Dimension(35 * (seq1.getText().length() + 2), 25 * (seq2.getText().length() + 2)));
+                    setVisible(true);
+
                 }
             }
         });
@@ -119,66 +127,3 @@ public class MainWindowPanel extends JFrame {
         p.setVisible(true);
     }
 }
-  /*private JButton enter=new JButton("entrer");
-    private JLabel match=new JLabel("Match");
-    private JLabel mismatch=new JLabel("Mismatch");
-    private JLabel gap=new JLabel("Gap");
-    */
-
-
-//Sequence
-     /*private JLabel sq1=new JLabel("Sequence1: ");
-     private JLabel sq2=new JLabel("Sequence2: ");
-     private JTextField s1=new JTextField(10);
-     private JTextField s2=new JTextField(10);
-     private JButton enter=new JButton("entrer");
-     private JLabel message=new JLabel("Saisissez toute les valeurs !");
-     private JTextField ma=new JTextField(2);
-     private JTextField mi=new JTextField(2);
-     private JTextField g=new JTextField(2);
-     private JLabel match=new JLabel("Match");
-     private JLabel mismatch=new JLabel("Mismatch");
-    private JLabel gap=new JLabel("Gap");*/
-
-// mainPanel.add(new JSeparator(SwingConstants.VERTICAL),BorderLayout.LINE_START);
-//  mainPanel.add(a,BorderLayout.AFTER_LINE_ENDS);
-
-//Initialisation du JPanel de gauche
-       /* JPanel middlePanel=new JPanel();
-        middlePanel.setLayout(new FlowLayout(4,4,4));
-
-        JPanel gridPanel=new JPanel();
-        gridPanel.setLayout(new GridLayout(2,2));
-
-
-        //Ajout des JLabel et JTextFiel des sequences
-        gridPanel.add(sq1);
-        gridPanel.add(s1);
-        gridPanel.add(sq2);
-        gridPanel.add(s2);
-
-
-        //Initialisation du JPanel de gauche , à côté du JPanel middlePanel
-        JPanel a=new JPanel();
-        a.setLayout((new GridLayout(2,3)));
-
-
-
-       //Ajout des JLabel et JTextFiel des sequences
-        a.add(match);
-        a.add(mismatch);
-        a.add(gap);
-        a.add(ma);
-        a.add(mi);
-        a.add(g);*/
-
-//Ajout dans la fenêtre
-
-
-//On verifiera si le gap le mismatch et le match sont bien des nombres
-       /*
-        //Ajout des scores dans la fenêtre
-        middlePanel.add(gridPanel);
-        middlePanel.add(new JSeparator(SwingConstants.VERTICAL),BorderLayout.LINE_START);
-        middlePanel.add(a,BorderLayout.AFTER_LINE_ENDS);
-        mainContainer.add(middlePanel,BorderLayout.WEST);*/

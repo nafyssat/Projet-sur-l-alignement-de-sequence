@@ -4,10 +4,14 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import java.awt.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
+import java.util.Locale;
+
 
 import Model.*;
 import Controler.*;
@@ -16,27 +20,33 @@ import Controler.*;
 
 public class MatricePanel {
     private Utilisateur user = new Utilisateur();
-    private MainWindowControler Controlleur=new MainWindowControler();
-  
+    private MainWindowControler Controlleur = new MainWindowControler();
+
 
     // Interface //
+
     /**
-     * 
      * @param a sequence 1
      * @param b sequence 2
-     * @param c mismatch 
+     * @param c mismatch
      * @param d match
      * @param e gap
      * @return un Jpanel qu'on va ajouter à notre fenêtre principal dans la classe Vue
      */
 
     public JPanel init(String a, String b, int c, int d, int e) {
+
     	 
           
-        JPanel droite =new JPanel();
+        
     
-        JButton [][] res=new JButton[a.length()+2][b.length()+2];
+      
+
+        JPanel droite = new JPanel();
+        JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
+        
         droite.setPreferredSize(new Dimension(20*(a.length()+2),20*(b.length()+2)));
+
         droite.setLayout(new GridLayout(a.length()+2,b.length()+2));
 
         for(int i=0;i<a.length()+2;i++){
@@ -51,17 +61,27 @@ public class MatricePanel {
         }
 
         for (int i = 2; i < a.length() + 2; i++) {
+
             res[i][0].setText(" "+a.charAt(i-2)); //ON complète la première colonne 
             res[i][0].setForeground(Color.white);
             res[i][0].setBackground(Color.BLUE);
           
+
+            res[i][0].setBackground(Color.BLUE);
+            res[i][0].setText(" "+String.valueOf(a.charAt(i-2)).toUpperCase()); //ON complète la première colonne
+
             
         }
 
         for (int i = 2; i < b.length() + 2; i++) {
+
             res[0][i].setText(" "+b.charAt(i-2)); //On complète la première ligne 
             res[0][i].setForeground(Color.white);
             res[0][i].setBackground(Color.BLUE);
+
+            res[0][i].setBackground(Color.BLUE);
+            res[0][i].setText(" "+String.valueOf(b.charAt(i-2)).toUpperCase()); //On complète la première ligne
+
            
         }
 
@@ -73,6 +93,7 @@ public class MatricePanel {
 
                 Case[][] g=this.Controlleur.getGrillePanel().initialiser_Grille_Interface(a, b, c, d, e);
                 res[i][j].setText(" "+g[i][j].getValeur());
+
             }}
         for(int i=2;i<a.length()+2;i++) {
         	for(int j=2;j<b.length()+2;j++) {
@@ -201,26 +222,28 @@ public class MatricePanel {
                 }
               
               
+
+
+               // res[i][j].setForeground(Color.MAGENTA);
+              res[a.length()+1][b.length()+1].setBackground(Color.red);
+              res[1][1].setBackground(Color.red);
+
+
             }
         
       
        
         // ajouter la table au frame
 
-        for(int i=0;i<a.length()+2;i++){
-            for(int j=0;j<b.length()+2;j++){
-
-                droite.add(res[i][j],BorderLayout.EAST);
-
-
+        for(int i=0;i<a.length()+2;i++) {
+            for (int j = 0; j < b.length() + 2; j++) {
+                droite.add(res[i][j]);
             }
         }
-
         
-        droite.setBounds(70,80,100,30);
+        //droite.setBounds(70,80,100,30);
+
         return droite;
-
     }
-
 
 }
