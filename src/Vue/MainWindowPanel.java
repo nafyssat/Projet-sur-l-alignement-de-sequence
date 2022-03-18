@@ -16,10 +16,11 @@ public class MainWindowPanel extends JFrame {
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
+    private JPanel ajout = new JPanel();
     JTextField seq1=new JTextField(20);
     JTextField seq2=new JTextField(20);
-    JLabel seq1Label=new JLabel("Séquence 1: ");
-    JLabel seq2Label=new JLabel("Séquence 2: ");
+    JLabel seq1Label=new JLabel("Sequence    1: ");
+    JLabel seq2Label=new JLabel("Sequence    2: ");
     JButton CustomPath=new JButton("Custom Path");
     JButton ClearPath=new JButton("Clear Path");
     JButton OptimisePath=new JButton("Compute Optimal Alignment");
@@ -82,25 +83,38 @@ public class MainWindowPanel extends JFrame {
          mainContainer.add(enter,BorderLayout.PAGE_END);
          mainContainer.add(mainPanel,BorderLayout.WEST);
          mainContainer.add(enter,BorderLayout.PAGE_END);
+         
+
+         getContentPane().add(ajout, BorderLayout.CENTER);
+         ajout.setBackground(Color.CYAN);
+         ajout.setVisible(false);
 
       //Lambda expression
         enter.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-
+            	
                 if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
-                        && user.sequence(seq1.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
+                        && user.sequence(seq2.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
                 ) {
-                    JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue()); //Dans ce cas on affiche la matrice
-                    ajout.setBackground(Color.CYAN);
-                    getContentPane().add(ajout, BorderLayout.CENTER);
-                    setVisible(true);
+                	
+                	String s1=seq1.getText().toUpperCase();
+                	String s2= seq2.getText().toUpperCase();
+                	ajout.removeAll();
+                	ajout.revalidate();
+                	ajout.repaint();
+                	ajout.setLayout(new BorderLayout());
+                    ajout.add(v.init(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue()), BorderLayout.CENTER); //Dans ce cas on affiche la matrice
+                    ajout.setVisible(true);
                 }
             }
         });
 
     }
+     
 
     public static void main(String [] args){
+    	 
+          
         MainWindowPanel p=new MainWindowPanel();
         p.setVisible(true);
     }

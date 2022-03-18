@@ -79,6 +79,37 @@ public class Matrice {
 
         return Math.max(Math.max(a, b), c);
     }
+    public String [] affCalVal(int i,int j,int match,int mismatch,int gap) {
+    	String s []=new String [4];
+    	 int a = (this.grille[i - 1][j - 1]).getValeur();
+    	 String s1="<html>";
+         if ((this.grille[0][j]).getNuc() == (this.grille[i][0]).getNuc()) {
+        	 
+        	 s1+= " on a fait :"+a+"+"+match+"<br>match";
+        	 a += match;
+             s1+="<br>Score final = "+a;
+         } else {
+        	 s1+= " on a fait :"+a+"+"+mismatch+"<br>mismatch";
+        	 a += mismatch;
+             s1+="<br>Score final ="+a;
+             
+         }
+         s[0]=s1;
+         String s2="<html>";
+         s2+="on a fait : "+(this.grille[i - 1][j]).getValeur()+"+"+gap+" <br>gap ";
+         int b = (this.grille[i - 1][j]).getValeur() + gap;
+         s2+="<br>Score final = "+b;
+         s[1]=s2;
+         String s3="<html>";
+         s3+="on a fait : "+(this.grille[i][j-1]).getValeur()+"+"+gap+"<br>gap";
+         int c = (this.grille[i][j-1]).getValeur() + gap;
+         s3+="<br>Score final = "+c;
+         s[2]=s3;
+         
+         String s4="max = "+this.ValeurCase_Interface(i, j, match, mismatch, gap);
+         s[3]=s4;
+         return s;
+    }
 
   /**
    * 
@@ -224,5 +255,19 @@ public class Matrice {
 
     public static void main(String[] args) {
         Matrice m = new Matrice();
+        m.Launcher();
+       
+       /* for(int i=2;i<m.grille.length;i++) {
+        	for(int j=2;j<m.grille[i].length;j++) { 
+        		String [] s=m.affCalVal(i, j, 1, 1, 1);
+        			for(int k=0;k<4;k++) {
+        		        	System.out.println(s[k]);
+        		        }
+        		
+        	}
+        	 
+        }*/
+       
+       
     }
 }

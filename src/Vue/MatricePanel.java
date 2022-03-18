@@ -1,7 +1,14 @@
 package Vue;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 import Model.*;
 import Controler.*;
 
@@ -24,6 +31,8 @@ public class MatricePanel {
      */
 
     public JPanel init(String a, String b, int c, int d, int e) {
+    	 
+          
         JPanel droite =new JPanel();
     
         JButton [][] res=new JButton[a.length()+2][b.length()+2];
@@ -63,15 +72,138 @@ public class MatricePanel {
                 //la matrice. 
 
                 Case[][] g=this.Controlleur.getGrillePanel().initialiser_Grille_Interface(a, b, c, d, e);
-
-                //C'est pourquoi nous pouvons utiliser la méthode getGrille() par la suite.
                 res[i][j].setText(" "+g[i][j].getValeur());
+            }}
+        for(int i=2;i<a.length()+2;i++) {
+        	for(int j=2;j<b.length()+2;j++) {
+                //C'est pourquoi nous pouvons utiliser la méthode getGrille() par la suite.
+               
+                //fenetre expliquant la calcul du score
+               
+                	 String [] s =this.Controlleur.getGrillePanel().affCalVal(i,j,c,d,e);
+                	 
+                	JFrame fr = new JFrame();
+               	 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               	 	fr.setBackground(Color.blue);
+               	 	fr.setSize(400, 400);
+               	 	//fr.setLayout(new GridLayout(2,2));
+               	 	JPanel panel_1 = new JPanel();
+             		panel_1.setBackground(Color.WHITE);
+             		
+             		
+             		
+             		
+             		//panel_1.setBounds(76, 242, 185, 156);
+             		fr.add(panel_1);
+             		panel_1.setLayout(new GridLayout(2,2,0,0));
+             		
+             		for(int z=0;z<4;z++) {
+             			JPanel jp = new JPanel();
 
-                //res[i][j].setForeground(Color.MAGENTA); 
+             			jp.setBorder(new EmptyBorder(10, 10, 10, 10));
+                 		jp.setBackground(Color.blue);
+                 		panel_1.add(jp);
+                 		
+             			JLabel jl = new JLabel();
+             			jp.add(jl);
+             			jl.setText(s[z]);
+             			jl.setBounds(0, 0, 200, 100);
+                 		jl.setForeground(Color.white);
+                 		jl.setFont(new Font("Calibri", Font.ITALIC, 20));
+                 		
+             			
+             		}
+             		panel_1.setVisible(true);
+             		
+             		/*JLabel lgauche = new JLabel(s[0]);
+             		lgauche.setForeground(Color.white);
+             		lgauche.setSize(150, 50);
+             		lgauche.setFont(new Font("Calibri", Font.ITALIC, 14));
+             		panel_1.add(lgauche);
+             		
+             		JLabel ldroite = new JLabel(s[1]);
+             		ldroite.setForeground(Color.white);
+             		ldroite.setSize(150, 50);
+             		ldroite.setBackground(new Color(32, 178, 170));
+             		ldroite.setFont(new Font("Calibri", Font.ITALIC, 14));
+             		panel_1.add(ldroite);
+             		
+             		JLabel lcolone= new JLabel(s[2]);
+             		lcolone.setForeground(Color.white);
+             		lcolone.setFont(new Font("Calibri", Font.ITALIC, 14));
+             		panel_1.add(lcolone);
+             		
+             		
+             		
+             		JLabel max = new JLabel(s[3]);
+            		max.setForeground(Color.white);
+            		max.setFont(new Font("Calibri", Font.ITALIC, 14));
+            		panel_1.add(max);*/
+              	 	fr.setVisible(false);
+                	 
+                	 
+                	 JPanel dialog = new JPanel();
+                	 //droite.add(dialog);
+                	 JLabel test = new JLabel("test");
+                	 dialog.add(test);
+                	 dialog.setVisible(false);
+                	 
+                	 res[i][j].addMouseListener(new MouseAdapter() {
+
+                         @Override
+                         public void mouseEntered(MouseEvent e) {
+                        	 fr.setVisible(true);
+                        	/* Point p  = MouseInfo.getPointerInfo().getLocation();
+                        	 dialog.setVisible(true);
+                        	 dialog.setBounds(p.x - 10, p.y - 10, 400, 200);*/
+                         }
+                         
+                         @Override
+                         public void mouseExited(MouseEvent e) {
+                        	 fr.setVisible(false);
+                         }
+                     });
+                	 
+                	 /*res[i][j].addActionListener(new ActionListener() {
+                         public void actionPerformed(ActionEvent e) {
+                        	 JFrame fr = new JFrame();
+                      	 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                      	 	fr.setBackground(Color.blue);
+                      	 	fr.setSize(400, 400);
+                      	 	JPanel panel_1 = new JPanel();
+                    		panel_1.setBackground(new Color(0, 191, 255));
+                    		//panel_1.setBounds(76, 242, 185, 156);
+                    		fr.add(panel_1);
+                    		panel_1.setLayout(new GridLayout(2, 2, 0, 0));
+                    		JLabel lgauche = new JLabel(s[0]);
+                    		lgauche.setForeground(Color.white);
+                    		lgauche.setFont(new Font("Calibri", Font.ITALIC, 14));
+                    		panel_1.add(lgauche);
+                    		
+                    		JLabel ldroite = new JLabel(s[1]);
+                    		ldroite.setForeground(Color.white);
+                    		ldroite.setBackground(new Color(32, 178, 170));
+                    		ldroite.setFont(new Font("Calibri", Font.ITALIC, 14));
+                    		panel_1.add(ldroite);
+                    		
+                    		JLabel lcolone= new JLabel(s[2]);
+                    		lcolone.setForeground(Color.white);
+                    		lcolone.setFont(new Font("Calibri", Font.ITALIC, 14));
+                    		panel_1.add(lcolone);
+                    		
+                    		JLabel max = new JLabel(s[3]);
+                    		max.setForeground(Color.white);
+                    		max.setFont(new Font("Calibri", Font.ITALIC, 14));
+                    		panel_1.add(max);
+                      	 	fr.setVisible(true);
+                         }
+                	 });*/
+                }
+              
               
             }
-        }
         
+      
        
         // ajouter la table au frame
 
