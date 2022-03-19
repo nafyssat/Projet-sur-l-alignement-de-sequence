@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>projet-ar1</name>
+	<name>projet-ar1_src</name>
 	<comment></comment>
 	<projects>
 	</projects>
 	<buildSpec>
-<<<<<<< HEAD
-	</buildSpec>
-	<natures>
-	</natures>
-=======
 		<buildCommand>
 			<name>org.eclipse.jdt.core.javabuilder</name>
 			<arguments>
@@ -21,7 +16,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1647597336305</id>
+			<id>1646692256818</id>
 			<name></name>
 			<type>30</type>
 			<matcher>
@@ -30,5 +25,4 @@
 			</matcher>
 		</filter>
 	</filteredResources>
->>>>>>> interface-final
 </projectDescription>

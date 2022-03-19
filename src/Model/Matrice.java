@@ -13,12 +13,82 @@ public class Matrice {
 
         public Matrice(){
             this.user=new Utilisateur();
+        }
+
+
+    public Case[][] initialiser_Grille_Interface(String s1, String s2, int match, int mismatch, int gap) {
+        this.grille = new Case[s1.length() + 2][s2.length() + 2];
+
+        for (int a = 2; a < s1.length() + 2; a++) {
+            this.grille[a][0] = new CaseNucleotide(Nucleotide.convertirEnNucleotide(s1.charAt(a - 2)));
+        }
+
+        for (int b = 2; b < s2.length() + 2; b++) {
+            this.grille[0][b] = new CaseNucleotide(Nucleotide.convertirEnNucleotide(s2.charAt(b - 2)));
+        }
+        this.grille[1][1] = new CaseEntier(0);
+        for (int c = 1; c < s1.length() + 2; c++) {
+            this.grille[c][1] = new CaseEntier((c - 1) * gap);
+        }
+        for (int d = 1; d < s2.length() + 2; d++) {
+            this.grille[1][d] = new CaseEntier((d - 1) * gap);
+        }
+        for (int n = 2; n < s2.length() + 2; n++) {
+            for (int m = 2; m < s1.length() + 2; m++) {
+                this.grille[m][n] = new CaseEntier(ValeurCase_Interface(m, n, match, mismatch, gap));
+            }
+        }
+        return this.grille;
+    }
+
+    public int ValeurCase_Interface(int i, int j, int match, int mismatch, int gap) {
+        int a = (this.grille[i - 1][j - 1]).getValeur();
+        if ((this.grille[0][j]).getNuc() == (this.grille[i][0]).getNuc()) {
+            a += match;
+        } else {
+            a += mismatch;
+        }
+        int b = (this.grille[i - 1][j]).getValeur() + gap;
+        int c = (this.grille[i][j - 1]).getValeur() + gap;
+
+        return Math.max(Math.max(a, b), c);
+    }
+    public String [] affCalVal(int i,int j,int match,int mismatch,int gap) {
+    	String s []=new String [4];
+    	 int a = (this.grille[i - 1][j - 1]).getValeur();
+    	 String s1="<html>";
+         if ((this.grille[0][j]).getNuc() == (this.grille[i][0]).getNuc()) {
+        	 
+        	 s1+= " on a fait :"+a+"+"+match+"<br>match";
+        	 a += match;
+             s1+="<br>Score final = "+a;
+         } else {
+        	 s1+= " on a fait :"+a+"+"+mismatch+"<br>mismatch";
+        	 a += mismatch;
+             s1+="<br>Score final ="+a;
+             
+         }
+         s[0]=s1;
+         String s2="<html>";
+         s2+="on a fait : "+(this.grille[i - 1][j]).getValeur()+"+"+gap+" <br>gap ";
+         int b = (this.grille[i - 1][j]).getValeur() + gap;
+         s2+="<br>Score final = "+b;
+         s[1]=s2;
+         String s3="<html>";
+         s3+="on a fait : "+(this.grille[i][j-1]).getValeur()+"+"+gap+"<br>gap";
+         int c = (this.grille[i][j-1]).getValeur() + gap;
+         s3+="<br>Score final = "+c;
+         s[2]=s3;
+         
+         String s4="max = "+this.ValeurCase_Interface(i, j, match, mismatch, gap);
+         s[3]=s4;
+         return s;
+    }
+
+        public void initialiser_Grille(){
             this.a=user.demanderSequence();
             this.b=user.demanderSequence();
             this.scores=user.demanderMismatch_Match_Gap();
-        }
-
-        public void initialiser_Grille(){
             this.grille=new Case[a.getSequence().size()+2][b.getSequence().size()+2];
 
             for(int a=2;a<this.a.getSequence().size()+2;a++){
@@ -77,7 +147,7 @@ public class Matrice {
                 System.out.println();
             }
         }
-
+        
         public void afficher_Info(){
             System.out.println("**********************************************");
             System.out.print("Match score: "+this.scores[0]+"    ");
@@ -88,7 +158,7 @@ public class Matrice {
             System.out.println();
             System.out.println("**********************************************");
         }
-
+        
         public void afficher_alignement(){
             String m="";
             String n="";
@@ -133,7 +203,7 @@ public class Matrice {
             }
         }
 
-        public int matchOrMistach(Nucleotide a,Nucleotide b){
+    public int matchOrMistach(Nucleotide a,Nucleotide b){
             return a.equals(b)? this.scores[0]: this.scores[1];
         }
 
@@ -206,12 +276,104 @@ public class Matrice {
         this.scores[1] = this.user.demanderMismatch();
         launcher();
     }
+    public int [] caseAColorie(int i , int j,int match,int misMatch,int gap) {
+    	//String s = "ok ";
+    	int [] c = new int [2];
+    	if(grille[0][j].getNuc()==grille[i][0].getNuc()) {
+    		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-match)) {
+    			
+    			c[0]=i-1;
+    			c[1]=j-1;
+    			//s="okok";
+    			
+    		
+    		}
+    		else if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
+    			 /*if(s.equals("okok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i;
+         			tab[3]=j-1;
+         			return tab;
+     			}else {*/
+     				c[0]=i;
+         			c[1]=j-1;
+         			//s="okokok";
+         			}
+    		//}
+    			
+    			
+    		
+    		}
+    else if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
+    			
+    			 /*if(s.equals("okokok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i-1;
+         			tab[3]=j;
+         			return tab;
+     			}else {*/
+     				c[0]=i-1;
+         			c[1]=j;
+         			//}
+    	}
+    	else if(grille[0][j].getNuc()!=grille[i][0].getNuc()) {
+    		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-misMatch)) {
+    			c[0]=i-1;
+    			c[1]=j-1;
+    			//s="okok";
+    			
+    		}
+    		if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
+    			 /*if(s.equals("okok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i;
+         			tab[3]=j-1;
+         			return tab;
+     			}else {*/
+     				c[0]=i;
+         			c[1]=j-1;
+         			//s="okokok";
+         			
+     			//}
+    		}
+    		else if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
+    			/* if(s.equals("okokok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i-1;
+         			tab[3]=j;
+         			//return tab;
+     			}else {*/
+     				c[0]=i-1;
+         			c[1]=j;
+         			
+     			//}
+    			
+    			
+    			
+    		}
+    	}
+    	return c;
+    }
+
+
+       
+    
+       
 
 
 
     public static void main(String[]args){
         Matrice m=new Matrice();
         m.launcher();
+
 
     }
 

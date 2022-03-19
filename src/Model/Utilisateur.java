@@ -12,6 +12,29 @@ public class Utilisateur {
     }
 
     /**
+     * 
+     * @param s
+     * @return true si la chaîne de caractère est une séquence, et si la longueur de la 
+     * séquence est valide , false sinon. Nécessaire pour l'interface graphique, dans les 
+     * lamdas expressions
+     * car en mode textuelle nous ne faisons pas ces vérifications.
+     */
+    public boolean sequence(String s){
+        Sequence se=new Sequence();
+        boolean b=false;
+        if(se.sequenceValide()==true && se.NucleotideValide(s)==true){
+            b=true;
+        }
+        else
+        {
+            b=false;
+        }
+        return b;
+
+    }
+
+
+    /**
      * Cette fonction demande a l'utilisateur de saisir une sequence
      * @return Sequence
      */
@@ -94,6 +117,8 @@ public class Utilisateur {
         res[2]=demanderGap();
         return res;
     }
+
+
     
 
     public static void main(String [] args){
