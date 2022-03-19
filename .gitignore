@@ -1,2 +1,7 @@
 /.idea/
 *.class
+out/production/projet-ar1/.project
+out/production/projet-ar1/Vue/
+out/production/projet-ar1/Model/
+out/production/projet-ar1/Controler/
+projet-ar1.iml
