@@ -147,7 +147,7 @@ public class Matrice {
                 System.out.println();
             }
         }
-
+        
         public void afficher_Info(){
             System.out.println("**********************************************");
             System.out.print("Match score: "+this.scores[0]+"    ");
@@ -158,7 +158,7 @@ public class Matrice {
             System.out.println();
             System.out.println("**********************************************");
         }
-
+        
         public void afficher_alignement(){
             String m="";
             String n="";
@@ -203,7 +203,7 @@ public class Matrice {
             }
         }
 
-        public int matchOrMistach(Nucleotide a,Nucleotide b){
+    public int matchOrMistach(Nucleotide a,Nucleotide b){
             return a.equals(b)? this.scores[0]: this.scores[1];
         }
 
@@ -276,19 +276,96 @@ public class Matrice {
         this.scores[1] = this.user.demanderMismatch();
         launcher();
     }
+    public int [] caseAColorie(int i , int j,int match,int misMatch,int gap) {
+    	//String s = "ok ";
+    	int [] c = new int [2];
+    	if(grille[0][j].getNuc()==grille[i][0].getNuc()) {
+    		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-match)) {
+    			
+    			c[0]=i-1;
+    			c[1]=j-1;
+    			//s="okok";
+    			
+    		
+    		}
+    		else if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
+    			 /*if(s.equals("okok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i;
+         			tab[3]=j-1;
+         			return tab;
+     			}else {*/
+     				c[0]=i;
+         			c[1]=j-1;
+         			//s="okokok";
+         			}
+    		//}
+    			
+    			
+    		
+    		}
+    else if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
+    			
+    			 /*if(s.equals("okokok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i-1;
+         			tab[3]=j;
+         			return tab;
+     			}else {*/
+     				c[0]=i-1;
+         			c[1]=j;
+         			//}
+    	}
+    	else if(grille[0][j].getNuc()!=grille[i][0].getNuc()) {
+    		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-misMatch)) {
+    			c[0]=i-1;
+    			c[1]=j-1;
+    			//s="okok";
+    			
+    		}
+    		if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
+    			 /*if(s.equals("okok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i;
+         			tab[3]=j-1;
+         			return tab;
+     			}else {*/
+     				c[0]=i;
+         			c[1]=j-1;
+         			//s="okokok";
+         			
+     			//}
+    		}
+    		else if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
+    			/* if(s.equals("okokok")) {
+    				 int tab[]=new int[4];
+    				 tab[0]=c[0];
+    				 tab[1]=c[1];
+     				tab[2]=i-1;
+         			tab[3]=j;
+         			//return tab;
+     			}else {*/
+     				c[0]=i-1;
+         			c[1]=j;
+         			
+     			//}
+    			
+    			
+    			
+    		}
+    	}
+    	return c;
+    }
 
 
        
-       /* for(int i=2;i<m.grille.length;i++) {
-        	for(int j=2;j<m.grille[i].length;j++) { 
-        		String [] s=m.affCalVal(i, j, 1, 1, 1);
-        			for(int k=0;k<4;k++) {
-        		        	System.out.println(s[k]);
-        		        }
-        		
-        	}
-        	 
-        }*/
+    
        
 
 

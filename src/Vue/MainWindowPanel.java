@@ -12,7 +12,7 @@ public class MainWindowPanel extends JFrame {
     private Utilisateur user=new Utilisateur();
     private Container mainContainer=this.getContentPane();
     private MatricePanel v=new MatricePanel();
-    private JButton enter=new JButton("entrer");
+    //private JButton enter=new JButton("entrer");
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
@@ -80,9 +80,9 @@ public class MainWindowPanel extends JFrame {
          mainContainer.setLayout((new BorderLayout(8,6)));
          mainContainer.setBackground(Color.YELLOW);
          this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
-         mainContainer.add(enter,BorderLayout.PAGE_END);
+         //mainContainer.add(OptimisePath,BorderLayout.PAGE_END);
          mainContainer.add(mainPanel,BorderLayout.WEST);
-         mainContainer.add(enter,BorderLayout.PAGE_END);
+         //mainContainer.add(enter,BorderLayout.PAGE_END);
          
 
          getContentPane().add(ajout, BorderLayout.CENTER);
@@ -90,7 +90,7 @@ public class MainWindowPanel extends JFrame {
          ajout.setVisible(false);
 
       //Lambda expression
-        enter.addActionListener(new ActionListener() {
+         OptimisePath.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	
                 if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
@@ -100,6 +100,7 @@ public class MainWindowPanel extends JFrame {
                 	
                 	String s1=seq1.getText().toUpperCase();
                 	String s2= seq2.getText().toUpperCase();
+                	//�a permet de tester plusieurs sequence sur le meme fenetre sans avoir a rexecuter
                 	ajout.removeAll();
                 	ajout.revalidate();
                 	ajout.repaint();
@@ -107,15 +108,21 @@ public class MainWindowPanel extends JFrame {
                     ajout.add(v.init(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue()), BorderLayout.CENTER); //Dans ce cas on affiche la matrice
                     ajout.setVisible(true);
 
-                    JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                    /*JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                     ajout.setBackground(Color.CYAN);
                     getContentPane().add(ajout, BorderLayout.CENTER);
                     ajout.setPreferredSize(new Dimension(35 * (seq1.getText().length() + 2), 25 * (seq2.getText().length() + 2)));
-                    setVisible(true);
+                    setVisible(true);*/
 
                 }
             }
         });
+        /**
+         * le chemin
+         */
+      
+            	
+          
 
     }
      

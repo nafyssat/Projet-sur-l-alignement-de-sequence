@@ -35,14 +35,7 @@ public class MatricePanel {
      */
 
     public JPanel init(String a, String b, int c, int d, int e) {
-
-    	 
-          
-        
-    
-      
-
-        JPanel droite = new JPanel();
+    	JPanel droite = new JPanel();
         JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
         
         droite.setPreferredSize(new Dimension(20*(a.length()+2),20*(b.length()+2)));
@@ -136,30 +129,7 @@ public class MatricePanel {
              		}
              		panel_1.setVisible(true);
              		
-             		/*JLabel lgauche = new JLabel(s[0]);
-             		lgauche.setForeground(Color.white);
-             		lgauche.setSize(150, 50);
-             		lgauche.setFont(new Font("Calibri", Font.ITALIC, 14));
-             		panel_1.add(lgauche);
-             		
-             		JLabel ldroite = new JLabel(s[1]);
-             		ldroite.setForeground(Color.white);
-             		ldroite.setSize(150, 50);
-             		ldroite.setBackground(new Color(32, 178, 170));
-             		ldroite.setFont(new Font("Calibri", Font.ITALIC, 14));
-             		panel_1.add(ldroite);
-             		
-             		JLabel lcolone= new JLabel(s[2]);
-             		lcolone.setForeground(Color.white);
-             		lcolone.setFont(new Font("Calibri", Font.ITALIC, 14));
-             		panel_1.add(lcolone);
-             		
-             		
-             		
-             		JLabel max = new JLabel(s[3]);
-            		max.setForeground(Color.white);
-            		max.setFont(new Font("Calibri", Font.ITALIC, 14));
-            		panel_1.add(max);*/
+             	
               	 	fr.setVisible(false);
                 	 
                 	 
@@ -187,6 +157,7 @@ public class MatricePanel {
                 	 
                 	
                 }
+        }
         	for(int k=1;k<a.length()+2;k++) {
         		res[k][1].setBackground(Color.GRAY);
         		
@@ -195,6 +166,7 @@ public class MatricePanel {
         		res[1][k].setBackground(Color.GRAY);
         		
         	}
+        
               
               
 
@@ -204,8 +176,34 @@ public class MatricePanel {
               res[1][1].setBackground(Color.red);
 
 
-            }
-        
+      
+       int f=a.length()+1;
+        int h=b.length()+1;
+        //int z=a.length()+1;
+       // int y=b.length()+1;
+       
+        while(f>1 && h>1) {
+        	
+        	
+        	int [] t  = this.Controlleur.getGrillePanel().caseAColorie(f, h, c, d, e);
+        	/*int n=t.length;
+        	if(n==2) {*/
+        		f=t[0];
+            	h=t[1];
+        	/*}else {
+        		f=t[0];
+        		h=t[1];
+        		z=t[2];
+        		y=t[3];
+        		res[z][y].setBackground(Color.red);
+        	}*/
+        	
+        	res[f][h].setBackground(Color.green);
+        	
+        	
+        	
+        }
+      
       
        
         // ajouter la table au frame
@@ -216,9 +214,17 @@ public class MatricePanel {
             }
         }
         
-        //droite.setBounds(70,80,100,30);
+        
 
         return droite;
     }
+
+
+	
+		
+	
+		
+		
+	
 
 }
