@@ -1,7 +1,10 @@
 /.idea/
 *.class
+.project
+.classpath
 out/production/projet-ar1/.project
 out/production/projet-ar1/Vue/
 out/production/projet-ar1/Model/
 out/production/projet-ar1/Controler/
+out/production/projet-ar1/bin/
 projet-ar1.iml
