@@ -165,11 +165,11 @@ public class Matrice {
                 n+=b.charAt((j-2));
                 i--;
                 j--;
-            }else if(x==w+this.scores[2]){
+            }else if(x==w+e){
                 m+=a.charAt((i-2));
                 n+="-";
                 i--;
-            }else if(x==z+this.scores[2]){
+            }else if(x==z+e){
                 m+="-";
                 n+=b.charAt((j-2));
                 j--;
