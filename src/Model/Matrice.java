@@ -147,6 +147,50 @@ public class Matrice {
                 System.out.println();
             }
         }
+
+    public String[] afficher_alignement_Inter(String a, String b, int c, int d, int e){
+        String m="";
+        String n="";
+        String[] s=new String[3];
+
+        int i=a.length()+1;
+        int j=b.length()+1;
+        while(i>=2 && j>=2){
+            int x=(this.grille[i][j]).getValeur();
+            int y=(this.grille[i-1][j-1]).getValeur();
+            int z=(this.grille[i][j-1]).getValeur();
+            int w=(this.grille[i-1][j]).getValeur();
+            if(x== y + matchOrMistach(a.charAt(i-2),b.charAt(j-2),c,d)){
+                m+=a.charAt((i-2));
+                n+=b.charAt((j-2));
+                i--;
+                j--;
+            }else if(x==w+this.scores[2]){
+                m+=a.charAt((i-2));
+                n+="-";
+                i--;
+            }else if(x==z+this.scores[2]){
+                m+="-";
+                n+=b.charAt((j-2));
+                j--;
+            }
+        }
+        while(i>=2){
+            m+=a.charAt((i-2));
+            n+="-";
+            i--;
+        }
+        while(j>=2){
+            m+="-";
+            n+=b.charAt((j-2));
+            j--;
+        }
+        s[0]=m;
+        s[1]=n;
+        s[2]="Score: "+String.valueOf(this.grille[a.length()-1][b.length()-1].getValeur());
+        return s;
+
+    }
         
         public void afficher_Info(){
             System.out.println("**********************************************");
@@ -206,6 +250,9 @@ public class Matrice {
     public int matchOrMistach(Nucleotide a,Nucleotide b){
             return a.equals(b)? this.scores[0]: this.scores[1];
         }
+    public int matchOrMistach(char a,char b,int i,int j){
+        return (a==b)? i:j;
+    }
 
     public void DemanderAction(){
         Scanner sc=new Scanner(System.in);
