@@ -18,13 +18,13 @@ public class MainWindowPanel extends JFrame {
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
     private JPanel ajout = new JPanel();
-    JTextField seq1=new JTextField(20);
-    JTextField seq2=new JTextField(20);
+    JTextField seq1=new JTextField(28);
+    JTextField seq2=new JTextField(28);
     JLabel seq1Label=new JLabel("Sequence    1: ");
     JLabel seq2Label=new JLabel("Sequence    2: ");
     JButton CustomPath=new JButton("Custom Path");
     JButton ClearPath=new JButton("Clear Path");
-    JButton OptimisePath=new JButton("Compute Optimal Alignment");
+    JButton OptimisePath=new JButton("Optimal Alignment");
     SpinnerModel modelA = new SpinnerNumberModel(
             1, //valeur initiale
             -500, //valeur minimum
@@ -50,15 +50,15 @@ public class MainWindowPanel extends JFrame {
          JSpinner a = new JSpinner(modelA);
          JSpinner b= new JSpinner(modelB);
          JSpinner c = new JSpinner(modelC);
-         a.setPreferredSize(new Dimension(103,15));//20
-         b.setPreferredSize(new Dimension(103,15));
-         c.setPreferredSize(new Dimension(103,15));
-         match.setPreferredSize(new Dimension(103,15));//30
-         mismatch.setPreferredSize(new Dimension(103,15));
-         gap.setPreferredSize(new Dimension(103,15));
-         CustomPath.setPreferredSize(new Dimension(157,15));//20
-         ClearPath.setPreferredSize(new Dimension(157,15));
-         OptimisePath.setPreferredSize(new Dimension(320,15));
+         a.setPreferredSize(new Dimension(138,18));//20
+         b.setPreferredSize(new Dimension(138,18));
+         c.setPreferredSize(new Dimension(138,18));
+         match.setPreferredSize(new Dimension(138,15));//30//103
+         mismatch.setPreferredSize(new Dimension(138,15));
+         gap.setPreferredSize(new Dimension(138,15));
+         CustomPath.setPreferredSize(new Dimension(125,20));//20/157
+         ClearPath.setPreferredSize(new Dimension(118,20));//157
+         OptimisePath.setPreferredSize(new Dimension(173,20));//320
          this.mainPanel.add(seq1Label);
          this.mainPanel.add(seq1);
          this.mainPanel.add(seq2Label);
@@ -73,35 +73,17 @@ public class MainWindowPanel extends JFrame {
          this.mainPanel.add(ClearPath);
          this.mainPanel.add(OptimisePath);
          this.mainPanel.setPreferredSize(new Dimension(500,130));
+         this.mainPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
          this.add(mainPanel,BorderLayout.WEST);
-         this.mainPanel.setBorder(BorderFactory.createTitledBorder("Paramètres"));
+         //this.mainPanel.setBorder(BorderFactory.createTitledBorder("Paramètres"));
+         this.mainPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
          JLabel al=new JLabel("Score=3");
          align.add(al);
-         align.setPreferredSize(new Dimension(770,130));
+         align.setPreferredSize(new Dimension(770,131));
          this.mainContainer.setLayout(new FlowLayout(FlowLayout.LEFT));
          this.mainContainer.add(mainPanel);
          this.mainContainer.add(align);
-         //GridBagConstraints N=new GridBagConstraints();
-         /*N.fill=GridBagConstraints.HORIZONTAL;
-         N.gridx=0;
-         N.gridy=0;*/
-         //mainPanel.setBackground(Color.LIGHT_GRAY);
-       //  mainContainer.add(mainPanel,N);
          this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
-       /*N.weightx=1.0;
-         N.gridx=1;
-         N.gridy=0;
-         mainContainer.add(align,N);
-         N.weightx = 1;
-         N.weighty = 1;*/
-
-        /* mainContainer.add(new JLabel(" "), N);
-         JPanel tr=new JPanel();
-         N.gridx=1;
-         N.gridy=0;
-         tr.setPreferredSize(new Dimension(400,400));*/
-       //  mainContainer.add(tr,N);
-
 
          OptimisePath.addActionListener(e -> {
 
