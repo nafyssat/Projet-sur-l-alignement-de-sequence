@@ -280,6 +280,7 @@ public class Matrice {
     public int [] caseAColorie(int i , int j,int match,int misMatch,int gap) {
     	int [] c = new int [2];
     	if(i==1 && j>1) {
+    		
     		if(grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)) {
     			c[0]=1;
     			c[1]=j-1;
@@ -293,11 +294,6 @@ public class Matrice {
     			return c;
     		}
     	}
-    	/*if(i==1 && j==1) {
-    		c[0]=i;
-			c[1]=j;
-			return c;
-    	}*/
     	
     	if(grille[0][j].getNuc()==grille[i][0].getNuc()) {
     		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-match)) {
@@ -356,7 +352,7 @@ public class Matrice {
     	return c;
     }
 
-       
+    
     
        
 
