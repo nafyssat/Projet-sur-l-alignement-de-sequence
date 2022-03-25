@@ -1,5 +1,6 @@
 package Model;
 
+import Model.*;
 import java.util.Scanner;
 import static Model.Nucleotide.NuctoString;
 
@@ -277,84 +278,76 @@ public class Matrice {
         launcher();
     }
     public int [] caseAColorie(int i , int j,int match,int misMatch,int gap) {
-    	//String s = "ok ";
     	int [] c = new int [2];
+    	if(i==1 && j>1) {
+    		if(grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)) {
+    			c[0]=1;
+    			c[1]=j-1;
+    			return c;
+    		}
+    	}
+    	if(j==1 && i>1) {
+    		if(grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)) {
+    			c[0]=i-1;
+    			c[1]=1;
+    			return c;
+    		}
+    	}
+    	/*if(i==1 && j==1) {
+    		c[0]=i;
+			c[1]=j;
+			return c;
+    	}*/
+    	
     	if(grille[0][j].getNuc()==grille[i][0].getNuc()) {
     		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-match)) {
     			
     			c[0]=i-1;
     			c[1]=j-1;
-    			//s="okok";
+    			return c;
     			
     		
     		}
-    		else if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
-    			 /*if(s.equals("okok")) {
-    				 int tab[]=new int[4];
-    				 tab[0]=c[0];
-    				 tab[1]=c[1];
-     				tab[2]=i;
-         			tab[3]=j-1;
-         			return tab;
-     			}else {*/
+    	 if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
+    			
      				c[0]=i;
          			c[1]=j-1;
-         			//s="okokok";
+         			return c;
          			}
-    		//}
+    	
     			
     			
     		
     		}
-    else if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
+   if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
     			
-    			 /*if(s.equals("okokok")) {
-    				 int tab[]=new int[4];
-    				 tab[0]=c[0];
-    				 tab[1]=c[1];
-     				tab[2]=i-1;
-         			tab[3]=j;
-         			return tab;
-     			}else {*/
+    			 
      				c[0]=i-1;
          			c[1]=j;
-         			//}
+         			return c;
+         		
     	}
-    	else if(grille[0][j].getNuc()!=grille[i][0].getNuc()) {
+     if(grille[0][j].getNuc()!=grille[i][0].getNuc()) {
     		if(grille[i-1][j-1].getValeur()==(grille[i][j].getValeur()-misMatch)) {
     			c[0]=i-1;
     			c[1]=j-1;
-    			//s="okok";
+    			return c;
+    			
     			
     		}
     		if (grille[i][j-1].getValeur()==(grille[i][j].getValeur()-gap)){
-    			 /*if(s.equals("okok")) {
-    				 int tab[]=new int[4];
-    				 tab[0]=c[0];
-    				 tab[1]=c[1];
-     				tab[2]=i;
-         			tab[3]=j-1;
-         			return tab;
-     			}else {*/
+    			 
      				c[0]=i;
          			c[1]=j-1;
-         			//s="okokok";
+         			return c;
          			
-     			//}
     		}
-    		else if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
-    			/* if(s.equals("okokok")) {
-    				 int tab[]=new int[4];
-    				 tab[0]=c[0];
-    				 tab[1]=c[1];
-     				tab[2]=i-1;
-         			tab[3]=j;
-         			//return tab;
-     			}else {*/
-     				c[0]=i-1;
+    		 if (grille[i-1][j].getValeur()==(grille[i][j].getValeur()-gap)){
+    				c[0]=i-1;
          			c[1]=j;
+         			return c;
          			
-     			//}
+     			
     			
     			
     			
@@ -362,7 +355,6 @@ public class Matrice {
     	}
     	return c;
     }
-
 
        
     

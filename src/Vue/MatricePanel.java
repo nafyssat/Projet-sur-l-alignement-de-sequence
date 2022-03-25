@@ -177,33 +177,29 @@ public class MatricePanel {
 
 
       
-       int f=a.length()+1;
-        int h=b.length()+1;
-        //int z=a.length()+1;
-       // int y=b.length()+1;
        
-        while(f>1 && h>1) {
+        
+        int f=a.length()+1;
+        int h=b.length()+1;
+        
+       
+        while(f>=1 && h>=1) {
+        	//on recupere la position du case a colorie
         	
-        	
+        		
+        	res[f][h].setBackground(Color.green);
         	int [] t  = this.Controlleur.getGrillePanel().caseAColorie(f, h, c, d, e);
-        	/*int n=t.length;
-        	if(n==2) {*/
         		f=t[0];
             	h=t[1];
-        	/*}else {
-        		f=t[0];
-        		h=t[1];
-        		z=t[2];
-        		y=t[3];
-        		res[z][y].setBackground(Color.red);
-        	}*/
-        	
-        	res[f][h].setBackground(Color.green);
+            	if(f==1 && h==1) {
+            		res[f][h].setBackground(Color.green);
+            		break;
+            	}
+            	
         	
         	
         	
         }
-      
       
        
         // ajouter la table au frame
