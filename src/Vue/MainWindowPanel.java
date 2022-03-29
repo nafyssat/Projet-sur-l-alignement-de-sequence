@@ -11,6 +11,7 @@ public class MainWindowPanel extends JFrame {
     JPanel mainPanel=new JPanel();
     AlignementPanel align=new AlignementPanel();
     private Utilisateur user=new Utilisateur();
+    JPanel alignement=new JPanel();
     private Container mainContainer=this.getContentPane();
     private MatricePanel v=new MatricePanel();
     //private JButton enter=new JButton("entrer");
@@ -45,8 +46,6 @@ public class MainWindowPanel extends JFrame {
     );
 
      public MainWindowPanel(){
-         JPanel align=new JPanel();
-         align.setBorder(BorderFactory.createTitledBorder("Alignement"));
          JSpinner a = new JSpinner(modelA);
          JSpinner b= new JSpinner(modelB);
          JSpinner c = new JSpinner(modelC);
@@ -77,15 +76,14 @@ public class MainWindowPanel extends JFrame {
          this.add(mainPanel,BorderLayout.WEST);
          //this.mainPanel.setBorder(BorderFactory.createTitledBorder("Paramètres"));
          this.mainPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
-         JLabel al=new JLabel("Score=3");
-         align.add(al);
-         align.setPreferredSize(new Dimension(770,131));
+         alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+         alignement.setPreferredSize(new Dimension(770,131));
          this.mainContainer.setLayout(new FlowLayout(FlowLayout.LEFT));
          this.mainContainer.add(mainPanel);
-         this.mainContainer.add(align);
+         this.mainContainer.add(alignement);
          this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
 
-         OptimisePath.addActionListener(e -> {
+        OptimisePath.addActionListener(e -> {
 
              if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                      && user.sequence(seq2.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
@@ -93,9 +91,15 @@ public class MainWindowPanel extends JFrame {
                  String s1=seq1.getText().toUpperCase();
                  String s2= seq2.getText().toUpperCase();
                  mainContainer.remove(ajout);
+                 mainContainer.remove(alignement);
                  ajout.removeAll();
+                 alignement.removeAll();
                  ajout=v.init(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                 alignement=align.Align(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                 alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                 alignement.setPreferredSize(new Dimension(770,131));
                  ajout.setPreferredSize(new Dimension(58*(s2.length()+2),25*(s1.length()+2)));
+                 mainContainer.add(alignement);
                  mainContainer.add(ajout);
                  mainContainer.revalidate();
                  this.pack();
@@ -115,10 +119,45 @@ public class MainWindowPanel extends JFrame {
 
              }
          });
+        /* seq1.addKeyListener(new java.awt.event.KeyAdapter() {
+             public void keyTyped(java.awt.event.KeyEvent e) {
+                 if (user.sequence(seq1.getText()) == true && user.sequence(seq2.getText()) == true &&
+                         seq1.getText().length()>0 && seq2.getText().length()>0) {
+                     String s1 = seq1.getText().toUpperCase();
+                     String s2 = seq2.getText().toUpperCase();
+                     mainContainer.remove(ajout);
+                     ajout.removeAll();
+                     ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                     ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                     mainContainer.add(ajout);
+                     mainContainer.revalidate();
+                     //this.pack();
+                 }
+             }
+         });
+         seq2.addKeyListener(new java.awt.event.KeyAdapter() {
+             public void keyTyped(java.awt.event.KeyEvent e) {
+                 if (user.sequence(seq1.getText()) == true && user.sequence(seq2.getText()) == true &&
+                 seq1.getText().length()>0 && seq2.getText().length()>0) {
+                     String s1 = seq1.getText().toUpperCase();
+                     String s2 = seq2.getText().toUpperCase();
+                     mainContainer.remove(ajout);
+                     ajout.removeAll();
+                     ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                     ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                     mainContainer.add(ajout);
+                     mainContainer.revalidate();
+                     //this.pack();
+                 }
+             }
+         });*/
+
+
          this.setTitle("Global Sequence Alignement");
         this.pack();
         this.setDefaultLookAndFeelDecorated(true);
         this.setExtendedState(this.MAXIMIZED_BOTH);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         //this.setResizable(false);
 
        /* JSpinner a = new JSpinner(modelA);

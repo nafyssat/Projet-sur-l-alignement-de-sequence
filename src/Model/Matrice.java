@@ -1,5 +1,6 @@
 package Model;
 
+import java.util.Locale;
 import java.util.Scanner;
 import static Model.Nucleotide.NuctoString;
 
@@ -187,7 +188,7 @@ public class Matrice {
         }
         s[0]=m;
         s[1]=n;
-        s[2]="Score: "+String.valueOf(this.grille[a.length()-1][b.length()-1].getValeur());
+        s[2]="Score: "+String.valueOf(this.grille[a.length()+1][b.length()+1].getValeur());
         return s;
 
     }

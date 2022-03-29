@@ -151,7 +151,7 @@ public class MatricePanel {
                          
                          @Override
                          public void mouseExited(MouseEvent e) {
-                        	 fr.setVisible(false);
+                        	 fr.dispose();
                          }
                      });
                 	 

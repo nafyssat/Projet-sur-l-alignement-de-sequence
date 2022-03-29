@@ -17,13 +17,21 @@ public class AlignementPanel {
         String[]x=controlleur.getGrillePanel().afficher_alignement_Inter(a,b,c,d,e);
         String m="";
         String n="";
-        for (int i=x[0].length()-1;i>=0;i--){
-            m+=String.valueOf(x[0].charAt(i)).toUpperCase()+" ";
+        for (int i=x[0].length()-1;i>=0;i--) {
+            if (String.valueOf(x[0].charAt(i)).equals("-")) {
+                m += " " + String.valueOf(x[0].charAt(i)).toUpperCase()+" ";
+            } else {
+                m += String.valueOf(x[0].charAt(i)).toUpperCase()+" ";
+            }
         }
         for(int j=x[1].length()-1;j>=0;j--) {
-            n += String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
+            if (String.valueOf(x[1].charAt(j)).equals("-")) {
+                n += " " + String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
+            } else {
+                n += String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
+            }
         }
-        JTextArea labelArea = new JTextArea(m+"\n"+n+"\n"+x[2]);
+        JTextArea labelArea = new JTextArea("\n"+m+"\n"+n+"\n"+"\n"+x[2]);
         labelArea.setFont(labelArea.getFont().deriveFont(Font.BOLD));
 
         labelArea.setEditable(false);
@@ -33,7 +41,8 @@ public class AlignementPanel {
         JLabel two=new JLabel(n);
         AL.add(one);
         AL.add(two);*/
-        AL.add(labelArea);
+        AL.setLayout(new BorderLayout());
+        AL.add(labelArea,BorderLayout.WEST);
         return AL;
 
 
