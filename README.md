@@ -13,4 +13,13 @@ Projet pour le module de Projet de Programmation en Deuxième année de licence 
 *   src : dossier contenant le code source
 
 
+# execution du code
+EN IDE:
+* soit en IG en executant la classe MainWindowPanel.java 
+* soit en console avec la classe Matrice.java
+
+JAVAC :(Encours)
+* javac MainWindowPanel.java (console)
+* javac Matrice.java (console)
+
 

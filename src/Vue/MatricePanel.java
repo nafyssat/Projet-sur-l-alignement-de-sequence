@@ -90,7 +90,7 @@ public class MatricePanel {
             }}
         for(int i=2;i<a.length()+2;i++) {
         	for(int j=2;j<b.length()+2;j++) {
-                //C'est pourquoi nous pouvons utiliser la méthode getGrille() par la suite.
+               
                
                 //fenetre expliquant la calcul du score
                
@@ -100,14 +100,14 @@ public class MatricePanel {
                	 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                	 	fr.setBackground(Color.blue);
                	 	fr.setSize(400, 400);
-               	 	//fr.setLayout(new GridLayout(2,2));
+               	 	
                	 	JPanel panel_1 = new JPanel();
              		panel_1.setBackground(Color.WHITE);
              		
              		
              		
              		
-             		//panel_1.setBounds(76, 242, 185, 156);
+             		
              		fr.add(panel_1);
              		panel_1.setLayout(new GridLayout(2,2,0,0));
              		
@@ -131,22 +131,12 @@ public class MatricePanel {
              		
              	
               	 	fr.setVisible(false);
-                	 
-                	 
-                	 JPanel dialog = new JPanel();
-                	 //droite.add(dialog);
-                	 JLabel test = new JLabel("test");
-                	 dialog.add(test);
-                	 dialog.setVisible(false);
-                	 
-                	 res[i][j].addMouseListener(new MouseAdapter() {
+              	 	res[i][j].addMouseListener(new MouseAdapter() {
 
                          @Override
                          public void mouseEntered(MouseEvent e) {
                         	 fr.setVisible(true);
-                        	/* Point p  = MouseInfo.getPointerInfo().getLocation();
-                        	 dialog.setVisible(true);
-                        	 dialog.setBounds(p.x - 10, p.y - 10, 400, 200);*/
+                        	
                          }
                          
                          @Override
@@ -171,39 +161,35 @@ public class MatricePanel {
               
 
 
-               // res[i][j].setForeground(Color.MAGENTA);
+               
               res[a.length()+1][b.length()+1].setBackground(Color.red);
               res[1][1].setBackground(Color.red);
 
 
       
-       int f=a.length()+1;
-        int h=b.length()+1;
-        //int z=a.length()+1;
-       // int y=b.length()+1;
        
-        while(f>1 && h>1) {
+        //backTracking
+        int f=a.length()+1;
+        int h=b.length()+1;
+        
+       
+        while(f>=1 && h>=1) {
+        	//on recupere la position du case a colorie
         	
-        	
+        		
+        	res[f][h].setBackground(Color.green);
         	int [] t  = this.Controlleur.getGrillePanel().caseAColorie(f, h, c, d, e);
-        	/*int n=t.length;
-        	if(n==2) {*/
         		f=t[0];
             	h=t[1];
-        	/*}else {
-        		f=t[0];
-        		h=t[1];
-        		z=t[2];
-        		y=t[3];
-        		res[z][y].setBackground(Color.red);
-        	}*/
-        	
-        	res[f][h].setBackground(Color.green);
+            	if(f==1 && h==1) {
+            		res[f][h].setBackground(Color.green);
+            		break;
+            	}
+            	
         	
         	
         	
         }
-      
       
        
         // ajouter la table au frame

@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Model.*;
+import Vue.MatricePanel;
 
 
 public class MainWindowPanel extends JFrame {
@@ -49,7 +50,7 @@ public class MainWindowPanel extends JFrame {
         this.setDefaultLookAndFeelDecorated(true);
         this.setExtendedState(this.MAXIMIZED_BOTH);
         this.setResizable(false);
-         JSpinner a = new JSpinner(modelA);
+        JSpinner a = new JSpinner(modelA);
          JSpinner b= new JSpinner(modelB);
          JSpinner c = new JSpinner(modelC);
          a.setPreferredSize(new Dimension(103,20));
@@ -82,12 +83,13 @@ public class MainWindowPanel extends JFrame {
          this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
          //mainContainer.add(OptimisePath,BorderLayout.PAGE_END);
          mainContainer.add(mainPanel,BorderLayout.WEST);
-         //mainContainer.add(enter,BorderLayout.PAGE_END);
+       
          
 
          getContentPane().add(ajout, BorderLayout.CENTER);
          ajout.setBackground(Color.CYAN);
          ajout.setVisible(false);
+        
 
       //Lambda expression
          OptimisePath.addActionListener(new ActionListener() {
@@ -101,6 +103,7 @@ public class MainWindowPanel extends JFrame {
                 	String s1=seq1.getText().toUpperCase();
                 	String s2= seq2.getText().toUpperCase();
                 	//ça permet de tester plusieurs sequence sur le meme fenetre sans avoir a rexecuter
+                	//pour que a chaque fois qu on met une nouvelle sequence ça continue d afficher la matrice
                 	ajout.removeAll();
                 	ajout.revalidate();
                 	ajout.repaint();
@@ -108,19 +111,14 @@ public class MainWindowPanel extends JFrame {
                     ajout.add(v.init(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue()), BorderLayout.CENTER); //Dans ce cas on affiche la matrice
                     ajout.setVisible(true);
 
-                    /*JPanel ajout =v.init(seq1.getText(), seq2.getText(), (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                    ajout.setBackground(Color.CYAN);
-                    getContentPane().add(ajout, BorderLayout.CENTER);
-                    ajout.setPreferredSize(new Dimension(35 * (seq1.getText().length() + 2), 25 * (seq2.getText().length() + 2)));
-                    setVisible(true);*/
+                  
 
                 }
             }
         });
-        /**
-         * le chemin
-         */
-      
+        
+       
+       
             	
           
 
