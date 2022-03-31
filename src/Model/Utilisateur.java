@@ -121,7 +121,7 @@ public class Utilisateur {
 
     
 
-    public static void main(String [] args){
+  /*  public static void main(String [] args){
         Utilisateur u=new Utilisateur ();
 
        // Sequence s = u.demanderSequence();
@@ -131,5 +131,5 @@ public class Utilisateur {
       System.out.println(u.demanderMismatch_Match_Gap()[0]);
 
 
-    }
+    }*/
 }

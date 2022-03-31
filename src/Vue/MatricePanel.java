@@ -151,7 +151,7 @@ public class MatricePanel {
                          
                          @Override
                          public void mouseExited(MouseEvent e) {
-                        	 fr.setVisible(false);
+                        	 fr.dispose();
                          }
                      });
                 	 
@@ -159,11 +159,11 @@ public class MatricePanel {
                 }
         }
         	for(int k=1;k<a.length()+2;k++) {
-        		res[k][1].setBackground(Color.GRAY);
+                res[k][1].setBackground(Color.GRAY);
         		
         	}
         	for(int k=1;k<b.length()+2;k++) {
-        		res[1][k].setBackground(Color.GRAY);
+                res[1][k].setBackground(Color.GRAY);
         		
         	}
         
@@ -210,14 +210,22 @@ public class MatricePanel {
 
         for(int i=0;i<a.length()+2;i++) {
             for (int j = 0; j < b.length() + 2; j++) {
+                if(i==0 || j==0){
+                    res[i][j].setFont(new Font("Italic", Font.BOLD, 13));
+                }else{
+                    res[i][j].setFont(new Font("Calibri", Font.BOLD, 8));
+                }
                 droite.add(res[i][j]);
             }
         }
+
+
         
         
 
         return droite;
     }
+
 
 
 	
