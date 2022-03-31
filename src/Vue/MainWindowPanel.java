@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import Model.*;
+import Vue.MatricePanel;
 
 
 public class MainWindowPanel extends JFrame {
