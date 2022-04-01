@@ -99,7 +99,7 @@ public class MatricePanel {
                 	JFrame fr = new JFrame();
                	 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                	 	fr.setBackground(Color.blue);
-               	 	fr.setSize(400, 400);
+               	 	fr.setSize(200, 200);
                	 	
                	 	JPanel panel_1 = new JPanel();
              		panel_1.setBackground(Color.WHITE);
@@ -177,12 +177,12 @@ public class MatricePanel {
         	//on recupere la position du case a colorie
         	
         		
-        	res[f][h].setBackground(Color.green);
+        	res[f][h].setBackground(Color.red);
         	int [] t  = this.Controlleur.getGrillePanel().caseAColorie(f, h, c, d, e);
         		f=t[0];
             	h=t[1];
             	if(f==1 && h==1) {
-            		res[f][h].setBackground(Color.green);
+            		res[f][h].setBackground(Color.red);
             		break;
             	}
             	
@@ -204,6 +204,7 @@ public class MatricePanel {
                 droite.add(res[i][j]);
             }
         }
+        res[1][1].setBackground(Color.green);
 
 
         

@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.Locale;
+
 import Model.*;
 import Vue.MatricePanel;
 
@@ -88,7 +92,7 @@ public class MainWindowPanel extends JFrame {
          this.mainContainer.add(alignement);
          this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
 
-        OptimisePath.addActionListener(e -> {
+       /* OptimisePath.addActionListener(e -> {
 
              if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                      && user.sequence(seq2.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
@@ -109,7 +113,72 @@ public class MainWindowPanel extends JFrame {
                  mainContainer.revalidate();
                  this.pack();
              }
+         });*/
+
+         seq1.addKeyListener(new KeyAdapter() {
+             @Override
+             public void keyReleased(KeyEvent e) {
+                 seq1.setText(seq1.getText().toUpperCase());
+                 if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
+                     alignement.removeAll();
+                     mainContainer.remove(ajout);
+                     pack();
+                 } else {
+                     if (seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
+                             && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
+                     ) {
+                         String s1 = seq1.getText().toUpperCase();
+                         String s2 = seq2.getText().toUpperCase();
+                         mainContainer.remove(ajout);
+                         mainContainer.remove(alignement);
+                         ajout.removeAll();
+                         alignement.removeAll();
+                         ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                         alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                         alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                         alignement.setPreferredSize(new Dimension(770, 131));
+                         ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                         mainContainer.add(alignement);
+                         mainContainer.add(ajout);
+                         mainContainer.revalidate();
+                         pack();
+
+                     }
+                 }
+             }
          });
+         seq2.addKeyListener(new KeyAdapter() {
+             @Override
+             public void keyReleased(KeyEvent e) {
+                 seq2.setText(seq2.getText().toUpperCase());
+                 if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
+                     alignement.removeAll();
+                     mainContainer.remove(ajout);
+                     pack();
+                 } else {
+                     if (seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
+                             && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
+                     ) {
+                         String s1 = seq1.getText().toUpperCase();
+                         String s2 = seq2.getText().toUpperCase();
+                         mainContainer.remove(ajout);
+                         mainContainer.remove(alignement);
+                         ajout.removeAll();
+                         alignement.removeAll();
+                         ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                         alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                         alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                         alignement.setPreferredSize(new Dimension(770, 131));
+                         ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                         mainContainer.add(alignement);
+                         mainContainer.add(ajout);
+                         mainContainer.revalidate();
+                         pack();
+                     }
+                 }
+             }
+         });
+
     }
      
 
