@@ -125,6 +125,14 @@ public class MainWindowPanel extends JFrame {
                      alignement.removeAll();
                      mainContainer.remove(ajout);
                      pack();
+                 }else if(seq1.getText().length()>20 || seq2.getText().length()>20) {
+                     JOptionPane.showMessageDialog(mainContainer, "Error: Maximum length of sequence is 20.");
+                     if(seq1.getText().length()>20){
+                         seq1.setText(seq1.getText().substring(0,20));
+                     }
+                     if(seq2.getText().length()>20){
+                         seq2.setText(seq2.getText().substring(0,20));
+                     }
                  } else {
                      if (seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                              && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
@@ -144,8 +152,7 @@ public class MainWindowPanel extends JFrame {
                          mainContainer.add(ajout);
                          mainContainer.revalidate();
                          ajout.revalidate();
-
-
+                         pack();
                      }
                  }
              }
@@ -158,7 +165,15 @@ public class MainWindowPanel extends JFrame {
                      alignement.removeAll();
                      mainContainer.remove(ajout);
                      pack();
-                 } else {
+                 }else if(seq1.getText().length()>20 || seq2.getText().length()>20){
+                     JOptionPane.showMessageDialog(mainContainer,"Error: Maximum length of sequence is 20.");
+                     if(seq1.getText().length()>20){
+                         seq1.setText(seq1.getText().substring(0,20));
+                     }
+                     if(seq2.getText().length()>20){
+                         seq2.setText(seq2.getText().substring(0,20));
+                     }
+                 }else {
                      if (seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
                              && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
                      ) {
@@ -203,6 +218,7 @@ public class MainWindowPanel extends JFrame {
                      mainContainer.add(ajout);
                      mainContainer.revalidate();
                      ajout.revalidate();
+                     pack();
                  }
              }
          });
