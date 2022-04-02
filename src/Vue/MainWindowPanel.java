@@ -126,7 +126,7 @@ public class MainWindowPanel extends JFrame {
                      mainContainer.remove(ajout);
                      pack();
                  }else if(seq1.getText().length()>20 || seq2.getText().length()>20) {
-                     JOptionPane.showMessageDialog(mainContainer, "Error: Maximum length of sequence is 20.");
+                     JOptionPane.showMessageDialog(mainContainer, "Error: Maximum length of sequence is 20 charcaters.","Message",JOptionPane.ERROR_MESSAGE);
                      if(seq1.getText().length()>20){
                          seq1.setText(seq1.getText().substring(0,20));
                      }
@@ -152,7 +152,6 @@ public class MainWindowPanel extends JFrame {
                          mainContainer.add(ajout);
                          mainContainer.revalidate();
                          ajout.revalidate();
-                         pack();
                      }
                  }
              }
@@ -166,7 +165,7 @@ public class MainWindowPanel extends JFrame {
                      mainContainer.remove(ajout);
                      pack();
                  }else if(seq1.getText().length()>20 || seq2.getText().length()>20){
-                     JOptionPane.showMessageDialog(mainContainer,"Error: Maximum length of sequence is 20.");
+                     JOptionPane.showMessageDialog(mainContainer,"Error: Maximum length of sequence is 20 characters.");
                      if(seq1.getText().length()>20){
                          seq1.setText(seq1.getText().substring(0,20));
                      }

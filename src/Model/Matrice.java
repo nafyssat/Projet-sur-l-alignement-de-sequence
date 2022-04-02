@@ -59,29 +59,31 @@ public class Matrice {
     	 int a = (this.grille[i - 1][j - 1]).getValeur();
     	 String s1="<html>";
          if ((this.grille[0][j]).getNuc() == (this.grille[i][0]).getNuc()) {
-        	 
-        	 s1+= " on a fait :"+a+"+"+match+"<br>match";
-        	 a += match;
-             s1+="<br>Score final = "+a;
+             s1+="Score from diagonal cell:<br>"+a+"+"+match+"<br>(Due to a match between <br>"+this.grille[0][j].getNuc()
+                     +"&"+this.grille[i][0].getNuc()+")";
+             a+=match;
+             s1+="="+a;
          } else {
-        	 s1+= " on a fait :"+a+"+"+mismatch+"<br>mismatch";
-        	 a += mismatch;
-             s1+="<br>Score final ="+a;
+             s1+="Score from diagonal cell:<br>"+a+"+"+mismatch+"<br>(Due to a mismatch between <br>"+this.grille[0][j].getNuc()
+                     +"&"+this.grille[i][0].getNuc()+")";
+             a+=mismatch;
+             s1+="="+a;
              
          }
          s[0]=s1;
          String s2="<html>";
-         s2+="on a fait : "+(this.grille[i - 1][j]).getValeur()+"+"+gap+" <br>gap ";
+         s2+="Score from Upper Cell:<br> "+(this.grille[i - 1][j]).getValeur()+"+"+gap+"(the Gap Score)";
          int b = (this.grille[i - 1][j]).getValeur() + gap;
-         s2+="<br>Score final = "+b;
+         s2+="<br>= "+b;
          s[1]=s2;
          String s3="<html>";
-         s3+="on a fait : "+(this.grille[i][j-1]).getValeur()+"+"+gap+"<br>gap";
+         s3+="Score from Side Cell:<br>"+(this.grille[i][j-1]).getValeur()+"+"+gap+" (the Gap Score)";
          int c = (this.grille[i][j-1]).getValeur() + gap;
-         s3+="<br>Score final = "+c;
+         s3+="<br>= "+c;
          s[2]=s3;
          
-         String s4="max = "+this.ValeurCase_Interface(i, j, match, mismatch, gap);
+         String s4="<html>";
+         s4+="Winning (Max) score is: <br>"+this.ValeurCase_Interface(i, j, match, mismatch, gap);
          s[3]=s4;
          return s;
     }

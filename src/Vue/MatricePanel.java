@@ -34,7 +34,7 @@ public class MatricePanel {
      * @return un Jpanel qu'on va ajouter à notre fenêtre principal dans la classe Vue
      */
 
-    public JPanel init(String a, String b, int c, int d, int e) {
+    public JPanel init(String a, String b, int c, int d, int e)  {
     	JPanel droite = new JPanel();
         JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
         
@@ -94,42 +94,19 @@ public class MatricePanel {
                
                 //fenetre expliquant la calcul du score
                
-                	 String [] s =this.Controlleur.getGrillePanel().affCalVal(i,j,c,d,e);
-                	 
+                   String [] s =this.Controlleur.getGrillePanel().affCalVal(i,j,c,d,e);
                 	JFrame fr = new JFrame();
-               	 	fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-               	 	fr.setBackground(Color.blue);
-               	 	fr.setSize(200, 200);
-               	 	
-               	 	JPanel panel_1 = new JPanel();
-             		panel_1.setBackground(Color.WHITE);
-             		
-             		
-             		
-             		
-             		
-             		fr.add(panel_1);
-             		panel_1.setLayout(new GridLayout(2,2,0,0));
-             		
-             		for(int z=0;z<4;z++) {
-             			JPanel jp = new JPanel();
-
-             			jp.setBorder(new EmptyBorder(10, 10, 10, 10));
-                 		jp.setBackground(Color.blue);
-                 		panel_1.add(jp);
-                 		
-             			JLabel jl = new JLabel();
-             			jp.add(jl);
-             			jl.setText(s[z]);
-             			jl.setBounds(0, 0, 200, 100);
-                 		jl.setForeground(Color.white);
-                 		jl.setFont(new Font("Calibri", Font.ITALIC, 20));
-                 		
-             			
-             		}
-             		panel_1.setVisible(true);
-             		
-             	
+                    fr.setLayout(new FlowLayout(FlowLayout.CENTER));
+                    fr.setSize(new Dimension(360,188));
+                    for(int v=0;v<4;v++){
+                        JPanel w=new JPanel();
+                        w.setPreferredSize(new Dimension(170,70));
+                        w.setBackground(Color.BLUE);
+                        JLabel l=new JLabel(s[v]);
+                        l.setFont(new Font("Calibri", Font.BOLD,10));
+                        w.add(l,BorderLayout.CENTER);
+                        fr.add(w,BorderLayout.CENTER);
+                    }
               	 	fr.setVisible(false);
               	 	res[i][j].addMouseListener(new MouseAdapter() {
 
