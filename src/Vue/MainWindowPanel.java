@@ -12,26 +12,27 @@ import java.util.Locale;
 
 import Model.*;
 import Vue.MatricePanel;
-
+import Controler.*;
 
 public class MainWindowPanel extends JFrame {
-    JPanel mainPanel=new JPanel();
-    AlignementPanel align=new AlignementPanel();
+    private MainWindowControler controler=new MainWindowControler();
+    private JPanel mainPanel=new JPanel();
+    private AlignementPanel align=new AlignementPanel();
     private Utilisateur user=new Utilisateur();
-    JPanel alignement=new JPanel();
+    private JPanel alignement=new JPanel();
     private Container mainContainer=this.getContentPane();
     private MatricePanel v=new MatricePanel();
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
     private JPanel ajout = new JPanel();
-    JTextField seq1=new JTextField(28);
-    JTextField seq2=new JTextField(28);
-    JLabel seq1Label=new JLabel("Sequence    1: ");
-    JLabel seq2Label=new JLabel("Sequence    2: ");
-    JButton CustomPath=new JButton("Custom Path");
-    JButton ClearPath=new JButton("Clear Path");
-    JButton OptimisePath=new JButton("Optimal Alignment");
+    private JTextField seq1=new JTextField(28);
+    private JTextField seq2=new JTextField(28);
+    private JLabel seq1Label=new JLabel("Sequence    1: ");
+    private JLabel seq2Label=new JLabel("Sequence    2: ");
+    private JButton CustomPath=new JButton("Custom Path");
+    private JButton ClearPath=new JButton("Clear Path");
+    private JButton OptimisePath=new JButton("Optimal Alignment");
     SpinnerModel modelA = new SpinnerNumberModel(
             1, //valeur initiale
             -500, //valeur minimum
@@ -121,22 +122,23 @@ public class MainWindowPanel extends JFrame {
              @Override
              public void keyReleased(KeyEvent e) {
                  seq1.setText(seq1.getText().toUpperCase());
-                 if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
-                     alignement.removeAll();
-                     mainContainer.remove(ajout);
-                     pack();
-                 }else if(seq1.getText().length()>20 || seq2.getText().length()>20) {
-                     JOptionPane.showMessageDialog(mainContainer, "Error: Maximum length of sequence is 20 charcaters.","Message",JOptionPane.ERROR_MESSAGE);
-                     if(seq1.getText().length()>20){
-                         seq1.setText(seq1.getText().substring(0,20));
-                     }
-                     if(seq2.getText().length()>20){
-                         seq2.setText(seq2.getText().substring(0,20));
-                     }
+                 if (!controler.getsequence().NucleotideValide(seq1.getText()) || !controler.getsequence().NucleotideValide(seq2.getText())) {
+                     JOptionPane.showMessageDialog(mainContainer, "Error: Allowed charcaters are: A, C, T or G.", "Message", JOptionPane.ERROR_MESSAGE);
+                     seq1.setText(seq1.getText().substring(0,seq1.getText().length()-1));
                  } else {
-                     if (seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
-                             && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
-                     ) {
+                     if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
+                         alignement.removeAll();
+                         mainContainer.remove(ajout);
+                         pack();
+                     } else if (seq1.getText().length() > 20 || seq2.getText().length() > 20) {
+                         JOptionPane.showMessageDialog(mainContainer, "Error: Maximum length of sequence is 20 charcaters.", "Message", JOptionPane.ERROR_MESSAGE);
+                         if (seq1.getText().length() > 20) {
+                             seq1.setText(seq1.getText().substring(0, 20));
+                         }
+                         if (seq2.getText().length() > 20) {
+                             seq2.setText(seq2.getText().substring(0, 20));
+                         }
+                     } else {
                          String s1 = seq1.getText().toUpperCase();
                          String s2 = seq2.getText().toUpperCase();
                          mainContainer.remove(ajout);
@@ -155,27 +157,30 @@ public class MainWindowPanel extends JFrame {
                      }
                  }
              }
+
+            // }
          });
          seq2.addKeyListener(new KeyAdapter() {
              @Override
              public void keyReleased(KeyEvent e) {
                  seq2.setText(seq2.getText().toUpperCase());
-                 if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
-                     alignement.removeAll();
-                     mainContainer.remove(ajout);
-                     pack();
-                 }else if(seq1.getText().length()>20 || seq2.getText().length()>20){
-                     JOptionPane.showMessageDialog(mainContainer,"Error: Maximum length of sequence is 20 characters.");
-                     if(seq1.getText().length()>20){
-                         seq1.setText(seq1.getText().substring(0,20));
-                     }
-                     if(seq2.getText().length()>20){
-                         seq2.setText(seq2.getText().substring(0,20));
-                     }
-                 }else {
-                     if (seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
-                             && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
-                     ) {
+                 if (!controler.getsequence().NucleotideValide(seq1.getText()) || !controler.getsequence().NucleotideValide(seq2.getText())) {
+                     JOptionPane.showMessageDialog(mainContainer, "Error: Allowed charcaters are: A, C, T or G.", "Message", JOptionPane.ERROR_MESSAGE);
+                     seq2.setText(seq2.getText().substring(0, seq2.getText().length() - 1));
+                 } else {
+                     if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
+                         alignement.removeAll();
+                         mainContainer.remove(ajout);
+                         pack();
+                     } else if (seq1.getText().length() > 20 || seq2.getText().length() > 20) {
+                         JOptionPane.showMessageDialog(mainContainer, "Error: Maximum length of sequence is 20 characters.");
+                         if (seq1.getText().length() > 20) {
+                             seq1.setText(seq1.getText().substring(0, 20));
+                         }
+                         if (seq2.getText().length() > 20) {
+                             seq2.setText(seq2.getText().substring(0, 20));
+                         }
+                     } else {
                          String s1 = seq1.getText().toUpperCase();
                          String s2 = seq2.getText().toUpperCase();
                          mainContainer.remove(ajout);
