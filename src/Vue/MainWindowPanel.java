@@ -1,4 +1,5 @@
 package Vue;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -8,6 +9,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.InvalidPathException;
 import java.util.Locale;
 
 import Model.*;
@@ -16,6 +21,7 @@ import Controler.*;
 
 public class MainWindowPanel extends JFrame {
     private MainWindowControler controler=new MainWindowControler();
+    private HelpPanel help=new HelpPanel();
     private JPanel mainPanel=new JPanel();
     private AlignementPanel align=new AlignementPanel();
     private Utilisateur user=new Utilisateur();
@@ -117,6 +123,12 @@ public class MainWindowPanel extends JFrame {
                  this.pack();
              }
          });*/
+        /* ImageIcon img=new ImageIcon("/home/montassar/projet-ar1/src/Image/point2.png");
+         JButton im=new JButton(img);
+         im.setPreferredSize(new Dimension(20,20));
+         alignement.add(im,BorderLayout.WEST);
+         im.addActionListener(e -> help.setVisible(true));*/
+
 
          seq1.addKeyListener(new KeyAdapter() {
              @Override
@@ -154,6 +166,7 @@ public class MainWindowPanel extends JFrame {
                          mainContainer.add(ajout);
                          mainContainer.revalidate();
                          ajout.revalidate();
+                         ajout.repaint();
                      }
                  }
              }
@@ -196,6 +209,7 @@ public class MainWindowPanel extends JFrame {
                          mainContainer.add(ajout);
                          mainContainer.revalidate();
                          ajout.revalidate();
+                         ajout.repaint();
                      }
                  }
              }
