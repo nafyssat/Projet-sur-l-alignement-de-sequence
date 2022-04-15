@@ -103,28 +103,28 @@ public class MainWindowPanel extends JFrame {
          this.mainContainer.add(alignement);
          this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
 
-       /* OptimisePath.addActionListener(e -> {
+        OptimisePath.addActionListener(e -> {
+                    if (seq1.getText().length() != 0 && seq2.getText().length() != 0) {
+                        String s1 = seq1.getText().toUpperCase();
+                        String s2 = seq2.getText().toUpperCase();
+                        mainContainer.remove(ajout);
+                        mainContainer.remove(alignement);
+                        ajout.removeAll();
+                        alignement.removeAll();
+                        ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                        alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                        alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                        alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                        ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                        mainContainer.add(alignement);
+                        mainContainer.add(ajout);
+                        mainContainer.revalidate();
+                        ajout.revalidate();
+                        ajout.repaint();
+                    }
+                });
 
-             if (user.sequence(seq1.getText()) == true && seq1.getText().length() <= 20  //Ici je n'ai pas trouvé une méthode
-                     && user.sequence(seq2.getText()) == true && seq2.getText().length() <= 20 //Pour appeler la méthode seqeunceValide()
-             ) {
-                 String s1=seq1.getText().toUpperCase();
-                 String s2= seq2.getText().toUpperCase();
-                 mainContainer.remove(ajout);
-                 mainContainer.remove(alignement);
-                 ajout.removeAll();
-                 alignement.removeAll();
-                 ajout=v.init(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                 alignement=align.Align(s1,s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                 alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                 alignement.setPreferredSize(new Dimension(770,131));
-                 ajout.setPreferredSize(new Dimension(58*(s2.length()+2),25*(s1.length()+2)));
-                 mainContainer.add(alignement);
-                 mainContainer.add(ajout);
-                 mainContainer.revalidate();
-                 this.pack();
-             }
-         });*/
+
          JLabel h=new JLabel("For more details, click here!");
          alignement.setLayout(new BorderLayout());
          Font font = h.getFont();
