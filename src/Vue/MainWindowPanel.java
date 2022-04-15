@@ -5,15 +5,14 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.*;
+import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.InvalidPathException;
 import java.util.Locale;
+import java.util.Map;
 
 import Model.*;
 import Vue.MatricePanel;
@@ -32,8 +31,8 @@ public class MainWindowPanel extends JFrame {
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
     private JPanel ajout = new JPanel();
-    private JTextField seq1=new JTextField(28);
-    private JTextField seq2=new JTextField(28);
+    private JTextField seq1=new JTextField(29);
+    private JTextField seq2=new JTextField(29);
     private JLabel seq1Label=new JLabel("Sequence    1: ");
     private JLabel seq2Label=new JLabel("Sequence    2: ");
     private JButton CustomPath=new JButton("Custom Path");
@@ -76,6 +75,9 @@ public class MainWindowPanel extends JFrame {
          CustomPath.setPreferredSize(new Dimension(125,20));//20/157
          ClearPath.setPreferredSize(new Dimension(118,20));//157
          OptimisePath.setPreferredSize(new Dimension(173,20));//320
+         Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+         int hauteur = (int)tailleEcran.getHeight();
+         int largeur = (int)tailleEcran.getWidth();
          this.mainPanel.add(seq1Label);
          this.mainPanel.add(seq1);
          this.mainPanel.add(seq2Label);
@@ -95,7 +97,7 @@ public class MainWindowPanel extends JFrame {
          //this.mainPanel.setBorder(BorderFactory.createTitledBorder("Paramètres"));
          this.mainPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1));
          alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-         alignement.setPreferredSize(new Dimension(770,131));
+         alignement.setPreferredSize(new Dimension((largeur-596),131));
          this.mainContainer.setLayout(new FlowLayout(FlowLayout.LEFT));
          this.mainContainer.add(mainPanel);
          this.mainContainer.add(alignement);
@@ -123,11 +125,22 @@ public class MainWindowPanel extends JFrame {
                  this.pack();
              }
          });*/
-        /* ImageIcon img=new ImageIcon("/home/montassar/projet-ar1/src/Image/point2.png");
-         JButton im=new JButton(img);
-         im.setPreferredSize(new Dimension(20,20));
-         alignement.add(im,BorderLayout.WEST);
-         im.addActionListener(e -> help.setVisible(true));*/
+         JLabel h=new JLabel("For more details, click here!");
+         alignement.setLayout(new BorderLayout());
+         Font font = h.getFont();
+         Map attributes = font.getAttributes();
+         attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+         h.setFont(font.deriveFont(attributes));
+         h.setForeground(new Color(0,0,255));
+
+         alignement.add(h,BorderLayout.NORTH);
+         h.addMouseListener(new MouseAdapter() {
+             @Override
+             public void mouseClicked(MouseEvent e) {
+                 help.setVisible(true);
+             }
+         });
+
 
 
          seq1.addKeyListener(new KeyAdapter() {
@@ -140,6 +153,21 @@ public class MainWindowPanel extends JFrame {
                  } else {
                      if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
                          alignement.removeAll();
+                         JLabel h=new JLabel("For more details, click here!");
+                         alignement.setLayout(new BorderLayout());
+                         Font font = h.getFont();
+                         Map attributes = font.getAttributes();
+                         attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+                         h.setFont(font.deriveFont(attributes));
+                         h.setForeground(new Color(0,0,255));
+
+                         alignement.add(h,BorderLayout.NORTH);
+                         h.addMouseListener(new MouseAdapter() {
+                             @Override
+                             public void mouseClicked(MouseEvent e) {
+                                 help.setVisible(true);
+                             }
+                         });
                          mainContainer.remove(ajout);
                          pack();
                      } else if (seq1.getText().length() > 20 || seq2.getText().length() > 20) {
@@ -160,7 +188,7 @@ public class MainWindowPanel extends JFrame {
                          ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                          alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                          alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                         alignement.setPreferredSize(new Dimension(770, 131));
+                         alignement.setPreferredSize(new Dimension((largeur-596), 131));
                          ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
                          mainContainer.add(alignement);
                          mainContainer.add(ajout);
@@ -183,6 +211,21 @@ public class MainWindowPanel extends JFrame {
                  } else {
                      if (seq1.getText().length() == 0 && seq2.getText().length() == 0) {
                          alignement.removeAll();
+                         JLabel h=new JLabel("For more details, click here!");
+                         alignement.setLayout(new BorderLayout());
+                         Font font = h.getFont();
+                         Map attributes = font.getAttributes();
+                         attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+                         h.setFont(font.deriveFont(attributes));
+                         h.setForeground(new Color(0,0,255));
+
+                         alignement.add(h,BorderLayout.NORTH);
+                         h.addMouseListener(new MouseAdapter() {
+                             @Override
+                             public void mouseClicked(MouseEvent e) {
+                                 help.setVisible(true);
+                             }
+                         });
                          mainContainer.remove(ajout);
                          pack();
                      } else if (seq1.getText().length() > 20 || seq2.getText().length() > 20) {
@@ -203,7 +246,7 @@ public class MainWindowPanel extends JFrame {
                          ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                          alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                          alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                         alignement.setPreferredSize(new Dimension(770, 131));
+                         alignement.setPreferredSize(new Dimension((largeur-596), 131));
                          ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
                          mainContainer.add(alignement);
                          mainContainer.add(ajout);
@@ -230,7 +273,7 @@ public class MainWindowPanel extends JFrame {
                      ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                     alignement.setPreferredSize(new Dimension(770, 131));
+                     alignement.setPreferredSize(new Dimension((largeur-596), 131));
                      ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
                      mainContainer.add(alignement);
                      mainContainer.add(ajout);
@@ -256,7 +299,7 @@ public class MainWindowPanel extends JFrame {
                      ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                     alignement.setPreferredSize(new Dimension(770, 131));
+                     alignement.setPreferredSize(new Dimension((largeur-596), 131));
                      ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
                      mainContainer.add(alignement);
                      mainContainer.add(ajout);
@@ -281,7 +324,7 @@ public class MainWindowPanel extends JFrame {
                      ajout = v.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                     alignement.setPreferredSize(new Dimension(770, 131));
+                     alignement.setPreferredSize(new Dimension((largeur-596), 131));
                      ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
                      mainContainer.add(alignement);
                      mainContainer.add(ajout);

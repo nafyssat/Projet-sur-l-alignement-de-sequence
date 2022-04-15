@@ -15,15 +15,15 @@ public class HelpPanel extends JFrame {
         JPanel b=new JPanel();
         JLabel titre=new JLabel("<html><h1>Global Sequence Alignement:</h1><br>" +
                 "Here we present an interactive example of the Needleman-Wunsch global alignment algorithm.");
-        JLabel contenu=new JLabel("<html>The purpose of this interface is" +
+        JLabel contenu=new JLabel("<html>-The purpose of this interface is" +
                 " to visually illustrate how the alignment matrix is constructed and how the Needleman-Wunsch dynamic programing algorithm fills " +
                 "this matrix based on user defined Match, Mismatch and Gap Scores.<br>Experiment by changing the various Scores, altering the two Sequences and noting how the alignment " +
                 "matrix values, trace back alignment path (in red), and overall alignment score change.");
-        JLabel contenu3=new JLabel("<html><br>Mousing over the matrix itself will show you how the individual values are calculated (based on the highlighted scores in the previous 3 cells of the matrix " +
+        JLabel contenu3=new JLabel("<html><br>-Mousing over the matrix itself will show you how the individual values are calculated (based on the highlighted scores in the previous 3 cells of the matrix " +
                 "and how different paths through the matrix translate into the final alignment." +
                 "<br>Finally, you can also construct a 'Custom Path' through the matrix by selecting the 'Custom Path' button and clicking on a connected series individual matrix cells to see how your trace back path through the" +
                 " matrix translates into a particular alignment with various path dependent matches, mismatches and gaps.");
-        JLabel contenu4=new JLabel("<html>For more informations, we invite you to visit this website: <br>"+
+        JLabel contenu4=new JLabel("<html>=>For more informations, we invite you to visit this website: <br>"+
         "https://fr.wikipedia.org/wiki/Alignement_de_s%C3%A9quences");
         contenu.setFont(new Font("Italic", Font.BOLD,12));
         contenu4.setForeground(new Color(0,0,255));
@@ -38,7 +38,6 @@ public class HelpPanel extends JFrame {
         b.add(d,BorderLayout.CENTER);
         this.add(a);
         this.add(b);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 
     public static void main(String[]args){
