@@ -6,10 +6,15 @@ import Model.Utilisateur;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.font.TextAttribute;
 import java.util.Locale;
+import java.util.Map;
 
 public class AlignementPanel {
     private Utilisateur user=new Utilisateur();
+    private HelpPanel help=new HelpPanel();
     private MainWindowControler controlleur=new MainWindowControler();
 
     public JPanel Align(String a, String b, int c, int d, int e){
@@ -31,17 +36,27 @@ public class AlignementPanel {
                 n += String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
             }
         }
+
         JTextArea labelArea = new JTextArea("\n"+m+"\n"+n+"\n"+"\n"+x[2]);
         labelArea.setFont(labelArea.getFont().deriveFont(Font.BOLD));
 
         labelArea.setEditable(false);
         labelArea.setOpaque(false);
         JPanel AL=new JPanel();
-        /*JLabel one=new JLabel(m+"<html></br></html>");
-        JLabel two=new JLabel(n);
-        AL.add(one);
-        AL.add(two);*/
         AL.setLayout(new BorderLayout());
+        JLabel h=new JLabel("For more details, click here!");
+        Font font = h.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        h.setFont(font.deriveFont(attributes));
+        h.setForeground(new Color(0,0,255));
+        AL.add(h,BorderLayout.NORTH);
+        h.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                help.setVisible(true);
+            }
+        });
         AL.add(labelArea,BorderLayout.WEST);
         return AL;
 
