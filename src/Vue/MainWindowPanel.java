@@ -135,11 +135,11 @@ public class MainWindowPanel extends JFrame {
                 ajout.removeAll();
                 alignement.removeAll();
                 ajout = cl.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                //alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                //alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                //alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                alignement = align.clearpath();
+                alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                alignement.setPreferredSize(new Dimension((largeur - 596), 131));
                 ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
-                //mainContainer.add(alignement);
+                mainContainer.add(alignement);
                 mainContainer.add(ajout);
                 mainContainer.revalidate();
                 ajout.revalidate();

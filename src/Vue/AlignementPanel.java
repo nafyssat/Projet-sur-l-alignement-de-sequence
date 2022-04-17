@@ -61,7 +61,17 @@ public class AlignementPanel {
         return AL;
 
 
+
+
     }
+
+    public JPanel clearpath() {
+        AlignementPanel n = new AlignementPanel();
+       JPanel p =  n.Align("","",0,0,0);
+        return p;
+    }
+
+
     public static void main(String[]args){
         AlignementPanel vv=new AlignementPanel();
         JPanel n=vv.Align("agt","gttc",1,1,-2);
