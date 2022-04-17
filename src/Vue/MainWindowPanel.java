@@ -27,6 +27,8 @@ public class MainWindowPanel extends JFrame {
     private JPanel alignement=new JPanel();
     private Container mainContainer=this.getContentPane();
     private MatricePanel v=new MatricePanel();
+
+    private MatricePanelClear cl = new MatricePanelClear();
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
@@ -101,7 +103,7 @@ public class MainWindowPanel extends JFrame {
          this.mainContainer.setLayout(new FlowLayout(FlowLayout.LEFT));
          this.mainContainer.add(mainPanel);
          this.mainContainer.add(alignement);
-         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
+        // this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
 
         OptimisePath.addActionListener(e -> {
                     if (seq1.getText().length() != 0 && seq2.getText().length() != 0) {
@@ -123,6 +125,27 @@ public class MainWindowPanel extends JFrame {
                         ajout.repaint();
                     }
                 });
+
+        ClearPath.addActionListener(e -> {
+            if (seq1.getText().length() != 0 && seq2.getText().length() != 0) {
+                String s1 = seq1.getText().toUpperCase();
+                String s2 = seq2.getText().toUpperCase();
+                mainContainer.remove(ajout);
+                mainContainer.remove(alignement);
+                ajout.removeAll();
+                alignement.removeAll();
+                ajout = cl.init(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                //alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                //alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                //alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                //mainContainer.add(alignement);
+                mainContainer.add(ajout);
+                mainContainer.revalidate();
+                ajout.revalidate();
+                ajout.repaint();
+            }
+        });
 
 
          JLabel h=new JLabel("For more details, click here!");
