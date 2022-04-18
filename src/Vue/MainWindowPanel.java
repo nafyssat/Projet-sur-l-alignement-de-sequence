@@ -1,4 +1,5 @@
 package Vue;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -166,16 +167,16 @@ public class MainWindowPanel extends JFrame {
                      ajout = v.initClear(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
                      alignement = align.clearpath();
                      alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                     alignement.setPreferredSize(new Dimension((largeur - 596), 131));
-                     ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
-                     mainContainer.add(alignement);
-                     mainContainer.add(ajout);
-                     mainContainer.revalidate();
-                     ajout.revalidate();
-                     ajout.repaint();
+                    // alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                    // ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                      mainContainer.add(alignement);
+                      mainContainer.add(ajout);
+                    // mainContainer.revalidate();
+                    // ajout.revalidate();
+                    // ajout.repaint();
 
 
-                     v.custom_path(s1, s2, v.getMatrice());  //Cette méthode est appel dans la classe MatricePanel
+                     v.custom_path(s1, s2, v.getMatrice());  //Cette méthode fait appel à la méthode custom_path de la classe MatricePanel
 
 
                      //Appel au bouton compute alignement//
