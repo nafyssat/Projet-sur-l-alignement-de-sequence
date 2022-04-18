@@ -354,7 +354,7 @@ public class MatricePanel {
      * @param a sequence 1
      * @param b sequence 2
      * Cette fonction va remettre seulement les Jboutons de la matrices à la couleur blanches (seulement les JButtons
-     * qui ont des entiers        
+     * qui ont des entiers
      *
      */
     public void clearMatrice(JButton [][] m, String a, String b) {
@@ -404,6 +404,7 @@ public class MatricePanel {
      */
     public void custom_path(String a, String b,JButton [][] matrice){
 
+        clearMatrice(matrice,a,b);
 
         for(int i=1;i<a.length()+2;i++) {
             for(int j=1;j<b.length()+2;j++) {
