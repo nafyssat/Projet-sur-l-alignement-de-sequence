@@ -150,7 +150,7 @@ public class MainWindowPanel extends JFrame {
          /* Ici nous faisons une lambda expressions pour le boutons custom path
           */
 
-         CustomPath.addActionListener(new ActionListener() {
+       /*  CustomPath.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
 
 
@@ -168,7 +168,7 @@ public class MainWindowPanel extends JFrame {
                  }
              }
          });
-
+*/
 
 
          JLabel h=new JLabel("For more details, click here!");
