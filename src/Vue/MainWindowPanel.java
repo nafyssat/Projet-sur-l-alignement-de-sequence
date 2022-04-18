@@ -126,7 +126,7 @@ public class MainWindowPanel extends JFrame {
                 });
 
         ClearPath.addActionListener(e -> {
-            if (seq1.getText().length() != 0 && seq2.getText().length() != 0) {
+            if (seq1.getText().length() != 0 || seq2.getText().length() != 0) {
                 String s1 = seq1.getText().toUpperCase();
                 String s2 = seq2.getText().toUpperCase();
                 mainContainer.remove(ajout);

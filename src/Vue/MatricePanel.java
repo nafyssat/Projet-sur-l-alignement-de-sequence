@@ -182,6 +182,9 @@ public class MatricePanel {
 
 
     public JPanel initClear(String a, String b, int c, int d, int e) {
+
+
+
         JPanel droite = new JPanel();
         JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
 
