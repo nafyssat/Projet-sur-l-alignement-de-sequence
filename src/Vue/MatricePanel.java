@@ -21,6 +21,8 @@ import Controler.*;
 public class MatricePanel {
     private Utilisateur user = new Utilisateur();
     private MainWindowControler Controlleur = new MainWindowControler();
+    private JButton compteur;
+    JButton [][] matrice;
 
 
     // Interface //
@@ -339,4 +341,80 @@ public class MatricePanel {
 
         return droite;
     }
+
+    //Custom path
+
+    public JButton [][] getMatrice(){
+        return this.matrice;
+    }
+
+    /**
+     *
+     * @param m
+     * @param i index de la matrice à la position i(ligne)
+     * @param j index de la matrice à la position j (colonne)
+     * Ici on veut vérifier si dans les Jbutton autours de celui de l'index i, j . On veut
+     * vérifier s'il y'en a qu'ils sont selectionnés , pour que le chemin puisse être cyclique.
+     * Cependant les fonctions isSelected() et doClick() veulent des valeurs final.
+     */
+    public void calcule_adjacence(JButton [][] m, int i, int j ) {
+        m[i][j].addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+
+                if (m[i-1][j].isSelected() || m[i+1][j].isSelected() || m[i][j-1].isSelected()||
+                        m[i][j+1].isSelected() || m[i-1][j-1].isSelected() || m[i+1][j+1].isSelected() ||
+                        m[i-1][j+1].isSelected() || m[i+1][j-1].isSelected()) {
+
+
+                    m[i][j].setForeground(Color.red);
+                    m[i][j].setSelected(true);
+
+
+                }
+            }
+        });
+
+    }
+
+
+    /**
+     *
+     * @param a sequence 1
+     * @param b sequence 2
+     * @param matrice
+     * Nous allons choisir un chemin en partens de la fin.
+     */
+    public void custom_path(String a, String b,JButton [][] matrice){
+
+
+        for(int i=1;i<a.length()+2;i++) {
+            for(int j=1;j<b.length()+2;j++) {
+                int v1=i;
+                int v2=j;
+
+
+                matrice[i][j].addActionListener(new ActionListener() {
+
+                    public void actionPerformed(ActionEvent e) {
+
+                        compteur=matrice[v1][v2];
+
+                        calcule_adjacence(matrice,a.length(),b.length());
+
+                        matrice[a.length()+1][b.length()+1].setForeground(Color.red);
+                        matrice[a.length()+1][b.length()+1].setSelected(true);
+
+                        calcule_adjacence(matrice, v1,v2);
+
+                        int p=0;
+                        int s=0;
+
+                    }
+
+                });
+
+            }
+        }
+    }
+
 }

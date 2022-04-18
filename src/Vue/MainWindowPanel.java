@@ -146,6 +146,55 @@ public class MainWindowPanel extends JFrame {
             }
         });
 
+         /* Ici nous faisons une lambda expressions pour le boutons custom path
+          */
+
+         CustomPath.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+
+
+                 String s1=seq1.getText().toUpperCase();
+                 String s2= seq2.getText().toUpperCase();
+
+                 if(s1.length() > 0 && s2.length() > 0) {
+
+                     //Appel au bouton clear path//
+                     mainContainer.remove(ajout);
+                     mainContainer.remove(alignement);
+                     ajout.removeAll();
+                     alignement.removeAll();
+                     ajout = v.initClear(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                     alignement = align.clearpath();
+                     alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                     alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                     ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                     mainContainer.add(alignement);
+                     mainContainer.add(ajout);
+                     mainContainer.revalidate();
+                     ajout.revalidate();
+                     ajout.repaint();
+
+
+                     v.custom_path(s1, s2, v.getMatrice());  //Cette méthode est appel dans la classe MatricePanel
+
+
+                     //Appel au bouton compute alignement//
+                     alignement = align.Align(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                     alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                     alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                     ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                     mainContainer.add(alignement);
+                     mainContainer.add(ajout);
+                     mainContainer.revalidate();
+                     ajout.revalidate();
+                     ajout.repaint();
+
+
+                 }
+             }
+         });
+
+
 
          JLabel h=new JLabel("For more details, click here!");
          alignement.setLayout(new BorderLayout());
