@@ -25,6 +25,7 @@ public class MatricePanel {
     JButton [][] matrice;
 
 
+
     // Interface //
 
     /**
@@ -402,9 +403,11 @@ public class MatricePanel {
      * @param matrice
      * Nous allons choisir un chemin en partens de la fin.
      */
-    public void custom_path(String a, String b,JButton [][] matrice){
+    public void custom_path(String a, String b,JButton [][] matrice,  AlignementPanel align,  int ma, int mi, int gap){
 
         clearMatrice(matrice,a,b);
+
+        align.setAlignement(align.clearpath());
 
         for(int i=1;i<a.length()+2;i++) {
             for(int j=1;j<b.length()+2;j++) {
@@ -425,6 +428,8 @@ public class MatricePanel {
                         matrice[a.length()+1][b.length()+1].setSelected(true);
 
                         calcule_adjacence(matrice, v1,v2);
+
+                        align.setAlignement(align.Align(a,b,ma,mi,gap));
 
 
                     }

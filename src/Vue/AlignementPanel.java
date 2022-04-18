@@ -16,6 +16,14 @@ public class AlignementPanel {
     private Utilisateur user=new Utilisateur();
     private HelpPanel help=new HelpPanel();
     private MainWindowControler controlleur=new MainWindowControler();
+    private JPanel alignement=new JPanel();
+
+    public JPanel setAlignement(JPanel a){
+        return this.alignement=a;
+    }
+    public JPanel getAlignement(){
+        return this.alignement;
+    }
 
     public JPanel Align(String a, String b, int c, int d, int e){
         Case[][] g=this.controlleur.getGrillePanel().initialiser_Grille_Interface(a, b, c, d, e);
@@ -58,6 +66,8 @@ public class AlignementPanel {
             }
         });
         AL.add(labelArea,BorderLayout.WEST);
+
+        this.alignement=AL;
         return AL;
 
 
