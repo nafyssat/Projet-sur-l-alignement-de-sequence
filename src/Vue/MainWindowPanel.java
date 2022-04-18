@@ -28,7 +28,6 @@ public class MainWindowPanel extends JFrame {
     private Container mainContainer=this.getContentPane();
     private MatricePanel v=new MatricePanel();
 
-    private MatricePanelClear cl = new MatricePanelClear();
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
