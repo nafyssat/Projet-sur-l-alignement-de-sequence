@@ -362,7 +362,6 @@ public class MatricePanel {
             for(int j=1;j<b.length()+2;j++) {
                 m[i][j].setSelected(false);
                 m[i][j].setBackground(Color.white);
-                m[i][j].setForeground(Color.orange);
             }
         }
     }
@@ -385,6 +384,7 @@ public class MatricePanel {
 
 
                     m[i][j].setForeground(Color.red);
+                    m[i][j].setBackground(Color.red);
                     m[i][j].setSelected(true);
 
 
@@ -421,12 +421,11 @@ public class MatricePanel {
                         calcule_adjacence(matrice,a.length(),b.length());
 
                         matrice[a.length()+1][b.length()+1].setForeground(Color.red);
+                        matrice[a.length()+1][b.length()+1].setBackground(Color.red);
                         matrice[a.length()+1][b.length()+1].setSelected(true);
 
                         calcule_adjacence(matrice, v1,v2);
 
-                        int p=0;
-                        int s=0;
 
                     }
 

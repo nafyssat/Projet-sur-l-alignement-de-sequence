@@ -159,22 +159,6 @@ public class MainWindowPanel extends JFrame {
 
                  if(s1.length() > 0 && s2.length() > 0) {
 
-                     //Appel au bouton clear path//
-                     mainContainer.remove(ajout);
-                     mainContainer.remove(alignement);
-                     ajout.removeAll();
-                     alignement.removeAll();
-                     ajout = v.initClear(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                     alignement = align.clearpath();
-                     alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
-                    // alignement.setPreferredSize(new Dimension((largeur - 596), 131));
-                    // ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
-                      mainContainer.add(alignement);
-                      mainContainer.add(ajout);
-                    // mainContainer.revalidate();
-                    // ajout.revalidate();
-                    // ajout.repaint();
-
 
                      v.custom_path(s1, s2, v.getMatrice());  //Cette méthode fait appel à la méthode custom_path de la classe MatricePanel
 
