@@ -70,7 +70,7 @@ public class AlignementPanel {
         });
         AL.add(labelArea,BorderLayout.WEST);
 
-        this.alignement=AL;
+        //this.alignement=AL;
         return AL;
 
 
