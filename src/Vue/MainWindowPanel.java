@@ -103,7 +103,7 @@ public class MainWindowPanel extends JFrame {
          this.mainContainer.setLayout(new FlowLayout(FlowLayout.LEFT));
          this.mainContainer.add(mainPanel);
          this.mainContainer.add(alignement);
-        // this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
+         this.getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4,4,4, Color.GREEN));
 
         OptimisePath.addActionListener(e -> {
                     if (seq1.getText().length() != 0 && seq2.getText().length() != 0) {
