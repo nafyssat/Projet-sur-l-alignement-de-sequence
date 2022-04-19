@@ -401,9 +401,9 @@ public class MatricePanel {
      * @param a sequence 1
      * @param b sequence 2
      * @param matrice
-     * Nous allons choisir un chemin en partens de la fin.
+     * Nous allons choisir un chemin en partant de la fin.
      */
-    public void custom_path(String a, String b,JButton [][] matrice,  AlignementPanel align,  int ma, int mi, int gap){
+   /* public void custom_path(String a, String b,JButton [][] matrice,  AlignementPanel align,  int ma, int mi, int gap){
 
         clearMatrice(matrice,a,b);
 
@@ -437,7 +437,9 @@ public class MatricePanel {
                 });
 
             }
+            
         }
+        
     }
-
+*/
 }
