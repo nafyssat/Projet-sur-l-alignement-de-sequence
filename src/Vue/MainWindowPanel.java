@@ -1,4 +1,5 @@
 package Vue;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -27,6 +28,7 @@ public class MainWindowPanel extends JFrame {
     private JPanel alignement=new JPanel();
     private Container mainContainer=this.getContentPane();
     private MatricePanel v=new MatricePanel();
+
     private JLabel match=new JLabel("Match");
     private JLabel mismatch=new JLabel("Mismatch");
     private JLabel gap=new JLabel("Gap");
@@ -123,6 +125,50 @@ public class MainWindowPanel extends JFrame {
                         ajout.repaint();
                     }
                 });
+
+        ClearPath.addActionListener(e -> {
+            if (seq1.getText().length() != 0 || seq2.getText().length() != 0) {
+                String s1 = seq1.getText().toUpperCase();
+                String s2 = seq2.getText().toUpperCase();
+                mainContainer.remove(ajout);
+                mainContainer.remove(alignement);
+                ajout.removeAll();
+                alignement.removeAll();
+                ajout = v.initClear(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                alignement = align.clearpath();
+                alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                mainContainer.add(alignement);
+                mainContainer.add(ajout);
+                mainContainer.revalidate();
+                ajout.revalidate();
+                ajout.repaint();
+            }
+        });
+
+         /* Ici nous faisons une lambda expressions pour le boutons custom path
+          */
+
+       /*  CustomPath.addActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent e) {
+
+
+                 String s1=seq1.getText().toUpperCase();
+                 String s2= seq2.getText().toUpperCase();
+
+                 if(s1.length() > 0 && s2.length() > 0) {
+
+
+                     alignement=align.getAlignement();
+
+                     v.custom_path(s1, s2, v.getMatrice(),align , (int) a.getValue(), (int) b.getValue() , (int) c.getValue());
+
+
+                 }
+             }
+         });
+*/
 
 
          JLabel h=new JLabel("For more details, click here!");

@@ -17,6 +17,17 @@ public class AlignementPanel {
     private HelpPanel help=new HelpPanel();
     private MainWindowControler controlleur=new MainWindowControler();
 
+    //Partie custom path
+    /*private JPanel alignement=new JPanel();
+
+    public JPanel setAlignement(JPanel a){
+        return this.alignement=a;
+    }
+    public JPanel getAlignement(){
+        return this.alignement;
+    }
+    */
+
     public JPanel Align(String a, String b, int c, int d, int e){
         Case[][] g=this.controlleur.getGrillePanel().initialiser_Grille_Interface(a, b, c, d, e);
         String[]x=controlleur.getGrillePanel().afficher_alignement_Inter(a,b,c,d,e);
@@ -58,10 +69,22 @@ public class AlignementPanel {
             }
         });
         AL.add(labelArea,BorderLayout.WEST);
+
+        //this.alignement=AL;
         return AL;
 
 
+
+
     }
+
+    public JPanel clearpath() {
+        AlignementPanel n = new AlignementPanel();
+       JPanel p =  n.Align("","",0,0,0);
+        return p;
+    }
+
+
     public static void main(String[]args){
         AlignementPanel vv=new AlignementPanel();
         JPanel n=vv.Align("agt","gttc",1,1,-2);
