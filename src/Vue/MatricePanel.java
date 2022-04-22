@@ -21,8 +21,12 @@ import Controler.*;
 public class MatricePanel {
     private Utilisateur user = new Utilisateur();
     private MainWindowControler Controlleur = new MainWindowControler();
-    private JButton compteur;
-    JButton [][] matrice;
+    private JButton [][] matrice;
+    private JPanel droite=new JPanel();
+    private boolean custom;
+    private AlignementPanel alignement=new AlignementPanel();
+
+
 
 
 
@@ -37,9 +41,8 @@ public class MatricePanel {
      * @return un Jpanel qu'on va ajouter à notre fenêtre principal dans la classe Vue
      */
 
-    public JPanel init(String a, String b, int c, int d, int e) {
-        JPanel droite = new JPanel();
-        JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
+    public JPanel init(String a, String b, int c, int d, int e) { 
+        JButton [][] res = new JButton[a.length() + 2][b.length() + 2];
 
         droite.setPreferredSize(new Dimension(20 * (a.length() + 2), 20 * (b.length() + 2)));
 
@@ -180,6 +183,7 @@ public class MatricePanel {
         res[1][1].setBackground(Color.green);
 
 
+        this.matrice=res;
         return droite;
     }
 
@@ -345,9 +349,7 @@ public class MatricePanel {
 
     //Custom path
 
-    public JButton [][] getMatrice(){
-        return this.matrice;
-    }
+
 
     /**
      *
@@ -358,11 +360,11 @@ public class MatricePanel {
      * qui ont des entiers
      *
      */
-    public void clearMatrice(JButton [][] m, String a, String b) {
-        for(int i=1;i<a.length()+2;i++) {
-            for(int j=1;j<b.length()+2;j++) {
-                m[i][j].setSelected(false);
-                m[i][j].setBackground(Color.white);
+    public void clearMatrice( String a, String b) {
+        for(int i=2;i<a.length()+2;i++) {
+            for(int j=2;j<b.length()+2;j++) {
+                
+                matrice[i][j].setBackground(Color.white);
             }
         }
     }
