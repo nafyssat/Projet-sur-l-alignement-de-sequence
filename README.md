@@ -20,18 +20,24 @@ Ce projet a été réliasé pour le module de Projet de Programmation en Deuxiè
 
 
 # Utilisation
-## Récupérer le projet :
+### Récupérer le projet :
 1- Cloner le projet depuis le dépot distant:
 
-SSH: git clone git@gaufre.informatique.univ-paris-diderot.fr:projet-s4/projet-ar1.git
+SSH: 
+```
+git clone git@gaufre.informatique.univ-paris-diderot.fr:projet-s4/projet-ar1.git
+```
 
-HTTP: git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/projet-ar1.git
+HTTP: 
+```
+git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/projet-ar1.git
+```
 
 2-Naviguer dans le dossier cloné:
-
+```
 cd projet-ar1
-
-## Build le projet:
+```
+### Build le projet:
 
 
 
