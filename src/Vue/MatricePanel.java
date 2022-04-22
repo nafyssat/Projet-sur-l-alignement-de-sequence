@@ -24,10 +24,7 @@ public class MatricePanel {
     private JButton [][] matrice;
     private JPanel droite=new JPanel();
     private boolean custom;
-    private AlignementPanel alignement=new AlignementPanel();
-
-
-
+   
 
 
     // Interface //
