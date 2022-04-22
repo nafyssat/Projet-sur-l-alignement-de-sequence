@@ -36,6 +36,29 @@ public class MainWindowPanel extends JFrame {
          this.setExtendedState(this.MAXIMIZED_BOTH);
          this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
+         ImageIcon icon = new ImageIcon("/home/montassar/projet-ar1/src/Image/ADN.gif");
+       /*  JOptionPane.showMessageDialog(
+                 null,
+                 "Welcome to Global Sequence Alignmenet Interface!",
+                 "Hello", JOptionPane.INFORMATION_MESSAGE,
+                 icon);*/
+
+         Object[] choices = {"Let's Start"};
+         Object defaultChoice = choices[0];
+         JLabel welcome=new JLabel("Welcome to Global Sequence Alignmenet Interface!");
+         welcome.setForeground(Color.BLACK);
+         welcome.setFont(new Font("Arial",Font.BOLD,15));
+         JOptionPane.showOptionDialog(this,
+                 "",
+                 "Welcome to Global Sequence Alignmenet Interface!",
+                 JOptionPane.YES_OPTION,
+                 JOptionPane.INFORMATION_MESSAGE,
+                 icon,
+                 choices,
+                 defaultChoice);
+
+
+
          Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
          int largeur = (int)tailleEcran.getWidth();
 
