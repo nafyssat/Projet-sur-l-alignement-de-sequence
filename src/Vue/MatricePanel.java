@@ -377,23 +377,45 @@ public class MatricePanel {
      * vérifier s'il y'en a qu'ils sont selectionnés , pour que le chemin puisse être cyclique.
      * Cependant les fonctions isSelected() et doClick() veulent des valeurs final.
      */
-    public void calcule_adjacence(JButton [][] m, int i, int j ) {
-        m[i][j].addActionListener(new ActionListener() {
+    public boolean calcule_adjacence( int i, int j ) {
+        matrice[i][j].addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
 
-                if (m[i-1][j].isSelected() || m[i+1][j].isSelected() || m[i][j-1].isSelected()||
-                        m[i][j+1].isSelected() || m[i-1][j-1].isSelected() || m[i+1][j+1].isSelected() ||
-                        m[i-1][j+1].isSelected() || m[i+1][j-1].isSelected()) {
+                if (matrice[i-1][j].getBackground()==Color.yellow || matrice[i+1][j].getBackground()==Color.yellow
+                 || matrice[i][j-1].getBackground()==Color.yellow || matrice[i][j+1].getBackground()==Color.yellow
+                 || matrice[i][j+1].getBackground()==Color.yellow || matrice[i-1][j-1].getBackground()==Color.yellow
+                 || matrice[i+1][j+1].getBackground()==Color.yellow ||  matrice[i-1][j+1].getBackground()==Color.yellow
+                 || matrice[i+1][j-1].getBackground()==Color.yellow) {
 
 
-                    m[i][j].setForeground(Color.red);
-                    m[i][j].setBackground(Color.red);
-                    m[i][j].setSelected(true);
+                    matrice[i][j].setBackground(Color.yellow);
+                    matrice[i][j].setSelected(true);
+                    custom=true;
+ 
 
-
+                }
+                else
+                {
+                    JFrame fr = new JFrame();
+                    fr.setLayout(new FlowLayout(FlowLayout.CENTER));
+                    fr.setSize(new Dimension(300,120));
+                    JPanel w=new JPanel();
+                    w.setPreferredSize(new Dimension(300,120));
+                    w.setBackground(Color.lightGray);
+                    JLabel l=new JLabel("Ce bouton n'est pas valide ");
+                    l.setFont(new Font("Calibri", Font.CENTER_BASELINE,15));
+                    l.setForeground(Color.RED);
+                    w.add(l,BorderLayout.CENTER);
+                    fr.add(w,BorderLayout.CENTER);
+                    
+                 
+                    fr.setVisible(true);
+                    
+                	custom=false;
                 }
             }
         });
+        return custom;
 
     }
 
