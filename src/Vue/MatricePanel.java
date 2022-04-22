@@ -389,7 +389,6 @@ public class MatricePanel {
 
 
                     matrice[i][j].setBackground(Color.yellow);
-                    matrice[i][j].setSelected(true);
                     custom=true;
  
 
@@ -427,43 +426,31 @@ public class MatricePanel {
      * @param matrice
      * Nous allons choisir un chemin en partant de la fin.
      */
-   /* public void custom_path(String a, String b,JButton [][] matrice,  AlignementPanel align,  int ma, int mi, int gap){
+   public JPanel custom_path(String a, String b,  int ma, int mi, int gap){
 
-        clearMatrice(matrice,a,b);
+       this.init(a, b, ma, mi, gap);
 
-        align.setAlignement(align.clearpath());
+        clearMatrice(a,b);
 
-        for(int i=1;i<a.length()+2;i++) {
-            for(int j=1;j<b.length()+2;j++) {
+        
+        for(int i=2;i<a.length()+2;i++) {
+            for(int j=2;j<b.length()+2;j++) {
                 int v1=i;
                 int v2=j;
 
+                      
+                        matrice[a.length()+1][b.length()+1].setBackground(Color.yellow);
+                   
 
-                matrice[i][j].addActionListener(new ActionListener() {
-
-                    public void actionPerformed(ActionEvent e) {
-
-                        compteur=matrice[v1][v2];
-
-                        calcule_adjacence(matrice,a.length(),b.length());
-
-                        matrice[a.length()+1][b.length()+1].setForeground(Color.red);
-                        matrice[a.length()+1][b.length()+1].setBackground(Color.red);
-                        matrice[a.length()+1][b.length()+1].setSelected(true);
-
-                        calcule_adjacence(matrice, v1,v2);
-
-                        align.setAlignement(align.Align(a,b,ma,mi,gap));
-
-
-                    }
-
-                });
-
+                        if(calcule_adjacence(v1, v2)==true){
+                            droite.add(matrice[v1][v2]);
+                        }
+                   
             }
             
         }
+        return droite;
         
     }
-*/
+
 }
