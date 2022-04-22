@@ -36,8 +36,6 @@ public class InputsPanel extends JFrame {
     private JSpinner c = new JSpinner(modelC);
 
     public InputsPanel() {
-        this.setLayout(new FlowLayout(FlowLayout.CENTER));
-        this.setPreferredSize(new Dimension(500, 130));
         a.setPreferredSize(new Dimension(138, 18));//20
         b.setPreferredSize(new Dimension(138, 18));
         c.setPreferredSize(new Dimension(138, 18));
@@ -47,23 +45,26 @@ public class InputsPanel extends JFrame {
         CustomPath.setPreferredSize(new Dimension(125, 20));//20/157
         ClearPath.setPreferredSize(new Dimension(118, 20));//157
         OptimisePath.setPreferredSize(new Dimension(173, 20));//320
-        Dimension tailleEcran = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        int hauteur = (int) tailleEcran.getHeight();
-        int largeur = (int) tailleEcran.getWidth();
-        this.add(seq1Label);
-        this.add(seq1);
-        this.add(seq2Label);
-        this.add(seq2);
-        this.add(match);
-        this.add(mismatch);
-        this.add(gap);
-        this.add(a);
-        this.add(b);
-        this.add(c);
-        this.add(CustomPath);
-        this.add(ClearPath);
-        this.add(OptimisePath);
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+    }
+
+    public JPanel init(){
+        JPanel pn=new JPanel();
+        pn.setLayout(new FlowLayout(FlowLayout.CENTER));
+        pn.setPreferredSize(new Dimension(500, 130));
+        pn.add(seq1Label);
+        pn.add(seq1);
+        pn.add(seq2Label);
+        pn.add(seq2);
+        pn.add(match);
+        pn.add(mismatch);
+        pn.add(gap);
+        pn.add(a);
+        pn.add(b);
+        pn.add(c);
+        pn.add(CustomPath);
+        pn.add(ClearPath);
+        pn.add(OptimisePath);
+        return  pn;
     }
 
     //TODO: getters
