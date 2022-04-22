@@ -32,7 +32,12 @@ public class HelpPanel extends JFrame {
         a.add(contenu,BorderLayout.CENTER);
         a.add(contenu3);
         a.add(contenu4);
-        ImageIcon img=new ImageIcon("/home/montassar/projet-ar1/src/Image/help.gif");
+        ImageIcon img=null;
+        try{
+            img=new ImageIcon(this.getClass().getResource("/src/Image/help.gif"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         JLabel d=new JLabel(img);
         d.setPreferredSize(new Dimension(500,650));
         b.add(d,BorderLayout.CENTER);

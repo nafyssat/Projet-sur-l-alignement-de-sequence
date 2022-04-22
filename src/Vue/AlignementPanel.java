@@ -84,15 +84,4 @@ public class AlignementPanel {
         return p;
     }
 
-
-    public static void main(String[]args){
-        AlignementPanel vv=new AlignementPanel();
-        JPanel n=vv.Align("agt","gttc",1,1,-2);
-        n.setPreferredSize(new Dimension(200,300));
-        JFrame f=new JFrame();
-        f.add(n);
-        f.setSize(200,200);
-        f.setVisible(true);
-
-    }
 }

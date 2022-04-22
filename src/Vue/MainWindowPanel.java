@@ -36,13 +36,13 @@ public class MainWindowPanel extends JFrame {
          this.setExtendedState(this.MAXIMIZED_BOTH);
          this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-         ImageIcon icon = new ImageIcon("/home/montassar/projet-ar1/src/Image/ADN.gif");
-       /*  JOptionPane.showMessageDialog(
-                 null,
-                 "Welcome to Global Sequence Alignmenet Interface!",
-                 "Hello", JOptionPane.INFORMATION_MESSAGE,
-                 icon);*/
-
+         //TODO: welcome panel
+         ImageIcon icon=null;
+         try {
+             icon = new ImageIcon(this.getClass().getResource("/src/Image/ADN.gif"));
+         }catch (Exception e){
+             e.printStackTrace();
+         }
          Object[] choices = {"Let's Start"};
          Object defaultChoice = choices[0];
          JLabel welcome=new JLabel("Welcome to Global Sequence Alignmenet Interface!");
