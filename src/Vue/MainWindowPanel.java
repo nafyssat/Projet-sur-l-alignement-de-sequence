@@ -147,10 +147,8 @@ public class MainWindowPanel extends JFrame {
             }
         });
 
-         /* Ici nous faisons une lambda expressions pour le boutons custom path
-          */
-
-       /*  CustomPath.addActionListener(new ActionListener() {
+         
+  CustomPath.addActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent e) {
 
 
@@ -159,16 +157,25 @@ public class MainWindowPanel extends JFrame {
 
                  if(s1.length() > 0 && s2.length() > 0) {
 
-
-                     alignement=align.getAlignement();
-
-                     v.custom_path(s1, s2, v.getMatrice(),align , (int) a.getValue(), (int) b.getValue() , (int) c.getValue());
-
-
+                    mainContainer.remove(ajout);
+                    mainContainer.remove(alignement);
+                    ajout.removeAll();
+                    alignement.removeAll();
+                    ajout = v.custom_path(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                    alignement = align.alignement_custom(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                    alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                    alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                    ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                    mainContainer.add(alignement);
+                    mainContainer.add(ajout);
+                    mainContainer.revalidate();
+                    ajout.revalidate();
+                    ajout.repaint();
+                   
                  }
              }
          });
-*/
+
 
 
          JLabel h=new JLabel("For more details, click here!");
