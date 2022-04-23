@@ -23,6 +23,7 @@ public class MatricePanel {
     private MainWindowControler Controlleur = new MainWindowControler();
     private JButton [][] matrice;
     private JPanel droite=new JPanel();
+    private String [] alignement=new String [3]; //Cette attribut est pour l'affichage de l'alignement
     private boolean custom;
    
 
@@ -371,8 +372,7 @@ public class MatricePanel {
      * @param i index de la matrice à la position i(ligne)
      * @param j index de la matrice à la position j (colonne)
      * Ici on veut vérifier si dans les Jbutton autours de celui de l'index i, j . On veut
-     * vérifier s'il y'en a qu'ils sont selectionnés , pour que le chemin puisse être cyclique.
-     * Cependant les fonctions isSelected() et doClick() veulent des valeurs final.
+     * vérifier s'il y'en a qu'ils sont de couleur jaunes, pour que le chemin puisse être cyclique.
      */
     public boolean calcule_adjacence( int i, int j ) {
         matrice[i][j].addActionListener(new ActionListener() {
@@ -422,6 +422,8 @@ public class MatricePanel {
      * @param b sequence 2
      * @param matrice
      * Nous allons choisir un chemin en partant de la fin.
+     * C'est pourquoi nous avons mis directement la case matrice[a.length()+1][b.length()+1] à 
+     * la couleur jaune, pour qu'on puisse suivre le chemin à partir de ce dernier.
      */
    public JPanel custom_path(String a, String b,  int ma, int mi, int gap){
 
@@ -448,6 +450,60 @@ public class MatricePanel {
         }
         return droite;
         
+    }
+
+    /**
+     * 
+     * @param a sequence 1
+     * @param b sequence 2
+     * @return l'alignement
+     * Nous refaisons la même méthode que celle dans dans la classe Matrice : afficher_alignement_Inter
+     * qui calcule l'alignement. Cependant dans la méthode afficher_alignement_Inter , on calculer
+     * l'alignement en fonction de la valeur de la matrice, donc avec un chemin déjà tracé. Mais 
+     * dans cette méthode c'est différent car on choisit le chemin, donc au lieu de regarder les valeurs
+     * de la matrice , on regarde les cases coloriés en jaune et on applique les règles de l'alignement de 
+     * manière différentes par la suite.
+     */
+
+    public String [] getAlign_custom(String a, String b) {
+        int i=a.length()+1;
+        int j=b.length()+1;
+        while(i>=2 && j>=2){
+            Color x=this.matrice[i][j].getBackground();
+            Color y=this.matrice[i-1][j-1].getBackground();
+            Color z=this.matrice[i][j-1].getBackground();
+            Color w=this.matrice[i-1][j].getBackground();
+            
+            if(x==Color.yellow && y==Color.yellow && z==Color.white && w==Color.white){
+                   alignement[0]+=a.charAt((i));
+                   alignement[1]+=b.charAt((j));
+                i--;
+                j--;
+            }else if(x==Color.yellow && w==Color.yellow && z==Color.white && y==Color.white ){
+                alignement[0]+=a.charAt((i));
+                alignement[1]+="-";
+                i--;
+            }else if(x==Color.yellow && z==Color.yellow && y==Color.white && w==Color.white){
+                alignement[0]+="-";
+                alignement[1]+=b.charAt((j));
+                j--;
+            }
+        }
+        
+        while(i>=2){
+            alignement[0]+=a.charAt((i));
+            alignement[1]+="-";
+            i--;
+        }
+        while(j>=2){
+            alignement[0]+="-";
+            alignement[1]+=b.charAt((j));
+            j--;
+        }
+      
+        alignement[2]="Score: "+this.matrice[a.length()+1][b.length()+1];
+       
+        return this.alignement;
     }
 
 }
