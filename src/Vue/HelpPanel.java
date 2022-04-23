@@ -34,7 +34,7 @@ public class HelpPanel extends JFrame {
         a.add(contenu4);
         ImageIcon img=null;
         try{
-            img=new ImageIcon(this.getClass().getResource("/src/Image/help.gif"));
+            img=new ImageIcon(this.getClass().getResource("/Image/help.gif"));
         }catch (Exception e){
             e.printStackTrace();
         }

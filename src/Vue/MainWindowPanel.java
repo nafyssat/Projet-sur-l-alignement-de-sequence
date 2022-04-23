@@ -39,7 +39,7 @@ public class MainWindowPanel extends JFrame {
          //TODO: welcome panel
          ImageIcon icon=null;
          try {
-             icon = new ImageIcon(this.getClass().getResource("/src/Image/ADN.gif"));
+             icon = new ImageIcon(this.getClass().getResource("/Image/ADN.gif"));
          }catch (Exception e){
              e.printStackTrace();
          }
