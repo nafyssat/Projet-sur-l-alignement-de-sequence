@@ -38,6 +38,7 @@ public class MainWindowPanel extends JFrame {
     private JLabel seq1Label=new JLabel("Sequence    1: ");
     private JLabel seq2Label=new JLabel("Sequence    2: ");
     private JButton CustomPath=new JButton("Custom Path");
+    private JButton CustomAlign=new JButton("Custom Alignment");
     private JButton ClearPath=new JButton("Clear Path");
     private JButton OptimisePath=new JButton("Optimal Alignment");
     SpinnerModel modelA = new SpinnerNumberModel(
@@ -91,6 +92,7 @@ public class MainWindowPanel extends JFrame {
          this.mainPanel.add(b);
          this.mainPanel.add(c);
          this.mainPanel.add(CustomPath);
+         this.mainPanel.add(CustomAlign);
          this.mainPanel.add(ClearPath);
          this.mainPanel.add(OptimisePath);
          this.mainPanel.setPreferredSize(new Dimension(500,130));
@@ -162,7 +164,7 @@ public class MainWindowPanel extends JFrame {
                     ajout.removeAll();
                     alignement.removeAll();
                     ajout = v.custom_path(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                    alignement = align.alignement_custom(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                    alignement = align.clearpath();
                     alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
                     alignement.setPreferredSize(new Dimension((largeur - 596), 131));
                     ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
@@ -176,7 +178,35 @@ public class MainWindowPanel extends JFrame {
              }
          });
 
-
+//Bouton qui est censé nous afficher l'alignement après qu'on est choisit notre chemin dans 
+//Le bouton custom path
+         this.CustomAlign.addActionListener(new ActionListener() {
+    	   
+            public void actionPerformed(ActionEvent e) {
+ 
+ 
+                String s1=seq1.getText().toUpperCase();
+                String s2= seq2.getText().toUpperCase();
+ 
+                if(s1.length() > 0 && s2.length() > 0) {
+ 
+                   // mainContainer.remove(ajout);
+                    mainContainer.remove(alignement);
+                    //ajout.removeAll();
+                    alignement.removeAll();
+                   // ajout = v.custom_path(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
+                    alignement = align.alignement_custom(s1, s2);
+                    alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                    alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                    //ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                    mainContainer.add(alignement);
+                    //mainContainer.add(ajout);
+                    mainContainer.revalidate();
+                    //ajout.revalidate();
+                    //ajout.repaint();
+               }
+           }
+        });
 
          JLabel h=new JLabel("For more details, click here!");
          alignement.setLayout(new BorderLayout());
