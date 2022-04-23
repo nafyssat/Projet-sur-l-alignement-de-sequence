@@ -1,12 +1,14 @@
-# Projet-AR1
+# GENOaligner
+*Outil d'alignement de séquences génomiques*
 
-# Présentation
-nom? est un outil qui sert à représenter l'algorithme d'alignement de Needleman-Wunsch. Cette technique est couramment 
+![screenshot](https://ghost.s-ul.eu/nQqR3s16)
+## Présentation
+GENOaligner (Genomics Aligner) est un outil qui sert à représenter l'algorithme d'alignement de Needleman-Wunsch. Cette technique est couramment 
 utilisé par les 
-bio-informaticiens  afin de faire un alignement globales maximale de deux séquences génomiques afin de ressortir 
+bio-informaticiens pour faire un alignement globale maximale de deux séquences génomiques afin de ressortir 
 les régions homologues.
 
-Ce projet a été réliasé pour le module de Projet de Programmation en Deuxième année de licence en Informatique à l'Université de Paris Cité par :
+Ce projet a été réalisé pour le module de Projet de Programmation en Deuxième année de licence Informatique à l'Université de Paris Cité par :
 
  * Ben Abdallah Montassar
  * Bouzid Lyna 
@@ -14,28 +16,28 @@ Ce projet a été réliasé pour le module de Projet de Programmation en Deuxiè
  * Mkouboi Mounia  
  * Nur Akbas Aleysa
 
-# Structure du Dossier
+## Structure du Dossier
 
 *   src : dossier contenant le code source
 
 
-# Utilisation
+## Utilisation
 ### Récupérer le projet :
 1- Cloner le projet depuis le dépot distant:
 
 SSH: 
 ```
-git clone git@gaufre.informatique.univ-paris-diderot.fr:projet-s4/projet-ar1.git
+git@gaufre.informatique.univ-paris-diderot.fr:projet-s4/GENOaligner.git
 ```
 
 HTTP: 
 ```
-git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/projet-ar1.git
+git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/GENOaligner.git
 ```
 
 2-Naviguer dans le dossier cloné:
 ```
-cd projet-ar1
+cd GENOaligner
 ```
 ### Build le projet:
 
