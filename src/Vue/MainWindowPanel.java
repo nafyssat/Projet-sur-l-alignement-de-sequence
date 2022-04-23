@@ -30,7 +30,7 @@ public class MainWindowPanel extends JFrame {
     private JPanel ajout = new JPanel();
 
      public MainWindowPanel(){
-         this.setTitle("Global Sequence Alignement");
+         this.setTitle("GENOaligner");
          this.pack();
          this.setDefaultLookAndFeelDecorated(true);
          this.setExtendedState(this.MAXIMIZED_BOTH);
@@ -45,12 +45,12 @@ public class MainWindowPanel extends JFrame {
          }
          Object[] choices = {"Let's Start"};
          Object defaultChoice = choices[0];
-         JLabel welcome=new JLabel("Welcome to Global Sequence Alignmenet Interface!");
+         JLabel welcome=new JLabel("Welcome to GENOaligner!");
          welcome.setForeground(Color.BLACK);
          welcome.setFont(new Font("Arial",Font.BOLD,15));
          JOptionPane.showOptionDialog(this,
                  "",
-                 "Welcome to Global Sequence Alignmenet Interface!",
+                 "Welcome to GENOaligner!",
                  JOptionPane.YES_OPTION,
                  JOptionPane.INFORMATION_MESSAGE,
                  icon,
