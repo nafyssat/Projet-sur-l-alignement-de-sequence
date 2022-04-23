@@ -17,6 +17,7 @@ public class AlignementPanel {
     private HelpPanel help=new HelpPanel();
     private MainWindowControler controlleur=new MainWindowControler();
     private JPanel alignement=new JPanel();
+    private MatricePanel matrice=new MatricePanel();
 
    
 
@@ -73,9 +74,62 @@ public class AlignementPanel {
         return p;
     }
 
+    /**
+     * 
+     * @param a sequence 1
+     * @param b sequence 2
+     * @param ma match
+     * @param mi mismatch
+     * @param gap gap
+     * @return Un Jpanel avec l'alignement
+     * 
+     */
     public JPanel alignement_custom(String a, String b, int ma, int mi, int gap){
-        alignement=this.Align(" ", " ", 0, 0, 0);
-        return alignement;
+       	//alignement=this.Align(" ", " ", 0, 0, 0);
+   
+	     String[]x=this.matrice.getAlign_custom(a, b);
+         String m="";
+         String n="";
+
+         for (int i=x[0].length()-1;i>=0;i--) {
+             if (String.valueOf(x[0].charAt(i)).equals("-")) {
+                 m += " " + String.valueOf(x[0].charAt(i)).toUpperCase()+" ";
+             } else {
+                 m += String.valueOf(x[0].charAt(i)).toUpperCase()+" ";
+             }
+         }
+         for(int j=x[1].length()-1;j>=0;j--) {
+             if (String.valueOf(x[1].charAt(j)).equals("-")) {
+                 n += " " + String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
+             } else {
+                 n += String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
+             }
+         }
+
+         JTextArea labelArea = new JTextArea("\n"+m+"\n"+n+"\n"+"\n"+x[2]);
+         labelArea.setFont(labelArea.getFont().deriveFont(Font.BOLD));
+
+         labelArea.setEditable(true);
+         labelArea.setOpaque(false);
+         alignement=new JPanel();
+         alignement.setLayout(new BorderLayout());
+         JLabel h=new JLabel("For more details, click here!");
+         Font font = h.getFont();
+         Map attributes = font.getAttributes();
+         attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+         h.setFont(font.deriveFont(attributes));
+         h.setForeground(new Color(0,0,255));
+         alignement.add(h,BorderLayout.NORTH);
+         h.addMouseListener(new MouseAdapter() {
+             @Override
+           public void mouseClicked(MouseEvent e) {
+                 help.setVisible(true);
+             }
+         });
+         alignement.add(labelArea,BorderLayout.WEST);
+         alignement.setVisible(true);
+         
+         return alignement;
     }
 
     public static void main(String[]args){
