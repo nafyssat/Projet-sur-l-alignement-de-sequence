@@ -68,23 +68,59 @@ public class AlignementPanel {
 
     }
 
+    public JPanel Align_custom(String a, String b,int c){
+        String m="";
+        String n="";
+        for (int i=0;i<a.length();i++) {
+            if (String.valueOf(a.charAt(i)).equals("-")) {
+                m += " " + String.valueOf(a.charAt(i)).toUpperCase()+" ";
+            } else {
+                m += String.valueOf(a.charAt(i)).toUpperCase()+" ";
+            }
+        }
+        for(int j=0;j<b.length();j++) {
+            if (String.valueOf(b.charAt(j)).equals("-")) {
+                n += " " + String.valueOf(b.charAt(j)).toUpperCase()+" ";
+            } else {
+                n += String.valueOf(b.charAt(j)).toUpperCase()+" ";
+            }
+        }
+
+        JTextArea labelArea = new JTextArea("\n"+m+"\n"+n+"\n"+"\n"+"Score: "+c);
+        labelArea.setFont(labelArea.getFont().deriveFont(Font.BOLD));
+
+        labelArea.setEditable(false);
+        labelArea.setOpaque(false);
+        JPanel AL=new JPanel();
+        AL.setLayout(new BorderLayout());
+        JLabel h=new JLabel("For more details, click here!");
+        Font font = h.getFont();
+        Map attributes = font.getAttributes();
+        attributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        h.setFont(font.deriveFont(attributes));
+        h.setForeground(new Color(0,0,255));
+        AL.add(h,BorderLayout.NORTH);
+        h.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                help.setVisible(true);
+            }
+        });
+        AL.add(labelArea,BorderLayout.WEST);
+
+        this.alignement=AL;
+        return AL;
+
+    }
+
     public JPanel clearpath() {
         AlignementPanel n = new AlignementPanel();
        JPanel p =  n.Align("","",0,0,0);
         return p;
     }
 
-    /**
-     * 
-     * @param a sequence 1
-     * @param b sequence 2
-     * @param ma match
-     * @param mi mismatch
-     * @param gap gap
-     * @return Un Jpanel avec l'alignement
-     * 
-     */
-    public JPanel alignement_custom(String a, String b, int ma, int mi, int gap){
+
+   /* public JPanel alignement_custom(String a, String b, int ma, int mi, int gap){
        	//alignement=this.Align(" ", " ", 0, 0, 0);
    
 	     String[]x=this.matrice.getAlign_custom(a, b);
@@ -131,7 +167,7 @@ public class AlignementPanel {
          
          return alignement;
     }
-
+*/
     public static void main(String[]args){
         AlignementPanel vv=new AlignementPanel();
         JPanel n=vv.Align("agt","gttc",1,1,-2);
