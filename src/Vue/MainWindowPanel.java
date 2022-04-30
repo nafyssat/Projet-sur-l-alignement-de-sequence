@@ -95,11 +95,12 @@ public class MainWindowPanel extends JFrame {
             if (Inputs.getSeq1().getText().length() != 0 || Inputs.getSeq2().getText().length() != 0) {
                 String s1 = Inputs.getSeq1().getText().toUpperCase();
                 String s2 = Inputs.getSeq2().getText().toUpperCase();
-                mainContainer.remove(ajout);
+               /* mainContainer.remove(ajout);
                 mainContainer.remove(alignement);
-                ajout.removeAll();
+                //ajout.removeAll();
                 alignement.removeAll();
-                ajout = matrice.initClear(s1, s2, (int) Inputs.getA().getValue(), (int) Inputs.getB().getValue(), (int) Inputs.getC().getValue());
+                //matrice.initClear(s1, s2, (int) Inputs.getA().getValue(), (int) Inputs.getB().getValue(), (int) Inputs.getC().getValue());
+                //ajout = matrice.initClear(s1, s2, (int) Inputs.getA().getValue(), (int) Inputs.getB().getValue(), (int) Inputs.getC().getValue());
                 alignement = align.clearpath();
                 alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
                 alignement.setPreferredSize(new Dimension((largeur - 596), 131));
@@ -108,18 +109,86 @@ public class MainWindowPanel extends JFrame {
                 mainContainer.add(ajout);
                 mainContainer.revalidate();
                 //ajout.revalidate();
-                //ajout.repaint();
+                //ajout.repaint();*/
+                matrice.getMatrice()[1][1].setBackground(Color.WHITE);
+                for(int i=2;i<s1.length()+2;i++){
+                    matrice.getMatrice()[i][1].setBackground(Color.LIGHT_GRAY);
+                }
+                for(int j=2;j<s2.length()+2;j++){
+                    matrice.getMatrice()[1][j].setBackground(Color.LIGHT_GRAY);
+                }
+                for(int m=2;m<s1.length()+2;m++){
+                    for(int n=2;n<s2.length()+2;n++){
+                        int finalN = n;
+                        int finalM = m;
+                        matrice.getMatrice()[0][finalN].setBackground(new Color(230, 252, 237));
+                        matrice.getMatrice()[0][finalN].setForeground(new Color(203, 235, 247));
+                        matrice.getMatrice()[finalM][0].setBackground(new Color(230, 252, 237));
+                        matrice.getMatrice()[finalM][0].setForeground(new Color(203, 235, 247));
+                        matrice.getMatrice()[m][n].setBackground(Color.WHITE);
+
+                        matrice.getMatrice()[m][n].addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseEntered(MouseEvent e) {
+                                matrice.getMatrice()[0][finalN].setBackground(Color.BLUE);
+                                matrice.getMatrice()[finalM][0].setBackground(Color.BLUE);
+                                matrice.getMatrice()[0][finalN].setForeground(Color.WHITE);
+                                matrice.getMatrice()[finalM][0].setForeground(Color.WHITE);
+                                matrice.getMatrice()[finalM-1][finalN-1].setBackground(Color.GREEN);
+                                matrice.getMatrice()[finalM-1][finalN].setBackground(Color.GREEN);
+                                matrice.getMatrice()[finalM][finalN-1].setBackground(Color.GREEN);
+
+                            }
+                            @Override
+                            public void mouseExited(MouseEvent e) {
+                                matrice.getMatrice()[0][finalN].setBackground(new Color(230, 252, 237));
+                                matrice.getMatrice()[0][finalN].setForeground(new Color(203, 235, 247));
+                                matrice.getMatrice()[finalM][0].setBackground(new Color(230, 252, 237));
+                                matrice.getMatrice()[finalM][0].setForeground(new Color(203, 235, 247));
+                                if (finalN - 1 == 1 && finalM - 1 == 1) {
+                                    matrice.getMatrice()[finalM - 1][finalN - 1].setBackground(Color.LIGHT_GRAY);
+                                    matrice.getMatrice()[finalM - 1][finalN].setBackground(Color.LIGHT_GRAY);
+                                    matrice.getMatrice()[finalM][finalN - 1].setBackground(Color.LIGHT_GRAY);
+                                }
+                                else if(finalN-1==1) {
+                                    matrice.getMatrice()[finalM - 1][finalN - 1].setBackground(Color.LIGHT_GRAY);
+                                    matrice.getMatrice()[finalM][finalN - 1].setBackground(Color.LIGHT_GRAY);
+                                    matrice.getMatrice()[finalM - 1][finalN].setBackground(Color.WHITE);
+                                }else if(finalM-1==1){
+                                    matrice.getMatrice()[finalM - 1][finalN - 1].setBackground(Color.LIGHT_GRAY);
+                                    matrice.getMatrice()[finalM][finalN - 1].setBackground(Color.WHITE);
+                                    matrice.getMatrice()[finalM - 1][finalN].setBackground(Color.LIGHT_GRAY);
+                                }else{
+                                    matrice.getMatrice()[finalM - 1][finalN - 1].setBackground(Color.WHITE);
+                                    matrice.getMatrice()[finalM][finalN - 1].setBackground(Color.WHITE);
+                                    matrice.getMatrice()[finalM - 1][finalN].setBackground(Color.WHITE);
+                                }
+                            }
+                        });
+                    }
+                }
+                mainContainer.remove(alignement);
+                mainContainer.remove(ajout);
+                alignement.removeAll();
+                alignement=align.clearpath();
+                alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
+                alignement.setPreferredSize(new Dimension((largeur - 596), 131));
+                ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
+                mainContainer.add(alignement);
+                mainContainer.add(ajout);
+                mainContainer.revalidate();
+
             }
         });
 
         Inputs.getCustomPath().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                matrice.count=0;
-                matrice.seq1="";
-                matrice.seq2="";
-                matrice.px=-1;
-                matrice.py=-1;
-                matrice.Score=0;
+                matrice.setCount(0);
+                matrice.setSeq1("");
+                matrice.setSeq2("");
+                matrice.setPx(-1);
+                matrice.setPy(-1);
+                matrice.setScore(0);
                 String s1 = Inputs.getSeq1().getText().toUpperCase();
                 String s2 = Inputs.getSeq2().getText().toUpperCase();
 
@@ -153,7 +222,7 @@ public class MainWindowPanel extends JFrame {
                                             mainContainer.remove(alignement);
                                             alignement.removeAll();
                                             //   ajout = v.initCustom(s1, s2, (int) a.getValue(), (int) b.getValue(), (int) c.getValue());
-                                            alignement = align.Align_custom(matrice.seq1,matrice.seq2,matrice.Score);
+                                            alignement = align.Align_custom(matrice.getSeq1(),matrice.getSeq2(),matrice.getScore());
                                             alignement.setBorder(BorderFactory.createTitledBorder("Alignement"));
                                             alignement.setPreferredSize(new Dimension((largeur - 596), 131));
                                             ajout.setPreferredSize(new Dimension(58 * (s2.length() + 2), 25 * (s1.length() + 2)));
@@ -245,7 +314,7 @@ public class MainWindowPanel extends JFrame {
         Inputs.getSeq2().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                Inputs.getSeq1().setText( Inputs.getSeq1().getText().toUpperCase());
+                Inputs.getSeq2().setText( Inputs.getSeq2().getText().toUpperCase());
                 if (!controler.getsequence().NucleotideValide( Inputs.getSeq1().getText()) || !controler.getsequence().NucleotideValide( Inputs.getSeq2().getText())) {
                     JOptionPane.showMessageDialog(mainContainer, "Error: Allowed charcaters are: A, C, T or G.", "Message", JOptionPane.ERROR_MESSAGE);
                     Inputs.getSeq1().setText( Inputs.getSeq1().getText().substring(0, Inputs.getSeq1().getText().length()-1));

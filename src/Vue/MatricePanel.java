@@ -2,112 +2,67 @@ package Vue;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
 import java.awt.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
 import java.util.Locale;
-
-
 import Model.*;
 import Controler.*;
-
-//Cette classe permet de modeliser l'affichage de la fenêtre sous forme de JButton[][]//
 
 public class MatricePanel {
     private Utilisateur user = new Utilisateur();
     private MainWindowControler Controlleur = new MainWindowControler();
-    private JButton [][] res;
-    private JPanel droite=new JPanel();
-    private String [] alignement=new String [3]; //Cette attribut est pour l'affichage de l'alignement
-    int count=0;
-     int px=-1;
-     int py=-1;
-     String seq1="";
-     String seq2="";
-     int Score=0;
+    private JButton [][] res;//representant la matrice
+    private int count=0; //pour custom path: pour vérifier que la c'est la 1ère case à choisir
+    private int px=-1;// pour custom path: px et py pour les positions de la dernière case du chemin
+    private int py=-1;
+    private String seq1="";//pour custom path: l'alignement
+    private String seq2="";
+    private int Score=0;
 
     public MatricePanel(){
 
     }
-   
-
-
-    // Interface //
-
-    /**
-     * @param a sequence 1
-     * @param b sequence 2
-     * @param c mismatch
-     * @param d match
-     * @param e gap
-     * @return un Jpanel qu'on va ajouter à notre fenêtre principal dans la classe Vue
-     */
-
-    public JPanel init(String a, String b, int c, int d, int e) { 
-        JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
-
-        droite.setPreferredSize(new Dimension(20 * (a.length() + 2), 20 * (b.length() + 2)));
-
+    //TODO: fonctions qui initiliase la matrice
+    public JPanel init(String a, String b, int c, int d, int e) {
+        this.res = new JButton[a.length() + 2][b.length() + 2];
+        JPanel droite=new JPanel();
+        //droite.setPreferredSize(new Dimension(20 * (a.length() + 2), 20 * (b.length() + 2)));
         droite.setLayout(new GridLayout(a.length() + 2, b.length() + 2));
-
+        //TODO: initiliaser le texte des Jbuttons pour éviter d'avoir NullPointerException par la suite
         for (int i = 0; i < a.length() + 2; i++) {
             for (int j = 0; j < b.length() + 2; j++) {
                 res[i][j] = new JButton("  ");
                 res[i][j].setForeground(Color.BLACK);
                 res[i][j].setBackground(Color.WHITE);
-                //On initialise chaque JButton à " " pour éviter par la suite
-                //d'avoir des problème de NullPointerException
-
             }
         }
-
+        //TODO: remplir la 1ère colonne de la matrice
         for (int i = 2; i < a.length() + 2; i++) {
-
-            res[i][0].setText(" " + a.charAt(i - 2)); //ON complète la première colonne
+            res[i][0].setText(" " + a.charAt(i - 2));
             res[i][0].setForeground(Color.white);
             res[i][0].setBackground(Color.BLUE);
-
-
-            res[i][0].setBackground(Color.BLUE);
-            res[i][0].setText(" " + String.valueOf(a.charAt(i - 2)).toUpperCase()); //ON complète la première colonne
-
-
+            res[i][0].setText(" " + String.valueOf(a.charAt(i - 2)).toUpperCase());
         }
-
+        //TODO: remplir la 1ère ligne
         for (int i = 2; i < b.length() + 2; i++) {
-
-            res[0][i].setText(" " + b.charAt(i - 2)); //On complète la première ligne
+            res[0][i].setText(" " + b.charAt(i - 2));
             res[0][i].setForeground(Color.white);
             res[0][i].setBackground(Color.BLUE);
-
-            res[0][i].setBackground(Color.BLUE);
-            res[0][i].setText(" " + String.valueOf(b.charAt(i - 2)).toUpperCase()); //On complète la première ligne
-
-
+            res[0][i].setText(" " + String.valueOf(b.charAt(i - 2)).toUpperCase());
         }
-
+        //TODO: remplier le reste de la matrice
         for (int i = 1; i < a.length() + 2; i++) {
             for (int j = 1; j < b.length() + 2; j++) {
-
-                //Ici nous devons appeler cette méthode pour calculer les valeur de chaque cases de 
-                //la matrice. 
-
                 Case[][] g = this.Controlleur.getGrillePanel().initialiser_Grille_Interface(a, b, c, d, e);
                 res[i][j].setText(" " + g[i][j].getValeur());
-
             }
         }
+        //TODO: fentere expliquant comment la valeur de chaque case a été calculé
         for (int i = 2; i < a.length() + 2; i++) {
-            for (int j = 2; j < b.length() + 2; j++) {
-
-
-                //fenetre expliquant la calcul du score
-
+            for (int j = 2; j < b.length() + 2; j++){
                 String[] s = this.Controlleur.getGrillePanel().affCalVal(i, j, c, d, e);
                 JFrame fr = new JFrame();
                 fr.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -123,45 +78,29 @@ public class MatricePanel {
                 }
                 fr.setVisible(false);
                 res[i][j].addMouseListener(new MouseAdapter() {
-
                     @Override
                     public void mouseEntered(MouseEvent e) {
                         fr.setVisible(true);
-
                     }
-
                     @Override
                     public void mouseExited(MouseEvent e) {
                         fr.dispose();
                     }
                 });
-
-
             }
         }
         for (int k = 1; k < a.length() + 2; k++) {
             res[k][1].setBackground(Color.GRAY);
-
         }
         for (int k = 1; k < b.length() + 2; k++) {
             res[1][k].setBackground(Color.GRAY);
-
         }
-
-
-        res[a.length() + 1][b.length() + 1].setBackground(Color.red);
-        res[1][1].setBackground(Color.red);
-
-
-        //backTracking
+        //res[a.length() + 1][b.length() + 1].setBackground(Color.red);
+        //res[1][1].setBackground(Color.red);
+        //TODO: backtraking
         int f = a.length() + 1;
         int h = b.length() + 1;
-
-
         while (f >= 1 && h >= 1) {
-            //on recupere la position du case a colorie
-
-
             res[f][h].setBackground(Color.red);
             int[] t = this.Controlleur.getGrillePanel().caseAColorie(f, h, c, d, e);
             f = t[0];
@@ -170,13 +109,8 @@ public class MatricePanel {
                 res[f][h].setBackground(Color.red);
                 break;
             }
-
-
         }
-
-
-        // ajouter la table au frame
-
+        //TODO: ajouter la matrice au JPanel
         for (int i = 0; i < a.length() + 2; i++) {
             for (int j = 0; j < b.length() + 2; j++) {
                 if (i == 0 || j == 0) {
@@ -188,19 +122,14 @@ public class MatricePanel {
             }
         }
         res[1][1].setBackground(Color.green);
-
-
-       // this.matrice=res;
         return droite;
     }
 
 
-    public JPanel initClear(String a, String b, int c, int d, int e) {
+    /*public JPanel initClear(String a, String b, int c, int d, int e) {
         JPanel droite = new JPanel();
         JButton[][] res = new JButton[a.length() + 2][b.length() + 2];
-
-        droite.setPreferredSize(new Dimension(20*(a.length()+2),20*(b.length()+2)));
-
+        //droite.setPreferredSize(new Dimension(20*(a.length()+2),20*(b.length()+2)));
         droite.setLayout(new GridLayout(a.length()+2,b.length()+2));
 
         for(int i=0;i<a.length()+2;i++){
@@ -208,9 +137,6 @@ public class MatricePanel {
                 res[i][j]=new JButton("  ");
                 res[i][j].setForeground(Color.BLACK);
                 res[i][j].setBackground(Color.WHITE);
-                //On initialise chaque JButton à " " pour éviter par la suite
-                //d'avoir des problème de NullPointerException
-
             }
         }
 
@@ -350,7 +276,7 @@ public class MatricePanel {
 
         return droite;
     }
-
+*/
     //Custom path
 
     public JPanel initCustom(String a, String b, int c, int d, int e){
@@ -546,7 +472,20 @@ public class MatricePanel {
         return false;
     }
 
+    //TODO: getters
     public JButton[][]getMatrice(){return this.res;}
-
+    public int getCount(){return this.count;}
+    public int getPx(){return this.px;}
+    public int getPy(){return this.py;}
+    public int getScore(){return this.Score;}
+    public String getSeq1(){return this.seq1;}
+    public String getSeq2(){return this.seq2;}
+    //TODO: setters
+    public void setCount(int i){this.count=i;}
+    public void setPx(int i){this.px=i;}
+    public void setPy(int i){this.py=i;}
+    public void setScore(int i){this.Score=i;}
+    public void setSeq1(String s){this.seq1=s;}
+    public void setSeq2(String s){this.seq2=s;}
 
 }
