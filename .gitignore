@@ -2,6 +2,7 @@
 *.class
 .project
 .classpath
+/out
 out/production/projet-ar1/.project
 out/production/projet-ar1/Vue/
 out/production/projet-ar1/Model/

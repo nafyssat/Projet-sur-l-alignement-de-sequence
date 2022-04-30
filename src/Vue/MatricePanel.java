@@ -526,6 +526,23 @@ public class MatricePanel {
 
             return true;
         }
+
+	//Ajout fenetre d'erreur dans le cas où on appuiera sur un mauvais bouton
+	JFrame fr = new JFrame();
+        fr.setLayout(new FlowLayout(FlowLayout.CENTER));
+        fr.setSize(new Dimension(300,120));
+        JPanel w=new JPanel();
+        w.setPreferredSize(new Dimension(300,120));
+        w.setBackground(Color.lightGray);
+        JLabel l=new JLabel("Ce bouton n'est pas valide ");
+        l.setFont(new Font("Calibri", Font.CENTER_BASELINE,15));
+        l.setForeground(Color.RED);
+        w.add(l,BorderLayout.CENTER);
+        fr.add(w,BorderLayout.CENTER);
+        
+     
+        fr.setVisible(true);
+	
         return false;
     }
 

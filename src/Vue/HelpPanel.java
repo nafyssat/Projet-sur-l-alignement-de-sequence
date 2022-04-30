@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class HelpPanel extends JFrame {
     public HelpPanel(){
-        this.setTitle("Whats is Global Sequence Alignement?");
+        this.setTitle("Whats is GENOaligner?");
         this.setSize(1000,700);
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -13,7 +13,7 @@ public class HelpPanel extends JFrame {
         JPanel a=new JPanel();
         a.setLayout(new GridLayout(4,1));
         JPanel b=new JPanel();
-        JLabel titre=new JLabel("<html><h1>Global Sequence Alignement:</h1><br>" +
+        JLabel titre=new JLabel("<html><h1>GENOaligner:</h1><br>" +
                 "Here we present an interactive example of the Needleman-Wunsch global alignment algorithm.");
         JLabel contenu=new JLabel("<html>-The purpose of this interface is" +
                 " to visually illustrate how the alignment matrix is constructed and how the Needleman-Wunsch dynamic programing algorithm fills " +
@@ -32,7 +32,12 @@ public class HelpPanel extends JFrame {
         a.add(contenu,BorderLayout.CENTER);
         a.add(contenu3);
         a.add(contenu4);
-        ImageIcon img=new ImageIcon("/home/montassar/projet-ar1/src/Image/help.gif");
+        ImageIcon img=null;
+        try{
+            img=new ImageIcon(this.getClass().getResource("/Image/help.gif"));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         JLabel d=new JLabel(img);
         d.setPreferredSize(new Dimension(500,650));
         b.add(d,BorderLayout.CENTER);
