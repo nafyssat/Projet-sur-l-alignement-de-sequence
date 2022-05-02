@@ -44,9 +44,4 @@ public class HelpPanel extends JFrame {
         this.add(a);
         this.add(b);
     }
-
-    public static void main(String[]args){
-        HelpPanel a=new HelpPanel();
-        a.setVisible(true);
-    }
 }
