@@ -12,7 +12,7 @@ import Model.*;
 import Controler.*;
 
 public class MatricePanel {
-    private Utilisateur user = new Utilisateur();
+    //private Utilisateur user = new Utilisateur();
     private MainWindowControler Controlleur = new MainWindowControler();
     private JButton [][] res;//representant la matrice
     private int count=0; //pour custom path: pour vérifier que la c'est la 1ère case à choisir

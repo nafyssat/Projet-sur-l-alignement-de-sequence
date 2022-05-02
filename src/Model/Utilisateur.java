@@ -3,113 +3,51 @@ package Model;
 import java.util.Scanner;
 
 public class Utilisateur {
-    //Scanners : Sequences, mismatch, match, penalite
-    Scanner sc=new Scanner(System.in);
+    private Scanner sc=new Scanner(System.in);//pour lire match, mismatch et gap
+    public Utilisateur(){}
 
 
-    public Utilisateur(){
-
-    }
-
-    /**
-     * 
-     * @param s
-     * @return true si la chaîne de caractère est une séquence, et si la longueur de la 
-     * séquence est valide , false sinon. Nécessaire pour l'interface graphique, dans les 
-     * lamdas expressions
-     * car en mode textuelle nous ne faisons pas ces vérifications.
-     */
-    public boolean sequence(String s){
-        Sequence se=new Sequence();
-        boolean b=false;
-        if(se.sequenceValide()==true && se.NucleotideValide(s)==true){
-            b=true;
-        }
-        else
-        {
-            b=false;
-        }
-        return b;
-
-    }
-
-
-    /**
-     * Cette fonction demande a l'utilisateur de saisir une sequence
-     * @return Sequence
-     */
-     public Sequence demanderSequence(){
+    //TODO: sequence 1
+     public Sequence demanderSequence(int p){
         Sequence se =new Sequence();
-        System.out.println("saisissez une sequence : ");
-
+        System.out.println("Saisissez la"+((p==1)?" 1ère ": " 2ème ")+ "séquence: ");
         String s=sc.nextLine().toUpperCase();
-        for(int i=0;i<s.length();i++){
-            se.ajouterNucleotide(s.charAt(i));
+        if(se.NucleotideValide(s) && s.length()<=20) {
+            for (int i = 0; i < s.length(); i++) {
+                se.ajouterNucleotide(s.charAt(i));
+            }
+            return se;
         }
-
-        if(!se.sequenceValide()){
-            System.out.println("la sequence n'est pas valide");
-            return demanderSequence();
+        else{
+            System.out.println("Erreur: la sequence n'est pas valide.");
+            System.out.println("La séquence ne doit contenir que A, C, G ou T et de longueur<=20");
+            System.out.println("Veuillez réessayer:");
+            return demanderSequence(p);
         }
-
-        return se;
     }
 
-    
-
-    //math , mismatch , gap
-
-    /**
-     * Cette fonction demande le match de l'utilisateur
-     * @return le match score sous forme de int
-     */
-
+    //TODO: demander match
     public int demanderMatch(){
-        System.out.print("saisissez un match : ");
+        System.out.print("Donner le match score: ");
         int n=sc.nextInt();
-        if(n<=10 && n>=-10){
-            return n;
-        }
-        else 
-        { 
-        return demanderMatch();
-        }
+        return n;
     }
-    /**
-     * Cette fonction demande le mismatch score de l'utilisateur
-     * @return le mismatch score sous forme de int 
-     */
+
+    //TODO: demander mismatch
     public int demanderMismatch(){
-        System.out.print("saisissez un mismatch : ");
+        System.out.print("Donner le mismatch score: ");
         int n=sc.nextInt();
-        if(n<=10 && n>=-10){
-            return n;
-        }
-        else 
-        { 
-        return demanderMismatch();
-        }
+        return n;
     }
-    /**
-     * Cette fonction demande le gap score de l'utilisateur
-     * @return le gap score sous forme de int 
-     */
+
+    //TODO: demander Gap
     public int demanderGap(){
-        System.out.print("saisissez un gap : ");
+        System.out.print("Donner le gap score:");
         int n=sc.nextInt();
-        if(n<=10 && n>=-10){
-            return n;
-        }
-        else 
-        { 
-        return demanderGap();
-        }
+        return n;
     }
-/**
- * Cette fonction réunis les fonctions demanderMatch() , demanderMismatch(),
- * demanderGap() dans un tableau d'entier 
- * @return un tableau d'entier
- */
+
+    //TODO: demander match,mismatch & gap
     public int[] demanderMismatch_Match_Gap(){
         int [] res=new int [3];
         res[0]=demanderMatch();
@@ -117,19 +55,4 @@ public class Utilisateur {
         res[2]=demanderGap();
         return res;
     }
-
-
-    
-
-  /*  public static void main(String [] args){
-        Utilisateur u=new Utilisateur ();
-
-       // Sequence s = u.demanderSequence();
-        //System.out.println(s);
-       int i=u.demanderMatch();
-       System.out.println(i);
-      System.out.println(u.demanderMismatch_Match_Gap()[0]);
-
-
-    }*/
 }
