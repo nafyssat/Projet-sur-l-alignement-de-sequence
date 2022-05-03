@@ -13,12 +13,13 @@ import java.util.Locale;
 import java.util.Map;
 
 public class AlignementPanel {
-    private Utilisateur user=new Utilisateur();
-    private HelpPanel help=new HelpPanel();
-    private MainWindowControler controlleur=new MainWindowControler();
-    private JPanel alignement=new JPanel();
-    private MatricePanel matrice=new MatricePanel();
+    private HelpPanel help;
+    private MainWindowControler controlleur;
 
+    public AlignementPanel(){
+        this.help=new HelpPanel();
+        this.controlleur=new MainWindowControler();
+    }
    
 
     public JPanel Align(String a, String b, int c, int d, int e){
@@ -40,10 +41,8 @@ public class AlignementPanel {
                 n += String.valueOf(x[1].charAt(j)).toUpperCase()+" ";
             }
         }
-
         JTextArea labelArea = new JTextArea("\n"+m+"\n"+n+"\n"+"\n"+x[2]);
         labelArea.setFont(labelArea.getFont().deriveFont(Font.BOLD));
-
         labelArea.setEditable(false);
         labelArea.setOpaque(false);
         JPanel AL=new JPanel();
@@ -62,10 +61,7 @@ public class AlignementPanel {
             }
         });
         AL.add(labelArea,BorderLayout.WEST);
-
-        this.alignement=AL;
         return AL;
-
     }
 
     public JPanel Align_custom(String a, String b,int c){
@@ -85,10 +81,8 @@ public class AlignementPanel {
                 n += String.valueOf(b.charAt(j)).toUpperCase()+" ";
             }
         }
-
         JTextArea labelArea = new JTextArea("\n"+m+"\n"+n+"\n"+"\n"+"Score: "+c);
         labelArea.setFont(labelArea.getFont().deriveFont(Font.BOLD));
-
         labelArea.setEditable(false);
         labelArea.setOpaque(false);
         JPanel AL=new JPanel();
@@ -107,15 +101,11 @@ public class AlignementPanel {
             }
         });
         AL.add(labelArea,BorderLayout.WEST);
-
-        this.alignement=AL;
         return AL;
-
     }
 
     public JPanel clearpath() {
-        AlignementPanel n = new AlignementPanel();
-       JPanel p =  n.Align("","",0,0,0);
+        JPanel p = Align("","",0,0,0);
         return p;
     }
 

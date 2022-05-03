@@ -1,56 +1,42 @@
 package Model;
 
-public enum Nucleotide{
-    //Nucleotides
-    A,T,G,C;
+public enum Nucleotide {
+    A, T, G, C;
 
-
-
-    /**
-     * convertie un caractere en Nucleotide
-     * @param c est un caratere
-     * @return une Nucleotide
-     */
-
-    public static Nucleotide convertirEnNucleotide(char c){
-        //?? mieux vaut un switch ou des if ????
-       /* if (c=='C') return C;
-        if (c=='A') return A;
-        if (c=='G') return G;
-        if (c=='T') return T;
-        return null;*/
-
-        switch(c) {
-           case 'C' : return C;
-           case 'A' : return A;
-           case 'T' : return T;
-           case 'G' : return G;
-           default : return null;
-        }
-
-    }
-
-    public static String NuctoString (Nucleotide n){
-        switch(n) {
-            case C : return "C";
-            case A : return "A";
-            case T : return "T";
-            case G : return "G";
-            default : return null;
+    //TODO: convertir un char en nucléotide
+    public static Nucleotide convertirEnNucleotide(char c) {
+        switch (c) {
+            case 'C':
+                return C;
+            case 'A':
+                return A;
+            case 'T':
+                return T;
+            case 'G':
+                return G;
+            default:
+                return null;
         }
     }
 
-
-    /**
-     * 
-     * @param c
-     * @return true si ce n'est pas une nucleotide 
-     */
-    public boolean nestpasNucleotide (char c){
-        return  (c=='B') || (c>'C' && c<'G') || (c>'G' && c<'T') || c>'T';
+    //TODO: convertir un nucléotide en string
+    public static String NuctoString(Nucleotide n) {
+        switch (n) {
+            case C:
+                return "C";
+            case A:
+                return "A";
+            case T:
+                return "T";
+            case G:
+                return "G";
+            default:
+                return null;
+        }
     }
-   
 
-
-
+    //TODO: vérifier qu'un char est soit: A, C, T ou G
+    public boolean nestpasNucleotide(char c) {
+        return (c == 'B') || (c > 'C' && c < 'G') || (c > 'G' && c < 'T') || c > 'T';
+    }
 }

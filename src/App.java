@@ -20,7 +20,7 @@ public class App {
         }
         if(i==1){
             Matrice m=new Matrice();
-            m.launcher();
+            m.launcher(true);
         }else {
             EventQueue.invokeLater(new Runnable() {
                 @Override
