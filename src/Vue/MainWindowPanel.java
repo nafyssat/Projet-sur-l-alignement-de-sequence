@@ -299,7 +299,7 @@ public class MainWindowPanel extends JFrame {
                 Inputs.getSeq2().setText(Inputs.getSeq2().getText().toUpperCase());
                 if (!controler.getsequence().NucleotideValide(Inputs.getSeq1().getText()) || !controler.getsequence().NucleotideValide(Inputs.getSeq2().getText())) {
                     JOptionPane.showMessageDialog(mainContainer, "Error: Allowed charcaters are: A, C, T or G.", "Message", JOptionPane.ERROR_MESSAGE);
-                    Inputs.getSeq1().setText(Inputs.getSeq1().getText().substring(0, Inputs.getSeq1().getText().length() - 1));
+                    Inputs.getSeq2().setText(Inputs.getSeq2().getText().substring(0, Inputs.getSeq2().getText().length() - 1));
                 } else {
                     if (Inputs.getSeq1().getText().length() == 0 && Inputs.getSeq2().getText().length() == 0) {
                         alignement.removeAll();
