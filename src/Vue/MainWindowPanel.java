@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.TextAttribute;
 import java.util.Map;
-import Model.*;;
+import Model.*;
 import Controler.*;
 
 public class MainWindowPanel extends JFrame {
