@@ -1,48 +1,76 @@
 # GENOaligner
-*Outil d'alignement de séquences génomiques*
+
+Projet du module de Projet de Programmation en 2e année de licence en Informatique à l'Université Paris Cité.
 
 ![screenshot](https://ghost.s-ul.eu/nQqR3s16)
+
 ## Présentation
-GENOaligner (Genomics Aligner) est un outil qui sert à représenter l'algorithme d'alignement de Needleman-Wunsch. Cette technique est couramment 
-utilisé par les 
-bio-informaticiens pour faire un alignement globale maximale de deux séquences génomiques afin de ressortir 
+GENOaligner (Genomics Aligner) est un outil qui sert à représenter l'algorithme d'alignement de Needleman-Wunsch. Cette technique est couramment
+utilisé par les
+bio-informaticiens pour faire un alignement globale maximale de deux séquences génomiques afin de ressortir
 les régions homologues.
 
-Ce projet a été réalisé pour le module de Projet de Programmation en Deuxième année de licence Informatique à l'Université de Paris Cité par :
-
- * Ben Abdallah Montassar
- * Bouzid Lyna 
- * Mohamed Halim Nafyssata
- * Mkouboi Mounia  
- * Nur Akbas Aleysa
-
-## Structure du Dossier
-
-*   src : dossier contenant le code source
+Contributeurs :
+* Ben Abdallah Montassar
+* Bouzid Lyna 
+* Mohamed Halim Nafyssata
+* Mkouboi Mounia  
+* Nur Akbas Aleysa
 
 
-## Utilisation
-### Récupérer le projet :
-1- Cloner le projet depuis le dépot distant:
+## Structure du projet
 
-SSH: 
+![diagramme](Diagramme.png)
+
+Modèle en trois packages (Model, Vue, Controller).
+
+
+#### Model
+
+#### Vue
+
+#### Controller
+
+
+## Exécution du code
+### EN IDE
+* soit en IG en executant la classe MainWindowPanel.java 
+* soit en console avec la classe Matrice.java
+
+
+### HORS IDE
+#### Récupérer le projet :
+1. Clonez le projet depuis le dépôt distant :
 ```
-git@gaufre.informatique.univ-paris-diderot.fr:projet-s4/GENOaligner.git
+git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/projet-ar1.git
 ```
 
-HTTP: 
+2. Naviguez dans le dossier ainsi cloné :
 ```
-git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/GENOaligner.git
+cd projet-ar1
 ```
 
-2-Naviguer dans le dossier cloné:
+
+#### Lancer le Logiciel :
+1. Compiler :
+Sur Windows :
 ```
-cd GENOaligner
+gradlew build
 ```
-### Build le projet:
 
+Sur Linux / MacOS :
+```
+chmod +x gradlew
+./gradlew build
+```
 
+2. Lancer :
+Sur Windows :
+```
+java -jar build\libs\projet-ar1.jar
+```
 
-
-
-
+Sur Linux / MacOS :
+```
+java -jar ./build/libs/projet-ar1.jar
+```
