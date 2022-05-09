@@ -1,11 +1,16 @@
-/.idea/
-*.class
+# fichiers locaux gradle
+.gradle
+build
+
+# fichiers d'IDEs
+.idea
+.vscode
 .project
 .classpath
-/out
-out/production/projet-ar1/.project
-out/production/projet-ar1/Vue/
-out/production/projet-ar1/Model/
-out/production/projet-ar1/Controler/
-out/production/projet-ar1/bin/
-projet-ar1.iml
+bin
+out
+src/*/bin
+src/*/out
+
+# fichiers de build
+*.class
