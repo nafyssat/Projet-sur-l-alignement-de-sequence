@@ -1,8 +1,10 @@
+package projetAr1;
+
 import java.awt.EventQueue;
 import java.util.Scanner;
 
-import Vue.*;
-import Model.*;
+import projetAr1.Vue.*;
+import projetAr1.Model.*;
 
 public class App {
 
