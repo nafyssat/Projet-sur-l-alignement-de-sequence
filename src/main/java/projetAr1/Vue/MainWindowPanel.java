@@ -1,11 +1,11 @@
 package projetAr1.Vue;
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.TextAttribute;
+import java.io.IOException;
 import java.util.Map;
 import projetAr1.Model.*;
 import projetAr1.Controler.*;
@@ -34,7 +34,7 @@ public class MainWindowPanel extends JFrame {
         //TODO: welcome panel
         ImageIcon icon = null;
         try {
-            icon = new ImageIcon(this.getClass().getResource("/Image/ADN.gif"));
+           icon = new ImageIcon("Image/ADN.gif");
         } catch (Exception e) {
             e.printStackTrace();
         }

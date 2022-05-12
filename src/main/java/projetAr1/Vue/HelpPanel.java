@@ -1,7 +1,10 @@
 package projetAr1.Vue;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 public class HelpPanel extends JFrame {
     public HelpPanel(){
@@ -34,7 +37,7 @@ public class HelpPanel extends JFrame {
         a.add(contenu4);
         ImageIcon img=null;
         try{
-            img=new ImageIcon(this.getClass().getResource("/Image/help.gif"));
+            img=new ImageIcon("Image/help.gif");
         }catch (Exception e){
             e.printStackTrace();
         }
