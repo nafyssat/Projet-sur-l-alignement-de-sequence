@@ -1,6 +1,5 @@
 # GENOaligner
-
-Projet du module de Projet de Programmation en 2e année de licence en Informatique à l'Université Paris Cité.
+*Outil d'analyse et d'alignement de séquences génomiques*
 
 ![screenshot](https://ghost.s-ul.eu/nQqR3s16)
 
@@ -9,6 +8,8 @@ GENOaligner (Genomics Aligner) est un outil qui sert à représenter l'algorithm
 utilisé par les
 bio-informaticiens pour faire un alignement globale maximale de deux séquences génomiques afin de ressortir
 les régions homologues.
+
+Ce projet a été réalisé pour le module de Projet de Programmation en Deuxième année de licence Informatique à l'Université de Paris Cité.
 
 Contributeurs :
 * Ben Abdallah Montassar
@@ -20,34 +21,31 @@ Contributeurs :
 
 ## Structure du projet
 
-![diagramme](Diagramme.png)
+![diagramme](diagramme.png)
 
-Modèle en trois packages (Model, Vue, Controller).
-
-
-#### Model
-
-#### Vue
-
-#### Controller
+   - `Src`: dossier qui contient le code sources représenté par les trois packages Model, Vue et Controller.
+   - `Image`: dossier qui contient les images utilisées.
 
 
 ## Exécution du code
-### EN IDE
-* soit en IG en executant la classe MainWindowPanel.java 
-* soit en console avec la classe Matrice.java
 
-
-### HORS IDE
 #### Récupérer le projet :
+
 1. Clonez le projet depuis le dépôt distant :
+
+SSH:
 ```
-git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/projet-ar1.git
+git@gaufre.informatique.univ-paris-diderot.fr:projet-s4/GENOaligner.git
 ```
+HTTP:
+```
+git clone https://gaufre.informatique.univ-paris-diderot.fr/projet-s4/GENOaligner.git
+```
+
 
 2. Naviguez dans le dossier ainsi cloné :
 ```
-cd projet-ar1
+cd GENOaligner
 ```
 
 
