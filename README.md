@@ -65,10 +65,10 @@ chmod +x gradlew
 2. Lancer :
 Sur Windows :
 ```
-java -jar build\libs\projet-ar1.jar
+java -jar build\libs\GENOaligner.jar
 ```
 
 Sur Linux / MacOS :
 ```
-java -jar ./build/libs/projet-ar1.jar
+java -jar ./build/libs/GENOaligner.jar
 ```

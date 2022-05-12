@@ -4,7 +4,7 @@ plugins{
 
 jar{
     manifest{
-        attributes 'Main-Class': 'GENOaligner.App'
+        attributes 'Main-Class': 'projetAr1.App'
     }
 }
 
