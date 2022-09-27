@@ -1,0 +1,16 @@
+# fichiers locaux gradle
+.gradle
+build
+
+# fichiers d'IDEs
+.idea
+.vscode
+.project
+.classpath
+bin
+out
+src/*/bin
+src/*/out
+
+# fichiers de build
+*.class
